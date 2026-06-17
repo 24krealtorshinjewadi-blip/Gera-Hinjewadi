@@ -23,53 +23,7 @@ declare global {
   var mockLeads: any[];
 }
 if (!global.mockLeads) {
-  global.mockLeads = [
-    {
-      id: '1',
-      name: 'Rohan Sharma',
-      phone: '9876543210',
-      email: 'rohan.sharma@gmail.com',
-      budget: '₹80 Lakhs - ₹1 Cr',
-      configuration: '2 BHK',
-      message: 'Interested in booking a site visit this weekend.',
-      project: 'Gera Winds of Joy',
-      source: 'website',
-      status: 'New',
-      notes: 'Wants morning slot',
-      site_visit_date: null,
-      created_at: new Date(Date.now() - 3600000 * 2).toISOString(), // 2 hours ago
-    },
-    {
-      id: '2',
-      name: 'Priyanka Patil',
-      phone: '8765432109',
-      email: 'priyanka.p@yahoo.com',
-      budget: '₹1.2 Cr - ₹1.5 Cr',
-      configuration: '3 BHK',
-      message: 'Need brochure details sent on email.',
-      project: 'Gera Joy on the Treetops',
-      source: 'landing-page',
-      status: 'Contacted',
-      notes: 'Sent pricing on WhatsApp',
-      site_visit_date: null,
-      created_at: new Date(Date.now() - 3600000 * 24 * 2).toISOString(), // 2 days ago
-    },
-    {
-      id: '3',
-      name: 'Amit Deshmukh',
-      phone: '7654321098',
-      email: 'amit.deshmukh@gmail.com',
-      budget: 'Above ₹1.5 Cr',
-      configuration: '3 BHK Duplex',
-      message: 'Looking for payment plan options.',
-      project: 'Gera Winds of Joy',
-      source: 'website',
-      status: 'Site Visit',
-      notes: 'Scheduled for 18th June',
-      site_visit_date: new Date(Date.now() + 3600000 * 24).toISOString(), // Tomorrow
-      created_at: new Date(Date.now() - 3600000 * 24 * 5).toISOString(), // 5 days ago
-    }
-  ];
+  global.mockLeads = [];
 }
 
 // POST: Create a lead (Public)
