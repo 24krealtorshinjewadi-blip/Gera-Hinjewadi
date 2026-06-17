@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { getSession } from '@/lib/auth';
+import { updateLead, deleteLead } from '@/lib/leadsStorage';
 
 // Helper to extract id from request URL/params
 // Next.js App Router route params can be read from the second argument context
@@ -20,43 +21,43 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
 
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+    const updateData: any = {};
+    if (status !== undefined) updateData.status = status;
+    if (notes !== undefined) updateData.notes = notes;
+    if (site_visit_date !== undefined) updateData.site_visit_date = site_visit_date || null;
+
     if (isSupabaseConfigured && supabaseAdmin) {
-      const updateData: any = {};
-      if (status !== undefined) updateData.status = status;
-      if (notes !== undefined) updateData.notes = notes;
-      if (site_visit_date !== undefined) updateData.site_visit_date = site_visit_date || null;
+        const { data, error } = await supabaseAdmin
+          .from('leads')
+          .update(updateData)
+          .eq('id', id)
+          .select();
 
-      const { data, error } = await supabaseAdmin
-        .from('leads')
-        .update(updateData)
-        .eq('id', id)
-        .select();
+        if (error) {
+          console.error('Supabase update error:', error);
+          throw error;
+        }
 
-      if (error) {
-        console.error('Supabase update error:', error);
-        throw error;
+        if (!data || data.length === 0) {
+          return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
+        }
+
+        // Sync update to local CSV file
+        try {
+          updateLead(id, updateData);
+        } catch (err) {
+          console.error('Failed to sync update to local CSV:', err);
+        }
+
+        return NextResponse.json({ success: true, lead: data[0] });
+      } else {
+        // Offline CSV update
+        const updated = updateLead(id, updateData);
+        if (!updated) {
+          return NextResponse.json({ error: 'Lead not found in local files' }, { status: 404 });
+        }
+        return NextResponse.json({ success: true, lead: updated });
       }
-
-      if (!data || data.length === 0) {
-        return NextResponse.json({ error: 'Lead not found' }, { status: 404 });
-      }
-
-      return NextResponse.json({ success: true, lead: data[0] });
-    } else {
-      // In-memory fallback
-      const leadIndex = global.mockLeads.findIndex(lead => lead.id === id);
-      if (leadIndex === -1) {
-        return NextResponse.json({ error: 'Lead not found in local memory' }, { status: 404 });
-      }
-
-      if (status !== undefined) global.mockLeads[leadIndex].status = status;
-      if (notes !== undefined) global.mockLeads[leadIndex].notes = notes;
-      if (site_visit_date !== undefined) {
-        global.mockLeads[leadIndex].site_visit_date = site_visit_date || null;
-      }
-
-      return NextResponse.json({ success: true, lead: global.mockLeads[leadIndex] });
-    }
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || 'Server error updating lead' },
@@ -87,16 +88,21 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
         throw error;
       }
 
-      return NextResponse.json({ success: true, message: 'Lead deleted successfully from Supabase' });
-    } else {
-      // In-memory fallback
-      const leadIndex = global.mockLeads.findIndex(lead => lead.id === id);
-      if (leadIndex === -1) {
-        return NextResponse.json({ error: 'Lead not found in local memory' }, { status: 404 });
+      // Sync deletion to local CSV file
+      try {
+        deleteLead(id);
+      } catch (err) {
+        console.error('Failed to sync deletion to local CSV:', err);
       }
 
-      global.mockLeads.splice(leadIndex, 1);
-      return NextResponse.json({ success: true, message: 'Lead deleted successfully from local memory' });
+      return NextResponse.json({ success: true, message: 'Lead deleted successfully' });
+    } else {
+      // Offline CSV deletion
+      const deleted = deleteLead(id);
+      if (!deleted) {
+        return NextResponse.json({ error: 'Lead not found in local files' }, { status: 404 });
+      }
+      return NextResponse.json({ success: true, message: 'Lead deleted successfully' });
     }
   } catch (error: any) {
     return NextResponse.json(

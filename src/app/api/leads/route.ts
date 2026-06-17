@@ -3,6 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { getSession } from '@/lib/auth';
 import { sendWhatsAppNotification } from '@/lib/whatsapp';
 import { z } from 'zod';
+import { addLead, readLeads } from '@/lib/leadsStorage';
 
 // Zod Validation Schema matching the form requirements
 const LeadSchema = z.object({
@@ -114,7 +115,7 @@ export async function POST(request: Request) {
       }
       dbResult = data?.[0];
     } else {
-      // In-memory fallback for local dev
+      // In-memory fallback structure for local dev
       dbResult = {
         id: Math.random().toString(36).substring(2, 9),
         name: leadData.name,
@@ -130,7 +131,13 @@ export async function POST(request: Request) {
         site_visit_date: null,
         created_at: new Date().toISOString(),
       };
-      global.mockLeads.unshift(dbResult);
+    }
+
+    // Save lead record copy locally to CSV (Excel format)
+    try {
+      addLead(dbResult);
+    } catch (err) {
+      console.error('Failed to save lead record copy to local CSV:', err);
     }
 
     // Trigger WhatsApp notification asynchronously (non-blocking to user response)
@@ -209,8 +216,8 @@ export async function GET(request: NextRequest) {
 
       return NextResponse.json({ leads: filteredData });
     } else {
-      // In-memory filter for local dev
-      let filteredData = [...global.mockLeads];
+      // Read leads from persistent local CSV file
+      let filteredData = readLeads();
 
       if (status) {
         filteredData = filteredData.filter(lead => lead.status === status);
@@ -231,7 +238,7 @@ export async function GET(request: NextRequest) {
         );
       }
 
-      // Sort by newest
+      // Sort by newest date
       filteredData.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
       return NextResponse.json({ leads: filteredData });
