@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { getSession } from '@/lib/auth';
 import { sendWhatsAppNotification } from '@/lib/whatsapp';
 import { z } from 'zod';
-import { addLead, readLeads } from '@/lib/leadsStorage';
+import { addLead, readLeads, readAgents } from '@/lib/leadsStorage';
 
 // Zod Validation Schema matching the form requirements
 const LeadSchema = z.object({
@@ -136,7 +136,7 @@ export async function GET(request: NextRequest) {
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (isSupabaseConfigured) {
-      let query = supabase.from('leads').select('*');
+      let query = supabase.from('leads').select('*, agents(name)');
 
       // Filters
       if (status) {
@@ -157,10 +157,16 @@ export async function GET(request: NextRequest) {
 
       let filteredData = data || [];
 
-      // Manual search filter since Supabase OR query syntax for text search can be complex
+      // Flatten nested agent name relation
+      let formattedLeads = filteredData.map((lead: any) => ({
+        ...lead,
+        agent_name: lead.agents ? lead.agents.name : null,
+      }));
+
+      // Manual search filter
       if (search) {
         const searchLower = search.toLowerCase();
-        filteredData = filteredData.filter(
+        formattedLeads = formattedLeads.filter(
           (lead: any) =>
             lead.name.toLowerCase().includes(searchLower) ||
             lead.phone.toLowerCase().includes(searchLower) ||
@@ -168,23 +174,32 @@ export async function GET(request: NextRequest) {
         );
       }
 
-      return NextResponse.json({ leads: filteredData });
+      return NextResponse.json({ leads: formattedLeads });
     } else {
       // Read leads from persistent local CSV file
-      let filteredData = readLeads();
+      const rawLeads = readLeads();
+      const agents = readAgents();
+
+      let mappedLeads = rawLeads.map((lead: any) => {
+        const agent = agents.find(a => a.id === lead.assigned_agent_id);
+        return {
+          ...lead,
+          agent_name: agent ? agent.name : null,
+        };
+      });
 
       if (status) {
-        filteredData = filteredData.filter(lead => lead.status === status);
+        mappedLeads = mappedLeads.filter(lead => lead.status === status);
       }
       if (budget) {
-        filteredData = filteredData.filter(lead => lead.budget === budget);
+        mappedLeads = mappedLeads.filter(lead => lead.budget === budget);
       }
       if (project) {
-        filteredData = filteredData.filter(lead => lead.project === project);
+        mappedLeads = mappedLeads.filter(lead => lead.project === project);
       }
       if (search) {
         const searchLower = search.toLowerCase();
-        filteredData = filteredData.filter(
+        mappedLeads = mappedLeads.filter(
           lead =>
             lead.name.toLowerCase().includes(searchLower) ||
             lead.phone.toLowerCase().includes(searchLower) ||
@@ -193,9 +208,9 @@ export async function GET(request: NextRequest) {
       }
 
       // Sort by newest date
-      filteredData.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+      mappedLeads.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
 
-      return NextResponse.json({ leads: filteredData });
+      return NextResponse.json({ leads: mappedLeads });
     }
   } catch (error: any) {
     return NextResponse.json(
