@@ -1,0 +1,23 @@
+File Path,Type,Description,Status
+src/app/page.tsx,Page,Main landing page containing 12 premium sections with Framer Motion,Verified
+src/app/thank-you/page.tsx,Page,Post-submission thank-you page with animations and sales contact options,Verified
+src/app/admin/page.tsx,Page,Secure CRM Admin Dashboard with statistics and lead management,Verified
+src/app/admin/login/page.tsx,Page,Login portal for real estate agents and admins,Verified
+src/app/api/leads/route.ts,API Route,POST lead submit registration and GET lead list queries (secure),Verified
+src/app/api/leads/[id]/route.ts,API Route,PATCH lead status/comments and DELETE lead file operations (secure),Verified
+src/app/api/admin/login/route.ts,API Route,Admin password verification and HTTP-only cookie signing (secure),Verified
+src/app/api/admin/logout/route.ts,API Route,Clears HTTP-only admin session cookie on logout (secure),Verified
+src/middleware.ts,Middleware,Protects CRM /admin routes from unauthenticated access,Verified
+src/lib/supabase.ts,Utility,Initializes database connections with local mock data fallback,Verified
+src/lib/auth.ts,Utility,JWT signing and verification utilities for session checks,Verified
+src/lib/whatsapp.ts,Utility,Dispatches formatted sales notifications to Twilio API / console log,Verified
+src/components/LeadCaptureForm.tsx,Component,High-converting Zod-validated capture form,Verified
+src/components/Header.tsx,Component,Floating glassmorphic navigation bar with modal trigger,Verified
+src/components/Footer.tsx,Component,Disclaimers; contact links; RERA registration numbers,Verified
+src/app/globals.css,Styling,Luxury theme configuration (dark navy/gold gradients/blurs),Verified
+src/app/sitemap.ts,SEO,Dynamic sitemap list for web indexes,Verified
+src/app/robots.ts,SEO,Web crawler navigation permissions,Verified
+database.sql,Documentation,SQL script to execute in Supabase SQL editor,Verified
+README.md,Documentation,Deployment and setup handbook,Verified
+.env.example,Configuration,Environment variables template configuration guidelines,Verified
+.env.local,Configuration,Local credentials configuration file,Verified
