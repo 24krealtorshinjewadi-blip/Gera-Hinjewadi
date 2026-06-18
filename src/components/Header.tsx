@@ -41,18 +41,17 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
           ? 'py-2 bg-slate-950/90 backdrop-blur-lg border-b border-slate-900/50 shadow-lg'
           : 'py-4 bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex flex-col shrink-0">
             <span className="font-extrabold text-lg tracking-wider text-white leading-tight">
-              GERA <span className="gold-gradient-text">HINJWADI</span>
+              GERA <span className="gold-gradient-text">HINJEWADI</span>
             </span>
             <span className="text-[8px] uppercase tracking-[0.2em] text-gold-400/80 font-semibold leading-none mt-0.5">
               Pune • Premium Living
