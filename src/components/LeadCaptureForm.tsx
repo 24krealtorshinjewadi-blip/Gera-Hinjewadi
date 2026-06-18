@@ -142,6 +142,9 @@ export default function LeadCaptureForm({
               maxLength={10}
               placeholder="98765 43210"
               {...register('phone')}
+              onInput={(e) => {
+                e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
+              }}
               className={`w-full bg-slate-900/60 border ${
                 errors.phone ? 'border-red-500' : 'border-slate-800 focus:border-gold-500'
               } rounded-lg pl-12 pr-4 py-2.5 text-white placeholder-slate-500 text-sm focus:outline-none transition-all`}

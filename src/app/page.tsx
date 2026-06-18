@@ -163,13 +163,13 @@ export default function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex flex-wrap gap-3"
+                className="flex flex-wrap sm:flex-nowrap gap-3"
               >
                 <button
                   onClick={() => openUnlockModal('hero-visit', 'Book Luxury Site Visit')}
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg transition-transform hover:scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.2)] cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg transition-transform hover:scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.2)] cursor-pointer whitespace-nowrap shrink-0"
                 >
-                  <Calendar className="h-4 w-4" />
+                  <Calendar className="h-4 w-4 shrink-0" />
                   <span>Book Site Visit</span>
                 </button>
 
@@ -180,17 +180,17 @@ export default function Home() {
                     e.preventDefault();
                     openUnlockModal('hero-brochure', 'Download Project Brochure');
                   }}
-                  className="flex items-center gap-2 px-6 py-3 border border-slate-800 hover:border-gold-500/50 bg-slate-900/50 text-slate-200 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 hover:border-gold-500/50 bg-slate-900/50 text-slate-200 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0"
                 >
-                  <Download className="h-4 w-4 text-gold-500" />
+                  <Download className="h-4 w-4 text-gold-500 shrink-0" />
                   <span>Download Brochure</span>
                 </a>
 
                 <a
                   href="tel:+919673000053"
-                  className="flex items-center gap-2 px-6 py-3 border border-slate-800 bg-slate-900/10 text-slate-300 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 bg-slate-900/10 text-slate-300 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all whitespace-nowrap shrink-0"
                 >
-                  <Phone className="h-4 w-4 text-gold-400 animate-bounce" />
+                  <Phone className="h-4 w-4 text-gold-400 animate-bounce shrink-0" />
                   <span>Call Now</span>
                 </a>
               </motion.div>

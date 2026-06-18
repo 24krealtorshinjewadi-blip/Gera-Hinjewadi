@@ -78,7 +78,7 @@ export default function Header() {
             {/* Phone — compact pill */}
             <a
               href="tel:+919673000053"
-              className="flex items-center gap-1.5 px-3 py-2 border border-slate-800/80 rounded-full bg-slate-900/60 hover:bg-slate-900 hover:border-gold-500/40 text-slate-300 hover:text-white transition-all group"
+              className="flex items-center gap-1.5 px-3 py-2 border border-slate-800/80 rounded-full bg-slate-900/60 hover:bg-slate-900 hover:border-gold-500/40 text-slate-300 hover:text-white transition-all group shrink-0 whitespace-nowrap"
             >
               <Phone className="h-3.5 w-3.5 text-gold-400 group-hover:animate-pulse" />
               <span className="text-[11px] font-bold tracking-wide whitespace-nowrap">+91 96730 00053</span>
@@ -89,7 +89,7 @@ export default function Header() {
               href="https://wa.me/919673000053?text=Hi%21%20I%20am%20interested%20in%20Gera%20Hinjewadi%20and%20would%20like%20to%20get%20more%20details."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-2 border border-emerald-800/30 rounded-full bg-emerald-950/20 hover:bg-emerald-950/40 text-emerald-400 transition-all"
+              className="flex items-center gap-1.5 px-3 py-2 border border-emerald-800/30 rounded-full bg-emerald-950/20 hover:bg-emerald-950/40 text-emerald-400 transition-all shrink-0 whitespace-nowrap"
             >
               <MessageSquare className="h-3.5 w-3.5" />
               <span className="text-[11px] font-bold tracking-wide whitespace-nowrap">WhatsApp</span>
@@ -99,7 +99,7 @@ export default function Header() {
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
               <DialogTrigger
                 render={
-                  <button className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer whitespace-nowrap">
+                  <button className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0 whitespace-nowrap">
                     <Calendar className="h-3.5 w-3.5" />
                     <span>Book Visit</span>
                   </button>
