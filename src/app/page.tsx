@@ -890,7 +890,7 @@ export default function Home() {
               className="flex items-center gap-2 px-8 py-4 border border-slate-800 bg-slate-900/10 text-slate-200 hover:text-white text-xs font-extrabold uppercase tracking-widest rounded-lg transition-all whitespace-nowrap"
             >
               <Phone className="h-4.5 w-4.5 text-gold-400" />
-              <span>Call Us: +91 96730 00053</span>
+              <span>Call Us: +91&nbsp;96730&nbsp;00053</span>
             </a>
           </div>
         </div>

@@ -44,7 +44,7 @@ export default function ThankYouPage() {
                 className="flex items-center gap-2 text-slate-200 hover:text-gold-400 transition-colors text-sm font-semibold whitespace-nowrap"
               >
                 <Phone className="h-4 w-4 text-gold-400" />
-                <span>Call Sales: +91 96730 00053</span>
+                <span>Call Sales: +91&nbsp;96730&nbsp;00053</span>
               </a>
               <a
                 href="https://wa.me/919673000053?text=Hi%21%20I%20just%20submitted%20my%20lead%20on%20the%20website.%20I%20would%20like%20to%20get%20instant%20details."
@@ -53,7 +53,7 @@ export default function ThankYouPage() {
                 className="flex items-center gap-2 text-slate-200 hover:text-emerald-400 transition-colors text-sm font-semibold whitespace-nowrap"
               >
                 <MessageSquare className="h-4 w-4 text-emerald-400" />
-                <span>WhatsApp: +91 96730 00053</span>
+                <span>WhatsApp: +91&nbsp;96730&nbsp;00053</span>
               </a>
             </div>
           </div>

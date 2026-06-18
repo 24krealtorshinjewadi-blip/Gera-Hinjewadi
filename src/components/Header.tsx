@@ -81,7 +81,7 @@ export default function Header() {
               className="flex items-center gap-1.5 px-3 py-2 border border-slate-800/80 rounded-full bg-slate-900/60 hover:bg-slate-900 hover:border-gold-500/40 text-slate-300 hover:text-white transition-all group shrink-0 whitespace-nowrap"
             >
               <Phone className="h-3.5 w-3.5 text-gold-400 group-hover:animate-pulse" />
-              <span className="text-[11px] font-bold tracking-wide whitespace-nowrap">+91 96730 00053</span>
+              <span className="text-[11px] font-bold tracking-wide whitespace-nowrap">+91&nbsp;96730&nbsp;00053</span>
             </a>
 
             {/* WhatsApp — compact pill */}
