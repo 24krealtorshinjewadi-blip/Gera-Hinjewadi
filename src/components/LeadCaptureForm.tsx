@@ -137,7 +137,7 @@ export default function LeadCaptureForm({
             Mobile Number <span className="text-red-500">*</span>
           </label>
           <div className="relative">
-            <span className="absolute left-3.5 top-3 text-slate-400 text-sm font-medium">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 z-10 text-slate-300 text-sm font-bold">
               +91
             </span>
             <input
