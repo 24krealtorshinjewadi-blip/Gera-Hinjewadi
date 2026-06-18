@@ -879,7 +879,7 @@ export default function Home() {
               href="https://wa.me/919673000053?text=Hi%21%20I%20want%20to%20book%20a%20site%20visit%20for%20Gera%20Hinjewadi."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-8 py-4 border border-slate-800 bg-slate-900 hover:bg-slate-900/80 text-emerald-400 hover:text-white text-xs font-extrabold uppercase tracking-widest rounded-lg transition-all"
+              className="flex items-center gap-2 px-8 py-4 border border-slate-800 bg-slate-900 hover:bg-slate-900/80 text-emerald-400 hover:text-white text-xs font-extrabold uppercase tracking-widest rounded-lg transition-all whitespace-nowrap"
             >
               <MessageSquare className="h-4.5 w-4.5 text-emerald-400" />
               <span>WhatsApp Sales</span>
@@ -887,7 +887,7 @@ export default function Home() {
 
             <a
               href="tel:+919673000053"
-              className="flex items-center gap-2 px-8 py-4 border border-slate-800 bg-slate-900/10 text-slate-200 hover:text-white text-xs font-extrabold uppercase tracking-widest rounded-lg transition-all"
+              className="flex items-center gap-2 px-8 py-4 border border-slate-800 bg-slate-900/10 text-slate-200 hover:text-white text-xs font-extrabold uppercase tracking-widest rounded-lg transition-all whitespace-nowrap"
             >
               <Phone className="h-4.5 w-4.5 text-gold-400" />
               <span>Call Us: +91 96730 00053</span>

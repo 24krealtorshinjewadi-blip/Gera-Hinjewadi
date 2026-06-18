@@ -30,7 +30,7 @@ export default function ThankYouPage() {
           </p>
 
           <p className="text-slate-300 text-sm leading-relaxed mb-8">
-            We have received your request. A senior relationship executive from **Gera Hinjewadi Sales Team** will get in touch with you shortly on your registered number to share pricing details, brochures, and schedule your site visit.
+            We have received your request. A senior relationship executive from <strong className="text-white">Gera Hinjewadi Sales Team</strong> will get in touch with you shortly on your registered number to share pricing details, brochures, and schedule your site visit.
           </p>
 
           {/* Quick Action Contact Row */}
@@ -41,7 +41,7 @@ export default function ThankYouPage() {
             <div className="flex flex-col gap-2.5">
               <a
                 href="tel:+919673000053"
-                className="flex items-center gap-2 text-slate-200 hover:text-gold-400 transition-colors text-sm font-semibold"
+                className="flex items-center gap-2 text-slate-200 hover:text-gold-400 transition-colors text-sm font-semibold whitespace-nowrap"
               >
                 <Phone className="h-4 w-4 text-gold-400" />
                 <span>Call Sales: +91 96730 00053</span>
@@ -50,7 +50,7 @@ export default function ThankYouPage() {
                 href="https://wa.me/919673000053?text=Hi%21%20I%20just%20submitted%20my%20lead%20on%20the%20website.%20I%20would%20like%20to%20get%20instant%20details."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-slate-200 hover:text-emerald-400 transition-colors text-sm font-semibold"
+                className="flex items-center gap-2 text-slate-200 hover:text-emerald-400 transition-colors text-sm font-semibold whitespace-nowrap"
               >
                 <MessageSquare className="h-4 w-4 text-emerald-400" />
                 <span>WhatsApp: +91 96730 00053</span>

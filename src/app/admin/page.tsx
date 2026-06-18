@@ -471,7 +471,7 @@ export default function AdminDashboardPage() {
               Gera CRM <span className="gold-gradient-text">Dashboard</span>
             </h1>
             <p className="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">
-              Authorized Agent Access Only
+              Lead Management System
             </p>
           </div>
         </div>
