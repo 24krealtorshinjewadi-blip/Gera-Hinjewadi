@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   description: "Explore Gera Winds of Joy & Joy on the Treetops in Hinjewadi Phase 3, Pune. 2 & 3 BHK apartments starting at ₹77.90 Lakhs*. Get pricing, floor plans, and brochures.",
   keywords: "Gera Hinjewadi, Gera Winds of Joy, Gera Joy on the Treetops, ChildCentric Homes Pune, real estate Hinjewadi, 2 BHK flat Hinjewadi, 3 BHK Hinjewadi Pune",
   authors: [{ name: "Gera Developments Sales Partner" }],
-  metadataBase: new URL("https://gerahinjiwadeepune.in"),
+  metadataBase: new URL("https://www.gerahinjewadi.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Gera Hinjewadi Pune | Premium 2 & 3 BHK ChildCentric® Homes",
     description: "Explore Winds of Joy & Joy on the Treetops by Gera Developments in Hinjewadi, Pune. Luxury residences starting at ₹77.90 L*.",
-    url: "https://gerahinjiwadeepune.in",
+    url: "https://www.gerahinjewadi.com",
     siteName: "Gera Hinjewadi Pune",
     images: [
       {
@@ -66,9 +66,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Gera Hinjewadi Pune Sales",
-    "image": "https://gerahinjiwadeepune.in/hero-bg.png",
+    "image": "https://www.gerahinjewadi.com/hero-bg.png",
     "telephone": "+91-9673000053",
-    "url": "https://gerahinjiwadeepune.in",
+    "url": "https://www.gerahinjewadi.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Near Megapolis Circle, Hinjewadi Phase 3",
