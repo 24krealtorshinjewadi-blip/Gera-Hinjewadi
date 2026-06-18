@@ -1,7 +1,25 @@
 {
   "name": "gera-hinjwadi",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
+  "description": "Premium Real Estate Sales Platform & CRM for Gera Developments – Hinjewadi, Pune. Built with Next.js 16, Supabase, and Tailwind CSS.",
+  "author": "Manish Rai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manishrai99-afk/Gera-Developments.git"
+  },
+  "keywords": [
+    "real-estate",
+    "crm",
+    "nextjs",
+    "supabase",
+    "tailwindcss",
+    "lead-management",
+    "gera-developments",
+    "hinjewadi",
+    "pune"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

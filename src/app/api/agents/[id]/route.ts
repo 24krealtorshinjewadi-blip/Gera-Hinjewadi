@@ -76,6 +76,27 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (isSupabaseConfigured && supabaseAdmin) {
+      // 1. Cascade: Unassign from leads in database
+      const { error: leadsError } = await supabaseAdmin
+        .from('leads')
+        .update({ assigned_agent_id: null })
+        .eq('assigned_agent_id', id);
+
+      if (leadsError) {
+        console.error('Supabase unassign agent from leads error:', leadsError);
+      }
+
+      // 2. Cascade: Unassign from follow-up logs in database
+      const { error: followUpsError } = await supabaseAdmin
+        .from('follow_up_logs')
+        .update({ agent_id: null })
+        .eq('agent_id', id);
+
+      if (followUpsError) {
+        console.error('Supabase unassign agent from follow-up logs error:', followUpsError);
+      }
+
+      // 3. Delete agent from database
       const { error } = await supabaseAdmin
         .from('agents')
         .delete()

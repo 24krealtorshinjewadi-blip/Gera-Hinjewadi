@@ -121,6 +121,17 @@ export async function DELETE(request: NextRequest, context: RouteContext) {
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (isSupabaseConfigured && supabaseAdmin) {
+      // 1. Cascade: Delete associated follow-up logs first in database
+      const { error: followUpsError } = await supabaseAdmin
+        .from('follow_up_logs')
+        .delete()
+        .eq('lead_id', id);
+
+      if (followUpsError) {
+        console.error('Supabase delete follow-up logs error:', followUpsError);
+      }
+
+      // 2. Delete lead from database
       const { error } = await supabaseAdmin
         .from('leads')
         .delete()

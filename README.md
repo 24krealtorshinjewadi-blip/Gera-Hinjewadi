@@ -1,160 +1,252 @@
-# Gera Developments Hinjewadi, Pune - Premium Sales Platform
+<div align="center">
 
-A production-ready, high-converting Real Estate Sales and Lead Capture platform built for **Gera Developments – Hinjewadi, Pune**. The application features a luxury dark-theme visual design system, interactive layouts, a password-secured CRM Admin Portal, automated WhatsApp lead alert structures, and robust Supabase backend integration.
+# 🏗️ Gera Developments – Hinjewadi, Pune
 
----
+### Premium Real Estate Sales Platform & CRM
 
-## 🌟 Platform Highlights
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000?style=for-the-badge&logo=vercel)](https://vercel.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gold?style=for-the-badge)](LICENSE)
 
-### 1. High-Converting Landing Page
-- **Luxury Aesthetic**: Sophisticated dark navy backdrop, warm metallic gold gradients (`gold-500` to `gold-600`), sleek borders, and glassmorphism UI layouts.
-- **Interactive Floor Plans**: Switch layout views dynamically. Layout blueprints are blurred under an unlock overlay, requiring visitors to submit an enquiry to view dimensions and high-resolution details.
-- **Proximity/Location Tab List**: Easily review distance metrics for Transit, IT Parks, Schools, and Hospitals. Features an abstract interactive vector direction map overlay.
-- **Premium Showcase Components**: 8 detailed amenity tiles with hover transformations, project gallery, testimonials, builder profile background, and Accordion FAQs.
+A production-ready, high-converting real estate sales and lead management platform built for **Gera Developments – Hinjewadi, Pune**. Features a luxury dark-theme design system, interactive layouts, secure CRM admin portal, automated WhatsApp alerts, and robust Supabase backend integration.
 
-### 2. Validated Lead Capture Form
-- Engineered using **React Hook Form** + **Zod** validation.
-- Validates Indian mobile numbers to confirm active 10-digit formats starting with `[6-9]`.
-- Launches a **canvas-confetti** celebration on success, resets form states, and redirects to an animated checkmarked Thank You page.
-
-### 3. Secure CRM Admin Portal (`/admin`)
-- Guarded by Next.js Server-Side Middleware session checking.
-- Metric counters summarizing total, today's, weekly, and monthly incoming leads, along with active Site Visits and bookings.
-- Filter, search, and manage incoming leads (update CRM statuses: New, Contacted, Site Visit, Negotiation, Booked, Lost; add agent comments; schedule site visits).
-- **Export to CSV**: Download the currently filtered or searched set of leads instantly into a formatted spreadsheet.
-
-### 4. Enterprise Integrations & Compliance
-- **Supabase Integration**: Stores all lead metadata in real-time. Bypasses RLS securely in backend routes using an elevated service role client. Includes local dev fallback.
-- **WhatsApp Dispatch Gateway**: Generates structural alert bodies and pushes them to the sales team's WhatsApp via Twilio.
-- **Legal Compliance**: Prominent RERA Registration disclosures and legal marketing channel partner disclaimers.
-- **SEO Optimization**: Dynamic sitemaps, robots crawl directives, meta tags, and Schema.org structured data.
+</div>
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## ✨ Platform Highlights
 
-- **Framework**: Next.js 16 (App Router with Turbopack)
-- **Styling**: Tailwind CSS v4 + Tailwind Animate
-- **Components & Icons**: Shadcn UI (Base-UI Primitive defaults), Lucide Icons
-- **Animations**: Framer Motion
-- **Database**: Supabase (Postgres)
-- **Forms & Validation**: Zod + React Hook Form
-- **Auth**: JWT session cookies
+### 🏠 High-Converting Landing Page
+- **Luxury Aesthetic** — Sophisticated dark navy backdrop, warm metallic gold gradients, sleek borders, and glassmorphism UI layouts
+- **Interactive Floor Plans** — Dynamic layout switching with blur-to-unlock overlay requiring enquiry submission
+- **Proximity Map** — Distance metrics for Transit, IT Parks, Schools, and Hospitals with interactive vector overlays
+- **Premium Showcase** — 8 amenity tiles with hover transformations, project gallery, testimonials, and accordion FAQs
+
+### 📝 Smart Lead Capture
+- **Zod + React Hook Form** — Military-grade validation with Indian mobile number verification (`[6-9]` prefix, 10-digit)
+- **Canvas Confetti** — Celebration animation on successful submission
+- **Animated Thank You** — Checkmark animation with auto-redirect
+
+### 🛡️ Secure CRM Admin Portal
+- **Session-Protected** — JWT `httpOnly` cookies with server-side proxy route guards
+- **Lead Dashboard** — Metric counters (total, today, weekly, monthly), filtering, search, and CSV export
+- **Status Pipeline** — Track leads through: `New → Contacted → Site Visit → Negotiation → Booked / Lost`
+- **Agent Management** — Full CRUD for sales agents with active/inactive toggling and lead assignment
+- **Follow-Up Logs** — Timestamped activity timeline for every lead interaction
+
+### 🔌 Enterprise Integrations
+- **Supabase** — Real-time PostgreSQL with RLS; local CSV fallback for development
+- **WhatsApp Alerts** — Twilio-powered instant notifications to sales team
+- **SEO** — Dynamic sitemaps, robots directives, meta tags, and Schema.org structured data
+- **RERA Compliance** — Legal registration disclosures and marketing disclaimers
 
 ---
 
-## 💾 Database Schema
+## 🛠️ Tech Stack
 
-Run the following SQL in your Supabase SQL Editor to initialize the `leads` table and configure Row Level Security (RLS) policies:
-
-```sql
--- Create Lead Status Enumeration
-CREATE TYPE lead_status AS ENUM ('New', 'Contacted', 'Site Visit', 'Negotiation', 'Booked', 'Lost');
-
--- Create Leads Log Table
-CREATE TABLE public.leads (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    name VARCHAR(255) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    email VARCHAR(255),
-    budget VARCHAR(100) NOT NULL,
-    configuration VARCHAR(100) NOT NULL,
-    message TEXT,
-    project VARCHAR(255) DEFAULT 'Gera Winds of Joy',
-    source VARCHAR(100) DEFAULT 'website',
-    status lead_status DEFAULT 'New'::lead_status,
-    notes TEXT,
-    site_visit_date TIMESTAMPTZ,
-    created_at TIMESTAMPTZ DEFAULT now() NOT NULL
-);
-
--- Enable Row Level Security (RLS)
-ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
-
--- Allow Public Lead Submission insertions
-CREATE POLICY "Allow public inserts" ON public.leads
-    FOR INSERT WITH CHECK (true);
-
--- Allow CRM Admin Reads/Updates (bypassed in API routes via service_role client)
-CREATE POLICY "Allow admin read" ON public.leads
-    FOR SELECT USING (true);
-
-CREATE POLICY "Allow admin update" ON public.leads
-    FOR UPDATE USING (true);
-
-CREATE POLICY "Allow admin delete" ON public.leads
-    FOR DELETE USING (true);
-```
+| Layer          | Technology                                    |
+|----------------|-----------------------------------------------|
+| **Framework**  | Next.js 16 (App Router + Turbopack)           |
+| **Styling**    | Tailwind CSS v4 + Tailwind Animate            |
+| **Components** | Shadcn UI (Base-UI primitives), Lucide Icons  |
+| **Animations** | Framer Motion, Canvas Confetti                |
+| **Database**   | Supabase (PostgreSQL) + CSV fallback          |
+| **Validation** | Zod + React Hook Form                         |
+| **Auth**       | JWT session cookies (`httpOnly`)               |
+| **Messaging**  | Twilio WhatsApp Gateway                       |
+| **Deployment** | Vercel (automatic CI/CD)                      |
 
 ---
 
 ## 📂 Project Structure
 
-```text
+```
 GERA HINJWADI/
-├── public/                  # Assets (brochure PDF, floor plans, luxury towers hero-bg)
+├── public/                      # Static assets (images, brochure PDF, floor plans)
 ├── src/
 │   ├── app/
-│   │   ├── admin/            # Secure admin login and CRM dashboard
-│   │   ├── api/              # Leads POST/GET and Login/Logout session handlers
-│   │   ├── thank-you/        # Animated checkmark page on successful submissions
-│   │   ├── globals.css       # Core typography, glassmorphism blurs, gold gradients
-│   │   ├── layout.tsx        # SEO configurations, meta metadata, Schema markup
-│   │   ├── robots.ts         # Search crawling guidelines
-│   │   └── sitemap.ts        # Dynamic sitemap generator
+│   │   ├── admin/               # CRM dashboard & login pages
+│   │   │   ├── login/page.tsx   # Admin authentication page
+│   │   │   └── page.tsx         # Lead management dashboard
+│   │   ├── api/
+│   │   │   ├── admin/           # Login/logout session handlers
+│   │   │   ├── agents/          # Agent CRUD endpoints
+│   │   │   │   ├── route.ts     # GET (list) / POST (create)
+│   │   │   │   └── [id]/route.ts # PUT (update) / DELETE (remove)
+│   │   │   └── leads/           # Lead CRUD endpoints
+│   │   │       ├── route.ts     # GET (list) / POST (create)
+│   │   │       └── [id]/        # PUT / DELETE + follow-up sub-routes
+│   │   ├── thank-you/           # Post-submission success page
+│   │   ├── globals.css          # Design tokens, glassmorphism, gold gradients
+│   │   ├── layout.tsx           # Root layout + SEO metadata + Schema.org
+│   │   ├── page.tsx             # Landing page (48KB of premium UI)
+│   │   ├── robots.ts            # Search engine crawling directives
+│   │   └── sitemap.ts           # Dynamic XML sitemap generator
 │   ├── components/
-│   │   ├── Header.tsx        # Responsive glassmorphism navigation and modal CTA trigger
-│   │   ├── Footer.tsx        # Legal disclosures, RERA numbers, mapping details
-│   │   └── LeadCaptureForm.tsx  # React Hook Form + Zod validator
+│   │   ├── Header.tsx           # Responsive glassmorphism navbar + CTA modal
+│   │   ├── Footer.tsx           # Legal, RERA, mapping details
+│   │   ├── LeadCaptureForm.tsx  # Main lead capture with Zod validation
+│   │   └── ui/                  # Shadcn UI primitives
 │   ├── lib/
-│   │   ├── auth.ts           # JWT token session manager
-│   │   ├── supabase.ts       # Supabase standard & elevated client exports
-│   │   └── whatsapp.ts       # WhatsApp Twilio alert dispatcher
-│   └── middleware.ts         # Route guards for /admin paths
+│   │   ├── auth.ts              # JWT token session manager
+│   │   ├── leadsStorage.ts      # CSV offline storage with cascading operations
+│   │   ├── supabase.ts          # Supabase standard & service_role clients
+│   │   ├── utils.ts             # Utility helpers
+│   │   └── whatsapp.ts          # Twilio WhatsApp alert dispatcher
+│   └── proxy.ts                 # Route guards for /admin paths (Next.js 16)
+├── database.sql                 # Complete PostgreSQL schema (agents, leads, follow_ups)
+├── .env.example                 # Environment variable template
+├── CHANGELOG.md                 # Version history
+├── CONTRIBUTING.md              # Contribution guidelines
+├── SECURITY.md                  # Security policy
+├── LICENSE                      # MIT License
+└── package.json                 # Dependencies & scripts
 ```
+
+---
+
+## 💾 Database Schema
+
+The platform uses **3 tables** with foreign key relationships:
+
+```
+┌──────────────┐      ┌──────────────────┐      ┌──────────────────┐
+│   agents     │      │      leads       │      │  follow_up_logs  │
+├──────────────┤      ├──────────────────┤      ├──────────────────┤
+│ id (PK)      │◄─────│ assigned_agent_id│      │ id (PK)          │
+│ name         │      │ id (PK)          │◄─────│ lead_id (FK)     │
+│ phone        │      │ name             │      │ agent_id (FK) ───┼──► agents.id
+│ email        │      │ phone            │      │ status           │
+│ active       │      │ email            │      │ notes            │
+│ created_at   │      │ budget           │      │ created_at       │
+└──────────────┘      │ configuration    │      └──────────────────┘
+                      │ status (enum)    │
+                      │ notes            │
+                      │ site_visit_date  │
+                      │ created_at       │
+                      └──────────────────┘
+```
+
+> Run `database.sql` in your Supabase SQL Editor to initialize all tables, RLS policies, and performance indexes.
 
 ---
 
 ## ⚙️ Quick Start
 
-### 1. Clone the project and install packages:
+### 1. Clone & Install
+
 ```bash
+git clone https://github.com/manishrai99-afk/Gera-Developments.git
+cd Gera-Developments
 npm install
 ```
 
-### 2. Configure Environment Variables (`.env.local`):
-Create a `.env.local` file in the root directory (based on `.env.example`):
+### 2. Configure Environment
+
+Copy `.env.example` → `.env.local` and fill in your credentials:
+
 ```env
-# Supabase credentials
+# Supabase
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-public-key
-SUPABASE_SERVICE_ROLE_KEY=your-elevated-service-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
-# Admin CRM authentication
-ADMIN_PASSWORD=admin1234
-JWT_SECRET=generate_a_secure_random_hash_key
+# Admin Auth
+ADMIN_PASSWORD=change_this_in_production
+JWT_SECRET=generate_a_secure_random_key_min_32_chars
 
-# Sales WhatsApp configurations
+# WhatsApp Notifications (optional)
 SALES_WHATSAPP_TO=+919673000053
 TWILIO_ACCOUNT_SID=your-twilio-sid
 TWILIO_AUTH_TOKEN=your-twilio-token
 TWILIO_WHATSAPP_FROM=whatsapp:+14155238886
 ```
 
-### 3. Run the Development Server:
+### 3. Initialize Database
+
+Run the contents of `database.sql` in your [Supabase SQL Editor](https://app.supabase.com/).
+
+### 4. Start Development
+
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser. The default CRM admin password is set to `admin1234`.
 
-### 4. Build for Production:
+Open [http://localhost:3000](http://localhost:3000). Default admin password: `admin1234`.
+
+### 5. Build for Production
+
 ```bash
 npm run build
+npm start
 ```
 
 ---
 
+## 🚀 Deployment
+
+This project is deployed on **Vercel** with automatic CI/CD from the `master` branch.
+
+| Setting              | Value                    |
+|----------------------|--------------------------|
+| **Framework Preset** | Next.js                  |
+| **Build Command**    | `next build`             |
+| **Output Directory** | `.next`                  |
+| **Node.js Version**  | 18.x                     |
+
+> **Important**: Add all `.env.local` variables to Vercel's **Environment Variables** settings.
+
+---
+
 ## 🔒 Security
-- **No hardcoded credentials**: Managed entirely via environment variables.
-- **Protected Actions**: Middleware protects all `/admin` routes.
-- **RLS & Sanitization**: Strict input bounds via Zod schema checks. Bypasses standard policies only in authenticated server-side handlers.
+
+- **No hardcoded credentials** — All secrets via environment variables
+- **Protected routes** — Server-side proxy guards for `/admin`
+- **RLS enabled** — Row Level Security on all Supabase tables
+- **Input sanitization** — Zod schema validation on all endpoints
+- **httpOnly cookies** — JWT tokens never exposed to client JS
+
+See [SECURITY.md](SECURITY.md) for the full security policy.
+
+---
+
+## 📋 API Endpoints
+
+| Method | Endpoint                        | Auth     | Description                |
+|--------|---------------------------------|----------|----------------------------|
+| POST   | `/api/leads`                    | Public   | Submit new lead            |
+| GET    | `/api/leads`                    | Admin    | List all leads             |
+| PUT    | `/api/leads/[id]`               | Admin    | Update lead status/notes   |
+| DELETE | `/api/leads/[id]`               | Admin    | Delete lead (cascading)    |
+| GET    | `/api/leads/[id]/follow-ups`    | Admin    | Get lead follow-up history |
+| POST   | `/api/leads/[id]/follow-ups`    | Admin    | Add follow-up entry        |
+| GET    | `/api/agents`                   | Admin    | List all agents            |
+| POST   | `/api/agents`                   | Admin    | Create new agent           |
+| PUT    | `/api/agents/[id]`              | Admin    | Update agent details       |
+| DELETE | `/api/agents/[id]`              | Admin    | Delete agent (cascading)   |
+| POST   | `/api/admin/login`              | Public   | Admin login                |
+| POST   | `/api/admin/logout`             | Admin    | Admin logout               |
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+**Built with ❤️ for Gera Developments – Hinjewadi, Pune**
+
+[Report Bug](https://github.com/manishrai99-afk/Gera-Developments/issues) · [Request Feature](https://github.com/manishrai99-afk/Gera-Developments/issues)
+
+</div>

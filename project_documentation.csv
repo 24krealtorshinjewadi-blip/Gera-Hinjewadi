@@ -7,7 +7,7 @@ src/app/api/leads/route.ts,API Route,POST lead submit registration and GET lead 
 src/app/api/leads/[id]/route.ts,API Route,PATCH lead status/comments and DELETE lead file operations (secure),Verified
 src/app/api/admin/login/route.ts,API Route,Admin password verification and HTTP-only cookie signing (secure),Verified
 src/app/api/admin/logout/route.ts,API Route,Clears HTTP-only admin session cookie on logout (secure),Verified
-src/middleware.ts,Middleware,Protects CRM /admin routes from unauthenticated access,Verified
+src/proxy.ts,Proxy,Protects CRM /admin routes from unauthenticated access,Verified
 src/lib/supabase.ts,Utility,Initializes database connections with local mock data fallback,Verified
 src/lib/auth.ts,Utility,JWT signing and verification utilities for session checks,Verified
 src/lib/whatsapp.ts,Utility,Dispatches formatted sales notifications to Twilio API / console log,Verified

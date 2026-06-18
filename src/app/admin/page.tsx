@@ -977,9 +977,14 @@ export default function AdminDashboardPage() {
                     className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2.5 text-white text-xs focus:border-gold-500 focus:outline-none"
                   >
                     <option value="">-- Unassigned --</option>
-                    {agents.filter(a => a.active).map(a => (
-                      <option key={a.id} value={a.id}>{a.name} ({a.phone})</option>
-                    ))}
+                    {agents.map(a => {
+                      if (!a.active && a.id !== editAssignedAgentId) return null;
+                      return (
+                        <option key={a.id} value={a.id}>
+                          {a.name} ({a.phone}){!a.active ? ' [Inactive]' : ''}
+                        </option>
+                      );
+                    })}
                   </select>
                 </div>
 

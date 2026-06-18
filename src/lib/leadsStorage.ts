@@ -165,6 +165,18 @@ export function deleteLead(id: string): boolean {
   if (leads.length === filtered.length) return false;
   
   writeLeads(filtered);
+
+  // Cascade: Delete associated follow-up logs offline
+  try {
+    const followUps = readFollowUps();
+    const filteredFollowUps = followUps.filter(f => f.lead_id !== id);
+    if (followUps.length !== filteredFollowUps.length) {
+      writeFollowUps(filteredFollowUps);
+    }
+  } catch (err) {
+    console.error('Failed to delete associated follow-up logs offline:', err);
+  }
+
   return true;
 }
 
@@ -241,6 +253,43 @@ export function deleteAgent(id: string): boolean {
   if (agents.length === filtered.length) return false;
   
   writeAgents(filtered);
+
+  // Cascade: Unassign this agent from all leads offline
+  try {
+    const leads = readLeads();
+    let leadsUpdated = false;
+    const updatedLeads = leads.map(l => {
+      if (l.assigned_agent_id === id) {
+        leadsUpdated = true;
+        return { ...l, assigned_agent_id: null };
+      }
+      return l;
+    });
+    if (leadsUpdated) {
+      writeLeads(updatedLeads);
+    }
+  } catch (err) {
+    console.error('Failed to unassign agent from leads offline:', err);
+  }
+
+  // Cascade: Unassign this agent from all follow-up logs offline
+  try {
+    const followUps = readFollowUps();
+    let followUpsUpdated = false;
+    const updatedFollowUps = followUps.map(f => {
+      if (f.agent_id === id) {
+        followUpsUpdated = true;
+        return { ...f, agent_id: null };
+      }
+      return f;
+    });
+    if (followUpsUpdated) {
+      writeFollowUps(updatedFollowUps);
+    }
+  } catch (err) {
+    console.error('Failed to unassign agent from follow-up logs offline:', err);
+  }
+
   return true;
 }
 
