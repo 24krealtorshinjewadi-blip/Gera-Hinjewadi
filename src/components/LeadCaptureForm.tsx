@@ -119,22 +119,25 @@ export default function LeadCaptureForm({
           type="text"
           placeholder="Enter your name"
           {...register('name')}
-          className={`w-full bg-slate-900/60 border ${
-            errors.name ? 'border-red-500' : 'border-slate-800 focus:border-gold-500'
-          } rounded-lg px-4 py-2.5 text-white placeholder-slate-500 text-sm focus:outline-none transition-all`}
+          className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
+            errors.name ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+          } rounded-lg px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
         />
         {errors.name && (
-          <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
+          <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+            <span className="h-1 w-1 rounded-full bg-red-400" />
+            {errors.name.message}
+          </p>
         )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1">
+        <div className="group">
+          <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
             Mobile Number <span className="text-red-500">*</span>
           </label>
           <div className="relative">
-            <span className="absolute left-3 top-2.5 text-slate-500 text-sm font-medium">
+            <span className="absolute left-3.5 top-3 text-slate-400 text-sm font-medium">
               +91
             </span>
             <input
@@ -145,87 +148,101 @@ export default function LeadCaptureForm({
               onInput={(e) => {
                 e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
               }}
-              className={`w-full bg-slate-900/60 border ${
-                errors.phone ? 'border-red-500' : 'border-slate-800 focus:border-gold-500'
-              } rounded-lg pl-12 pr-4 py-2.5 text-white placeholder-slate-500 text-sm focus:outline-none transition-all`}
+              className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
+                errors.phone ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+              } rounded-lg pl-12 pr-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
             />
           </div>
           {errors.phone && (
-            <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>
+            <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-red-400" />
+              {errors.phone.message}
+            </p>
           )}
         </div>
 
-        <div>
-          <label className="block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1">
-            Email Address <span className="text-slate-500">(Optional)</span>
+        <div className="group">
+          <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
+            Email Address <span className="text-slate-500/70 lowercase tracking-normal font-medium">(Optional)</span>
           </label>
           <input
             type="email"
             placeholder="name@email.com"
             {...register('email')}
-            className={`w-full bg-slate-900/60 border ${
-              errors.email ? 'border-red-500' : 'border-slate-800 focus:border-gold-500'
-            } rounded-lg px-4 py-2.5 text-white placeholder-slate-500 text-sm focus:outline-none transition-all`}
+            className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
+              errors.email ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+            } rounded-lg px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
           />
           {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+            <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-red-400" />
+              {errors.email.message}
+            </p>
           )}
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div>
-          <label className="block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1">
+        <div className="group">
+          <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
             Configuration <span className="text-red-500">*</span>
           </label>
           <select
             {...register('configuration')}
-            className={`w-full bg-slate-900/60 border ${
-              errors.configuration ? 'border-red-500' : 'border-slate-800 focus:border-gold-500'
-            } rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none transition-all`}
+            className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
+              errors.configuration ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+            } rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner appearance-none cursor-pointer`}
+            style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%2394a3b8\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
           >
             <option value="" disabled className="bg-slate-950 text-slate-500">Select BHK</option>
-            <option value="2 BHK" className="bg-slate-950 text-white">2 BHK Apartment</option>
-            <option value="2.5 BHK" className="bg-slate-950 text-white">2.5 BHK Apartment</option>
-            <option value="3 BHK" className="bg-slate-950 text-white">3 BHK Apartment</option>
-            <option value="3 BHK Duplex" className="bg-slate-950 text-white">3 BHK Duplex</option>
+            <option value="2 BHK" className="bg-slate-950 text-white">2 BHK Premium</option>
+            <option value="2.5 BHK" className="bg-slate-950 text-white">2.5 BHK Premium</option>
+            <option value="3 BHK" className="bg-slate-950 text-white">3 BHK Luxury</option>
+            <option value="3 BHK Duplex" className="bg-slate-950 text-white">3 BHK Duplex Grand</option>
           </select>
           {errors.configuration && (
-            <p className="text-red-500 text-xs mt-1">{errors.configuration.message}</p>
+            <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-red-400" />
+              {errors.configuration.message}
+            </p>
           )}
         </div>
 
-        <div>
-          <label className="block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1">
+        <div className="group">
+          <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
             Budget Range <span className="text-red-500">*</span>
           </label>
           <select
             {...register('budget')}
-            className={`w-full bg-slate-900/60 border ${
-              errors.budget ? 'border-red-500' : 'border-slate-800 focus:border-gold-500'
-            } rounded-lg px-3 py-2.5 text-white text-sm focus:outline-none transition-all`}
+            className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
+              errors.budget ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+            } rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner appearance-none cursor-pointer`}
+            style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%2394a3b8\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
           >
-            <option value="" disabled className="bg-slate-950 text-slate-500">Select Budget</option>
+            <option value="" disabled className="bg-slate-950 text-slate-500">Select Range</option>
             <option value="₹75 Lakhs - ₹90 Lakhs" className="bg-slate-950 text-white">₹75 L - ₹90 L</option>
             <option value="₹90 Lakhs - ₹1.2 Cr" className="bg-slate-950 text-white">₹90 L - ₹1.2 Cr</option>
             <option value="₹1.2 Cr - ₹1.5 Cr" className="bg-slate-950 text-white">₹1.2 Cr - ₹1.5 Cr</option>
             <option value="Above ₹1.5 Cr" className="bg-slate-950 text-white">Above ₹1.5 Cr</option>
           </select>
           {errors.budget && (
-            <p className="text-red-500 text-xs mt-1">{errors.budget.message}</p>
+            <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+              <span className="h-1 w-1 rounded-full bg-red-400" />
+              {errors.budget.message}
+            </p>
           )}
         </div>
       </div>
 
-      <div>
-        <label className="block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1">
-          Message / Preference <span className="text-slate-500">(Optional)</span>
+      <div className="group">
+        <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
+          Message / Preference <span className="text-slate-500/70 lowercase tracking-normal font-medium">(Optional)</span>
         </label>
         <textarea
           rows={2}
-          placeholder="I am interested in scheduling a site visit / receiving a callback."
+          placeholder="I am interested in scheduling a site visit or receiving a callback."
           {...register('message')}
-          className="w-full bg-slate-900/60 border border-slate-800 focus:border-gold-500 rounded-lg px-4 py-2 text-white placeholder-slate-500 text-sm focus:outline-none transition-all resize-none"
+          className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none transition-all duration-300 shadow-inner resize-none"
         />
       </div>
 

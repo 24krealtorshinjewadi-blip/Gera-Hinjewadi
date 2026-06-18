@@ -42,12 +42,14 @@ export default function Home() {
   const [activeLocationTab, setActiveLocationTab] = useState<'connectivity' | 'education' | 'healthcare' | 'offices'>('connectivity');
   const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false);
   const [modalSource, setModalSource] = useState('general');
-  const [modalTitle, setModalTitle] = useState('Request Cost Sheet');
+  const [modalTitle, setModalTitle] = useState('Request Details');
+  const [modalSubtitle, setModalSubtitle] = useState('Please register your interest to receive exclusive details.');
   const [openFaq, setOpenFaq] = useState<string | null>(null);
 
-  const openUnlockModal = (source: string, title: string) => {
+  const openUnlockModal = (source: string, title: string, subtitle?: string) => {
     setModalSource(source);
     setModalTitle(title);
+    setModalSubtitle(subtitle || 'Please register your interest to receive exclusive details.');
     setIsUnlockModalOpen(true);
   };
 
@@ -166,7 +168,11 @@ export default function Home() {
                 className="flex flex-wrap sm:flex-nowrap gap-3"
               >
                 <button
-                  onClick={() => openUnlockModal('hero-visit', 'Book Luxury Site Visit')}
+                  onClick={() => openUnlockModal(
+                    'hero-visit', 
+                    'Book Luxury Site Visit', 
+                    'Schedule a personalized walkthrough of our exclusive experience center.'
+                  )}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg transition-transform hover:scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.2)] cursor-pointer whitespace-nowrap shrink-0"
                 >
                   <Calendar className="h-4 w-4 shrink-0" />
@@ -178,7 +184,11 @@ export default function Home() {
                   download="Gera_Hinjewadi_Brochure.pdf"
                   onClick={(e) => {
                     e.preventDefault();
-                    openUnlockModal('hero-brochure', 'Download Project Brochure');
+                    openUnlockModal(
+                      'hero-brochure', 
+                      'Download Project Brochure', 
+                      'Enter your details to instantly unlock the high-resolution project brochure and layouts.'
+                    );
                   }}
                   className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 hover:border-gold-500/50 bg-slate-900/50 text-slate-200 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0"
                 >
@@ -339,7 +349,11 @@ export default function Home() {
                       </td>
                       <td className="px-6 py-4.5 text-right">
                         <button
-                          onClick={() => openUnlockModal(`price-${row.config}`, `Get Pricing Details for ${row.config}`)}
+                          onClick={() => openUnlockModal(
+                            `price-${row.config}`, 
+                            `Get Pricing Details for ${row.config}`,
+                            `Request exclusive launch pricing and availability for ${row.config} configurations.`
+                          )}
                           className="px-4 py-2 bg-slate-900 border border-slate-800 hover:border-gold-500 text-gold-400 hover:text-white text-[10px] font-bold uppercase tracking-wider rounded transition-all cursor-pointer"
                         >
                           Request Details
@@ -352,7 +366,11 @@ export default function Home() {
             </div>
             <div className="p-6 bg-slate-950 border-t border-slate-900 text-center">
               <button
-                onClick={() => openUnlockModal('price-cost-sheet', 'Download Complete Cost Sheet & Payment Plan')}
+                onClick={() => openUnlockModal(
+                  'price-cost-sheet', 
+                  'Download Complete Cost Sheet & Payment Plan',
+                  'Unlock a detailed cost breakdown and flexible payment schedules instantly.'
+                )}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg hover:opacity-95 shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
               >
                 <Download className="h-4 w-4" />
@@ -420,7 +438,11 @@ export default function Home() {
                   Verify your details to unlock high-resolution floor layouts, dimensions, and layout configurations.
                 </p>
                 <button
-                  onClick={() => openUnlockModal(`floor-${activePlanTab}`, `Unlock Floor Plan - ${activePlanTab.toUpperCase()}`)}
+                  onClick={() => openUnlockModal(
+                    `floor-${activePlanTab}`, 
+                    `Unlock Floor Plan - ${activePlanTab.toUpperCase()}`,
+                    `Register to view high-resolution 2D and 3D floor plan layouts for this configuration.`
+                  )}
                   className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg shadow-md active:scale-[0.98] transition-all cursor-pointer"
                 >
                   Unlock High-Res Layout
@@ -496,7 +518,11 @@ export default function Home() {
               <div
                 key={idx}
                 className="relative overflow-hidden rounded-xl border border-slate-900 aspect-video group cursor-pointer bg-slate-900"
-                onClick={() => openUnlockModal('gallery', 'View Premium HD Gallery')}
+                onClick={() => openUnlockModal(
+                  'gallery', 
+                  'View Premium HD Gallery',
+                  'Access our exclusive collection of high-definition project renders and walkthroughs.'
+                )}
               >
                 <Image
                   src={img.path}
@@ -633,7 +659,11 @@ export default function Home() {
                 </ul>
 
                 <button
-                  onClick={() => openUnlockModal('location-map', 'Get Detailed Location Map & Directions')}
+                  onClick={() => openUnlockModal(
+                    'location-map', 
+                    'Get Detailed Location Map & Directions',
+                    'Receive a precise route map and distance calculations to major IT parks and schools.'
+                  )}
                   className="mt-6 w-full py-2.5 bg-slate-900 border border-slate-800 hover:border-gold-500 text-gold-400 hover:text-white font-bold uppercase tracking-wider text-[10px] rounded-lg transition-colors cursor-pointer"
                 >
                   Download Map PDF
@@ -671,7 +701,11 @@ export default function Home() {
               {/* Unlock Map layer */}
               <div className="absolute inset-0 bg-slate-950/70 backdrop-blur-[1px] flex flex-col items-center justify-center p-6 border-t border-slate-900">
                 <button
-                  onClick={() => openUnlockModal('location-map-large', 'Unlock HD Location Layout & Route Map')}
+                  onClick={() => openUnlockModal(
+                    'location-map-large', 
+                    'Unlock HD Location Layout & Route Map',
+                    'Download a high-resolution version of our master location map and connectivity guide.'
+                  )}
                   className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg cursor-pointer"
                 >
                   Unlock Live Map Direction
@@ -868,7 +902,11 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <button
-              onClick={() => openUnlockModal('final-cta-visit', 'Book VVIP Site Visit')}
+              onClick={() => openUnlockModal(
+                'final-cta-visit', 
+                'Book VVIP Site Visit',
+                'Schedule a private walkthrough of our luxury experience center with a senior executive.'
+              )}
               className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg shadow-xl active:scale-[0.98] transition-all cursor-pointer"
             >
               <Calendar className="h-4.5 w-4.5" />
@@ -904,14 +942,22 @@ export default function Home() {
         <DialogContent className="glassmorphism max-w-md border-gold-500/30 text-white rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold uppercase tracking-wider text-center">
-              {modalTitle.split(' - ')[0]}{' '}
-              <span className="gold-gradient-text">
-                {modalTitle.split(' - ')[1] || ''}
-              </span>
+              {(() => {
+                if (modalTitle.includes(' - ')) {
+                  const [base, gold] = modalTitle.split(' - ');
+                  return <>{base} - <span className="gold-gradient-text">{gold}</span></>;
+                }
+                const parts = modalTitle.split(' ');
+                if (parts.length <= 1) return modalTitle;
+                const goldCount = parts.length > 3 ? 2 : 1;
+                const base = parts.slice(0, -goldCount).join(' ') + ' ';
+                const gold = parts.slice(-goldCount).join(' ');
+                return <>{base}<span className="gold-gradient-text">{gold}</span></>;
+              })()}
             </DialogTitle>
           </DialogHeader>
           <p className="text-xs text-slate-400 text-center -mt-2">
-            Please register your interest to instantly receive cost sheets, brochures, and plan layouts.
+            {modalSubtitle}
           </p>
           <LeadCaptureForm
             source={modalSource}

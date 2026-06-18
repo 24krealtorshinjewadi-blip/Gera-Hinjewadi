@@ -108,7 +108,14 @@ export default function Header() {
               <DialogContent className="glassmorphism max-w-md border-gold-500/30 text-white rounded-xl shadow-2xl">
                 <DialogHeader>
                   <DialogTitle className="text-xl font-bold uppercase tracking-wider text-center">
-                    Book <span className="gold-gradient-text">Site Visit</span>
+                    {(() => {
+                      const title = "Book Site Visit";
+                      const parts = title.split(' ');
+                      const goldCount = parts.length > 3 ? 2 : 1;
+                      const base = parts.slice(0, -goldCount).join(' ') + ' ';
+                      const gold = parts.slice(-goldCount).join(' ');
+                      return <>{base}<span className="gold-gradient-text">{gold}</span></>;
+                    })()}
                   </DialogTitle>
                 </DialogHeader>
                 <p className="text-xs text-slate-400 text-center -mt-2">
@@ -193,7 +200,14 @@ export default function Header() {
               <DialogContent className="glassmorphism max-w-sm border-gold-500/30 text-white rounded-xl">
                 <DialogHeader>
                   <DialogTitle className="text-lg font-bold uppercase tracking-wider text-center">
-                    Book <span className="gold-gradient-text">Site Visit</span>
+                    {(() => {
+                      const title = "Book Site Visit";
+                      const parts = title.split(' ');
+                      const goldCount = parts.length > 3 ? 2 : 1;
+                      const base = parts.slice(0, -goldCount).join(' ') + ' ';
+                      const gold = parts.slice(-goldCount).join(' ');
+                      return <>{base}<span className="gold-gradient-text">{gold}</span></>;
+                    })()}
                   </DialogTitle>
                 </DialogHeader>
                 <LeadCaptureForm
