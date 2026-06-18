@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 
 export interface Lead {
   id: string;
@@ -36,9 +37,12 @@ export interface FollowUpLog {
   created_at: string;
 }
 
-const CSV_FILE_PATH = path.join(process.cwd(), 'leads.csv');
-const AGENTS_FILE_PATH = path.join(process.cwd(), 'agents.csv');
-const FOLLOW_UPS_FILE_PATH = path.join(process.cwd(), 'follow_ups.csv');
+// Determine writable path: use /tmp on Vercel, otherwise current directory
+const basePath = process.env.VERCEL ? os.tmpdir() : process.cwd();
+
+const CSV_FILE_PATH = path.join(basePath, 'leads.csv');
+const AGENTS_FILE_PATH = path.join(basePath, 'agents.csv');
+const FOLLOW_UPS_FILE_PATH = path.join(basePath, 'follow_ups.csv');
 
 // Default initial mock data
 const defaultLeads: Lead[] = [];
