@@ -1,16 +1,10 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
-import { getSession } from '@/lib/auth';
 import { addAgent, readAgents } from '@/lib/leadsStorage';
 
-// GET: Retrieve list of active agents (Admin Secure)
+// GET: Retrieve list of agents (Admin Dashboard)
 export async function GET(request: NextRequest) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (isSupabaseConfigured && supabaseAdmin) {
@@ -39,14 +33,9 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST: Register a new agent (Admin Secure)
+// POST: Register a new agent (Admin Dashboard)
 export async function POST(request: NextRequest) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const body = await request.json();
     const { name, phone, email } = body;
 

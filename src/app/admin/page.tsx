@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import {
   ShieldAlert,
   Search,
@@ -9,7 +8,6 @@ import {
   Calendar,
   Trash2,
   FileSpreadsheet,
-  LogOut,
   Edit,
   Clock,
   Filter,
@@ -59,7 +57,6 @@ interface FollowUpLog {
 }
 
 export default function AdminDashboardPage() {
-  const router = useRouter();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [filteredLeads, setFilteredLeads] = useState<Lead[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -103,10 +100,6 @@ export default function AdminDashboardPage() {
     setIsLoading(true);
     try {
       const res = await fetch('/api/leads');
-      if (res.status === 401) {
-        router.push('/admin/login');
-        return;
-      }
       const data = await res.json();
       setLeads(data.leads || []);
     } catch (error) {
@@ -120,7 +113,6 @@ export default function AdminDashboardPage() {
   const fetchAgents = async () => {
     try {
       const res = await fetch('/api/agents');
-      if (res.status === 401) return;
       const data = await res.json();
       setAgents(data.agents || []);
     } catch (error) {
@@ -192,15 +184,7 @@ export default function AdminDashboardPage() {
   const siteVisitsCount = leads.filter((l) => l.status === 'Site Visit').length;
   const bookingsCount = leads.filter((l) => l.status === 'Booked').length;
 
-  // Logout action
-  const handleLogout = async () => {
-    try {
-      await fetch('/api/admin/logout', { method: 'POST' });
-      router.push('/admin/login');
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
+
 
   // Fetch lead follow-up history logs
   const fetchFollowUps = async (leadId: string) => {
@@ -516,13 +500,7 @@ export default function AdminDashboardPage() {
           </button>
         </div>
         
-        <button
-          onClick={handleLogout}
-          className="flex items-center gap-1.5 px-4 py-2 border border-slate-800 rounded-lg hover:border-red-500/50 hover:bg-red-950/10 text-slate-400 hover:text-red-400 text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
-        >
-          <LogOut className="h-4 w-4" />
-          <span>Logout</span>
-        </button>
+
       </header>
 
       {/* Main Container */}

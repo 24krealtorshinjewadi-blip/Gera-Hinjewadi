@@ -1,20 +1,14 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
-import { getSession } from '@/lib/auth';
 import { updateLead, deleteLead } from '@/lib/leadsStorage';
 
 // Helper to extract id from request URL/params
 // Next.js App Router route params can be read from the second argument context
 type RouteContext = { params: Promise<{ id: string }> };
 
-// PATCH: Update lead details (Admin Secure)
+// PATCH: Update lead details (Admin Dashboard)
 export async function PATCH(request: NextRequest, context: RouteContext) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const { id } = await context.params;
     const body = await request.json();
     const { status, notes, site_visit_date, assigned_agent_id } = body;
@@ -109,14 +103,9 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
   }
 }
 
-// DELETE: Remove a lead (Admin Secure)
+// DELETE: Remove a lead (Admin Dashboard)
 export async function DELETE(request: NextRequest, context: RouteContext) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const { id } = await context.params;
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 

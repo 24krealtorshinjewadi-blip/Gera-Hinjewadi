@@ -1,6 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { supabase } from '@/lib/supabase';
-import { getSession } from '@/lib/auth';
 import { sendWhatsAppNotification } from '@/lib/whatsapp';
 import { z } from 'zod';
 import { addLead, readLeads, readAgents } from '@/lib/leadsStorage';
@@ -118,14 +117,9 @@ export async function POST(request: Request) {
   }
 }
 
-// GET: Retrieve leads (Admin Dashboard - Secure)
+// GET: Retrieve leads (Admin Dashboard)
 export async function GET(request: NextRequest) {
   try {
-    // Authenticate admin session
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized admin access' }, { status: 401 });
-    }
 
     const { searchParams } = new URL(request.url);
     const search = searchParams.get('search') || '';

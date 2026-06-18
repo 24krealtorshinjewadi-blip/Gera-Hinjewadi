@@ -1,18 +1,12 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
-import { getSession } from '@/lib/auth';
 import { updateAgent, deleteAgent } from '@/lib/leadsStorage';
 
 type RouteContext = { params: Promise<{ id: string }> };
 
-// PATCH: Update agent details / active toggle (Admin Secure)
+// PATCH: Update agent details / active toggle (Admin Dashboard)
 export async function PATCH(request: NextRequest, context: RouteContext) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const { id } = await context.params;
     const body = await request.json();
     const { name, phone, email, active } = body;
@@ -64,14 +58,9 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
   }
 }
 
-// DELETE: Remove agent (Admin Secure)
+// DELETE: Remove agent (Admin Dashboard)
 export async function DELETE(request: NextRequest, context: RouteContext) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const { id } = await context.params;
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 

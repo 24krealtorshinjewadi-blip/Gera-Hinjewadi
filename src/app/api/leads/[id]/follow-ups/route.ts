@@ -1,18 +1,12 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
-import { getSession } from '@/lib/auth';
 import { addFollowUp, readFollowUps } from '@/lib/leadsStorage';
 
 type RouteContext = { params: Promise<{ id: string }> };
 
-// GET: Retrieve follow-up timeline for a specific lead (Admin Secure)
+// GET: Retrieve follow-up timeline for a specific lead (Admin Dashboard)
 export async function GET(request: NextRequest, context: RouteContext) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const { id: leadId } = await context.params;
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -66,14 +60,9 @@ export async function GET(request: NextRequest, context: RouteContext) {
   }
 }
 
-// POST: Add a new follow-up log (Admin Secure)
+// POST: Add a new follow-up log (Admin Dashboard)
 export async function POST(request: NextRequest, context: RouteContext) {
   try {
-    const session = getSession(request);
-    if (!session) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const { id: leadId } = await context.params;
     const body = await request.json();
     const { status, notes, agent_id } = body;
