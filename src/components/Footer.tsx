@@ -112,7 +112,6 @@ export default function Footer() {
             <div className="flex gap-4 mt-2 sm:mt-0">
               <a href="#disclaimer" className="hover:text-slate-400 transition-colors">Privacy Policy</a>
               <a href="#disclaimer" className="hover:text-slate-400 transition-colors">Terms & Conditions</a>
-              <a href="/admin" className="hover:text-slate-400 transition-colors font-semibold text-gold-600/80 hover:text-gold-400">Agent Portal Login</a>
             </div>
           </div>
         </div>
