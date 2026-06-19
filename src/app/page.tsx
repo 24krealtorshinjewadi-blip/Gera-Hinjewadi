@@ -97,14 +97,31 @@ export default function Home() {
     return () => clearTimeout(initialDelay);
   }, []);
 
-
-
+  // 3. Auto popup modal on page load after a 5-second delay
+  useEffect(() => {
+    const popupShown = sessionStorage.getItem('gera_auto_popup_shown');
+    if (!popupShown) {
+      const timer = setTimeout(() => {
+        openUnlockModal(
+          'auto-popup',
+          'Unlock Pre-Launch Benefits',
+          'Register your profile to access direct builder inventory, unit configurations, and flexible payment plans.'
+        );
+        sessionStorage.setItem('gera_auto_popup_shown', 'true');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const openUnlockModal = (source: string, title: string, subtitle?: string) => {
     setModalSource(source);
     setModalTitle(title);
     setModalSubtitle(subtitle || 'Please register your interest to receive exclusive details.');
     setIsUnlockModalOpen(true);
+    // Suppress auto-popup if it hasn't triggered yet
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('gera_auto_popup_shown', 'true');
+    }
   };
 
   // Stagger animation container
@@ -253,11 +270,26 @@ export default function Home() {
                 </p>
 
                 {/* Countdown Timer */}
-                <div className="flex items-center justify-center gap-2.5 mb-5 bg-slate-950/60 p-2 border border-slate-900 rounded-lg shadow-inner">
-                  <span className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Offer ends in:</span>
-                  <span className="text-gold-400 text-xs font-mono font-bold tracking-widest">
-                    {String(timeLeft.days).padStart(2, '0')}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
-                  </span>
+                <div className="flex items-center justify-center gap-2.5 mb-6">
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider shrink-0">Offer Ends In:</span>
+                  <div className="flex gap-1.5 items-center">
+                    {[
+                      { label: 'd', value: timeLeft.days },
+                      { label: 'h', value: timeLeft.hours },
+                      { label: 'm', value: timeLeft.minutes },
+                      { label: 's', value: timeLeft.seconds }
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-1">
+                        <div className="bg-slate-950/80 dark:bg-slate-950/60 border border-gold-500/10 dark:border-gold-500/20 rounded px-2 py-1 shadow-inner flex items-center justify-center min-w-[32px]">
+                          <span className="text-gold-500 dark:text-gold-400 text-[11px] font-mono font-extrabold tracking-tight">
+                            {String(item.value).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase">{item.label}</span>
+                        {idx < 3 && <span className="text-slate-600 dark:text-slate-700 text-[10px]">:</span>}
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <LeadCaptureForm source="hero-form" project="Gera Winds of Joy" />

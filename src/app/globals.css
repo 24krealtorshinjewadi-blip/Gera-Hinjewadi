@@ -252,16 +252,28 @@
   background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 50%, var(--gold-600) 100%);
 }
 
-/* Force dark text on gold buttons and gradients in both themes for contrast */
-.gold-gradient-bg, [class*="from-gold-500"] {
+/* Force dark text on gold buttons and gradients in dark theme (where the gradient is bright gold) */
+.dark .gold-gradient-bg, .dark [class*="from-gold-500"] {
   color: #080b11 !important;
 }
-.gold-gradient-bg *, [class*="from-gold-500"] * {
+.dark .gold-gradient-bg *, .dark [class*="from-gold-500"] * {
   color: #080b11 !important;
   stroke: #080b11 !important;
 }
-.gold-gradient-bg:hover, [class*="from-gold-500"]:hover {
+.dark .gold-gradient-bg:hover, .dark [class*="from-gold-500"]:hover {
   color: #000000 !important;
+}
+
+/* Force light/white text on gold buttons and gradients in light theme (where the gradient is dark brown/bronze) */
+:root:not(.dark) .gold-gradient-bg, :root:not(.dark) [class*="from-gold-500"] {
+  color: #ffffff !important;
+}
+:root:not(.dark) .gold-gradient-bg *, :root:not(.dark) [class*="from-gold-500"] * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+:root:not(.dark) .gold-gradient-bg:hover, :root:not(.dark) [class*="from-gold-500"]:hover {
+  color: #ffffff !important;
 }
 
 /* Force dark text on promo banner and direct gold headers */

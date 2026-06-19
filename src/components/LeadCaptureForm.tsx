@@ -173,9 +173,9 @@ export default function LeadCaptureForm({
           type="text"
           placeholder="Enter your name"
           {...register('name')}
-          className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
-            errors.name ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
-          } rounded-lg px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
+          className={`w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border ${
+            errors.name ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-gold-500/20'
+          } rounded-lg px-4 py-3 text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
         />
         {errors.name && (
           <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
@@ -202,9 +202,9 @@ export default function LeadCaptureForm({
               onInput={(e) => {
                 e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
               }}
-              className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
-                errors.phone ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
-              } rounded-lg pl-12 pr-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
+              className={`w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border ${
+                errors.phone ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-gold-500/20'
+              } rounded-lg pl-12 pr-4 py-3 text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
             />
           </div>
           {errors.phone && (
@@ -223,9 +223,9 @@ export default function LeadCaptureForm({
             type="email"
             placeholder="name@email.com"
             {...register('email')}
-            className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
-              errors.email ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
-            } rounded-lg px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
+            className={`w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border ${
+              errors.email ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-gold-500/20'
+            } rounded-lg px-4 py-3 text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner`}
           />
           {errors.email && (
             <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
@@ -243,8 +243,8 @@ export default function LeadCaptureForm({
           </label>
           <select
             {...register('configuration')}
-            className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
-              errors.configuration ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+            className={`w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border ${
+              errors.configuration ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-gold-500/20'
             } rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner appearance-none cursor-pointer`}
             style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%2394a3b8\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
           >
@@ -268,8 +268,8 @@ export default function LeadCaptureForm({
           </label>
           <select
             {...register('budget')}
-            className={`w-full bg-slate-900/40 backdrop-blur-sm border ${
-              errors.budget ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-gold-500/20'
+            className={`w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border ${
+              errors.budget ? 'border-red-500/50 focus:ring-red-500/20' : 'border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-gold-500/20'
             } rounded-lg px-4 py-3 text-white text-sm focus:outline-none focus:ring-4 transition-all duration-300 shadow-inner appearance-none cursor-pointer`}
             style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%2394a3b8\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
           >
@@ -298,7 +298,7 @@ export default function LeadCaptureForm({
               type="date"
               min={new Date().toISOString().split('T')[0]}
               {...register('visitDate')}
-              className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner"
+              className="w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner"
             />
           </div>
           <div className="group">
@@ -307,7 +307,7 @@ export default function LeadCaptureForm({
             </label>
             <select
               {...register('visitTimeSlot')}
-              className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner appearance-none cursor-pointer"
+              className="w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner appearance-none cursor-pointer"
               style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%2394a3b8\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
             >
               <option value="">Any Time</option>
@@ -327,7 +327,7 @@ export default function LeadCaptureForm({
           rows={2}
           placeholder="I am interested in scheduling a site visit or receiving a callback."
           {...register('message')}
-          className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none transition-all duration-300 shadow-inner resize-none"
+          className="w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none transition-all duration-300 shadow-inner resize-none"
         />
       </div>
 
