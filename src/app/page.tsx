@@ -177,7 +177,7 @@ export default function Home() {
               {/* Subtle badge */}
               <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 border border-gold-500/20 rounded-full bg-slate-950/40 backdrop-blur-sm text-gold-400 text-[10px] font-semibold uppercase tracking-[0.2em]">
                 <Award className="h-3 w-3" />
-                <span>Award-Winning ChildCentric® Homes</span>
+                <span>The Pinnacle of ChildCentric® Living</span>
               </div>
 
               {/* Serif Heading */}
@@ -190,8 +190,8 @@ export default function Home() {
                   </span>
                 </h1>
                 
-                <p className="animate-fade-in-up-delay-2 text-base sm:text-lg text-slate-400 font-light tracking-wide max-w-lg">
-                  Hinjewadi Phase 3 · Megapolis Circle · Pune
+                <p className="animate-fade-in-up-delay-2 text-base sm:text-lg text-slate-400 font-light tracking-wide max-w-lg leading-relaxed">
+                  A prestigious sanctuary crafted for the visionary family. Meticulously designed residences nestled at Megapolis Circle, Hinjewadi Phase 3, Pune.
                 </p>
               </div>
 
@@ -199,17 +199,17 @@ export default function Home() {
               <div className="animate-fade-in-up-delay-2 flex items-center gap-8 border-l-2 border-gold-500/30 pl-6 max-w-lg">
                 <div className="space-y-0.5">
                   <span className="text-gold-400 font-bold text-xl">2 & 3 BHK</span>
-                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Premium Suites</span>
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Exclusive Suites</span>
                 </div>
                 <div className="w-px h-10 bg-slate-800" />
                 <div className="space-y-0.5">
                   <span className="text-gold-400 font-bold text-xl">₹77.9L*</span>
-                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Starting Price</span>
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Inaugural Pricing</span>
                 </div>
                 <div className="w-px h-10 bg-slate-800" />
                 <div className="space-y-0.5">
                   <span className="text-gold-400 font-bold text-xl">5-Year</span>
-                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Brand Warranty</span>
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Landmark Warranty</span>
                 </div>
               </div>
 
@@ -269,14 +269,14 @@ export default function Home() {
             >
               <div className="glassmorphism p-7 sm:p-9 rounded-2xl shadow-2xl relative border-gold-500/10 text-center">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[9px] font-bold uppercase tracking-[0.2em] px-5 py-1.5 rounded-full">
-                  Exclusive Launch Pricing
+                  Reserve Preferred Inventory
                 </div>
                 
                 <h3 className="section-heading text-2xl font-semibold text-white mb-1 mt-2">
-                  Request <span className="gold-gradient-text italic">Enquiry</span>
+                  Preferred <span className="gold-gradient-text italic">Enquiry</span>
                 </h3>
-                <p className="text-[11px] text-slate-500 mb-6 font-light">
-                  Register today to get guaranteed best inventory & booking offers.
+                <p className="text-[11px] text-slate-500 mb-6 font-light leading-relaxed">
+                  Register your profile to access direct builder inventory, unit configurations, and flexible payment plans.
                 </p>
 
                 {/* Countdown Timer */}
@@ -304,11 +304,11 @@ export default function Home() {
               Gera Developments
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
-              Why Choose <span className="gold-gradient-text italic">Gera</span>
+              The Pillars of <span className="gold-gradient-text italic">Landmark Living</span>
             </h3>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
             <p className="text-sm text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
-              Gera is known for creating modern, durable homes that redefine family living. Our Hinjewadi developments feature an ecosystem optimized for modern professionals and their kids.
+              Gera Developments sets the gold standard for residential craftsmanship. Our Hinjewadi estates offer a meticulously curated ecosystem where professional productivity meets child development.
             </p>
           </div>
 
@@ -322,23 +322,23 @@ export default function Home() {
             {[
               {
                 icon: <Heart className="h-7 w-7 text-gold-500/80" />,
-                title: 'ChildCentric® Homes',
-                desc: 'Celebrity-led academies for cricket, tennis, music, gymnastics, and arts, ensuring development directly at your doorstep.',
+                title: 'Nurturing Future Leaders',
+                desc: 'Celebrity-led academies in sports, performing arts, and cognitive skills right within your estate. No commute, just growth.',
               },
               {
                 icon: <Shield className="h-7 w-7 text-gold-500/80" />,
-                title: '5-Year Warranty',
-                desc: "Gera's unique 5-year brand assurance on quality construction and materials for complete peace of mind.",
+                title: 'Uncompromising Assurances',
+                desc: "A signature 5-year warranty on construction quality and structural integrity, establishing absolute trust.",
               },
               {
                 icon: <Zap className="h-7 w-7 text-gold-500/80" />,
-                title: 'Smart Home Tech',
-                desc: 'Fully integrated automated lighting, high-speed fiber connectivity, smart security access, and video door phones.',
+                title: 'Intelligent Residences',
+                desc: 'High-speed fiber corridors, integrated automation, and multi-tier security systems to power your modern lifestyle.',
               },
               {
                 icon: <Building className="h-7 w-7 text-gold-500/80" />,
-                title: '10+ Acre Ecosystem',
-                desc: 'Massive landscape design, multiple towers, signature clubhouse, and premium amenities nestled in nature.',
+                title: 'Lush 10-Acre Haven',
+                desc: 'A seamlessly integrated master plan blending soaring tower elevations, a grand clubhouse, and expansive manicured green parks.',
               },
             ].map((usp, index) => (
               <motion.div
@@ -419,7 +419,7 @@ export default function Home() {
               Investment Options
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
-              Configurations & <span className="gold-gradient-text italic">Pricing</span>
+              Curated Residences & <span className="gold-gradient-text italic">Exclusive Pricing</span>
             </h3>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
@@ -445,10 +445,10 @@ export default function Home() {
                 </thead>
                 <tbody className="divide-y divide-slate-900/60">
                   {[
-                    { config: '2 BHK Premium', area: '750 - 810', price: '₹77.90 Lakhs*' },
-                    { config: '2.5 BHK Luxury', area: '915 - 980', price: '₹98.50 Lakhs*' },
-                    { config: '3 BHK Grande', area: '1050 - 1150', price: '₹1.15 Cr*' },
-                    { config: '3 BHK Duplex', area: '1210 - 1280', price: '₹1.38 Cr*' },
+                    { config: '2 BHK Premier Suite', area: '750 - 810', price: '₹77.90 Lakhs*' },
+                    { config: '2.5 BHK Executive Suite', area: '915 - 980', price: '₹98.50 Lakhs*' },
+                    { config: '3 BHK Grand Imperial', area: '1050 - 1150', price: '₹1.15 Cr*' },
+                    { config: '3 BHK Signature Duplex', area: '1210 - 1280', price: '₹1.38 Cr*' },
                   ].map((row, index) => (
                     <tr key={index} className="hover:bg-slate-900/35 transition-colors">
                       <td className="px-6 py-4.5 text-sm font-bold text-white uppercase tracking-wide">
@@ -631,12 +631,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Smart Spaces
+              Spatial Excellence
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
-              Interactive <span className="gold-gradient-text italic">Floor Plans</span>
+              Meticulously Planned <span className="gold-gradient-text italic">Layouts</span>
             </h3>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
+            <p className="text-sm text-slate-400 font-light leading-relaxed max-w-xl mx-auto">
+              Designed with zero space wastage, large private glazing, and premium ventilation. Select configurations to preview your future layout.
+            </p>
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
@@ -705,21 +708,21 @@ export default function Home() {
               World-Class Living
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
-              Signature <span className="gold-gradient-text italic">Amenities</span>
+              A Curated World of <span className="gold-gradient-text italic">Experiences</span>
             </h3>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-14 gap-x-8">
             {[
-              { title: 'Celebrity Academies', icon: <Award className="h-5 w-5" />, desc: 'Cricket & Music coaching' },
-              { title: 'Rooftop Pool', icon: <Activity className="h-5 w-5" />, desc: 'Infinity pool overlooking tech parks' },
-              { title: 'Signature Clubhouse', icon: <Building className="h-5 w-5" />, desc: '20,000+ sq. ft. recreational hall' },
-              { title: 'Smart Gym & Spa', icon: <Zap className="h-5 w-5" />, desc: 'Fully loaded fitness studio' },
-              { title: 'Kid\'s Play Zones', icon: <Heart className="h-5 w-5" />, desc: 'Soft-play areas & playgrounds' },
-              { title: 'Jogging Track', icon: <Compass className="h-5 w-5" />, desc: 'Lined with seasonal trees' },
-              { title: '24/7 Security', icon: <Shield className="h-5 w-5" />, desc: 'Triple layer surveillance' },
-              { title: 'Co-working Spaces', icon: <CheckCircle2 className="h-5 w-5" />, desc: 'Lounge desks & meeting bays' },
+              { title: 'Maestro Academies', icon: <Award className="h-5 w-5" />, desc: 'Cricket, tennis, and music academies by legendary maestros.' },
+              { title: 'Rooftop Sky Pool', icon: <Activity className="h-5 w-5" />, desc: 'A floating infinity pool above Hinjewadi\'s tech skyline.' },
+              { title: 'Signature Clubhouse', icon: <Building className="h-5 w-5" />, desc: 'A grand 20,000+ sq. ft. club offering gourmet social lounges.' },
+              { title: 'Smart Gym & Spa', icon: <Zap className="h-5 w-5" />, desc: 'Fully equipped fitness center with premium therapy rooms.' },
+              { title: 'Kid\'s Play Zones', icon: <Heart className="h-5 w-5" />, desc: 'Protected play arenas designed to foster motor skills.' },
+              { title: 'Jogging Nature Trails', icon: <Compass className="h-5 w-5" />, desc: 'Green nature trails lined with seasonal shade trees.' },
+              { title: 'Multi-Tier Security', icon: <Shield className="h-5 w-5" />, desc: 'Multi-tier digital surveillance and biometric checkpoints.' },
+              { title: 'Co-working Bays', icon: <CheckCircle2 className="h-5 w-5" />, desc: 'Designed high-speed business desks for seamless WFH.' },
             ].map((amenity, idx) => (
               <div
                 key={idx}
@@ -1071,15 +1074,15 @@ export default function Home() {
                 Developer Profile
               </span>
               <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white leading-tight">
-                About <span className="gold-gradient-text italic">Gera Developments</span>
+                The Legacy of Gera: <br/>50 Years of <span className="gold-gradient-text italic">Landmark Creations</span>
               </h3>
               <div className="luxury-divider max-w-24 mt-4" />
               
               <p className="text-sm text-slate-400 leading-relaxed font-light">
-                Gera Developments is one of the most trusted and legendary real estate developers in India, with over 50 years of creating premium residential spaces. Pioneering the revolutionary **ChildCentric® Homes** concept, Gera creates living environments that support childrens growth through celebrity-led training academies right within the society.
+                Gera Developments is one of the most trusted icons in Indian real estate. For over five decades, Gera has pioneered innovation—introducing India's first ChildCentric® homes and setting industry benchmarks with a structural warranty program. Our commitment is built on transparent construction, timely handovers, and absolute quality control.
               </p>
               <p className="text-sm text-slate-400 leading-relaxed font-light">
-                Known for innovation, customer-first service, and transparent construction standards, Gera offers a landmark 5-year warranty on all residential projects, proving their dedication to durability and quality control.
+                Known for spatial innovation, child development infrastructure, and customer-first services, Gera offers a landmark 5-year warranty on all projects, proving their dedication to durability and quality assurance.
               </p>
 
               <div className="grid grid-cols-3 gap-6 pt-4 border-t border-slate-900">
@@ -1267,10 +1270,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Happy Families
+              Verified Resident Stories
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
-              Customer <span className="gold-gradient-text italic">Testimonials</span>
+              Voices of <span className="gold-gradient-text italic">Satisfaction</span>
             </h3>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
@@ -1279,18 +1282,18 @@ export default function Home() {
             {[
               {
                 name: 'Suresh & Divya Kulkarni',
-                role: 'Verified Buyer, 2.5 BHK Owner',
-                review: 'Gera\'s ChildCentric concept has changed how we manage our days. Our kids learn cricket and music within the society boundaries, which saves us hours of travel and traffic in Hinjewadi. The construction quality is exceptionally high.'
+                role: 'Verified Resident · Director of Engineering, Tech Park',
+                review: "Gera's ChildCentric® concept has completely streamlined our weekly schedule. Having professional coaches teach cricket and tennis directly within the estate borders saves us hours of Pune commute time every day. The structural build quality is exceptional."
               },
               {
                 name: 'Vikram Phadke',
-                role: 'Verified Buyer, 3 BHK Owner',
-                review: 'The 5-year warranty was the main reason we chose Gera over other developers in Hinjewadi. Their client portal App is easy to use, updates on construction are regular, and the billing is completely transparent. Highly recommended!'
+                role: 'Verified Resident · VP of Operations, Hinjewadi Phase 2',
+                review: 'The landmark 5-year warranty was the main deciding factor for us. Their digital application portal is transparent, keeping us updated on every micro-stage of structural progress. It offers complete transparency and absolute peace of mind.'
               },
               {
                 name: 'Meenakshi Iyer',
-                role: 'Verified Buyer, 3 BHK Duplex Owner',
-                review: 'Living close to Megapolis Circle has saved me a lot of commute time to my office. The rooftop infinity pool and co-working spaces inside the clubhouse are spectacular. Truly a premium experience.'
+                role: 'Verified Resident · Lead Architect, Global Tech Hub',
+                review: 'Living adjacent to Megapolis Circle minimizes my daily travel. The rooftop sky pool and business co-working bays inside the clubhouse are spectacularly integrated. It is truly an uncompromising luxury experience.'
               }
             ].map((test, index) => (
               <div
@@ -1324,14 +1327,14 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative space-y-8 pt-8">
           <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-            Reserve Your Home Today
+            Request Private Exhibition
           </span>
           <h3 className="section-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
-            Schedule a Private <br className="sm:hidden" />
+            Secure Your Private <br className="sm:hidden" />
             <span className="gold-gradient-text italic">VVIP Site Visit</span>
           </h3>
           <p className="text-sm text-slate-400 max-w-xl mx-auto leading-relaxed font-light">
-            Get private details, high-res floor plans, payment schedules, and exclusive home booking deals. Schedule a walkthrough of our luxury experience center.
+            Our VVIP private site inspections are fully coordinated by our Senior Asset Advisors. Complimentary private chauffeur pickup & drop-off is available upon request.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 pt-4">
@@ -1344,7 +1347,7 @@ export default function Home() {
               className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg shadow-xl active:scale-[0.98] transition-all cursor-pointer"
             >
               <Calendar className="h-4.5 w-4.5" />
-              <span>Schedule Site Visit</span>
+              <span>Request Private Exhibition</span>
             </button>
 
             <a
