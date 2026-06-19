@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -12,6 +12,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Gera Hinjewadi Pune",
     images: [
       {
-        url: "/hero-bg.png",
+        url: "/images/hero-bg.jpg",
         width: 1200,
         height: 630,
         alt: "Gera Hinjewadi Premium Living",
@@ -43,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gera Hinjewadi Pune | Premium 2 & 3 BHK ChildCentric® Homes",
     description: "Explore Winds of Joy & Joy on the Treetops by Gera Developments in Hinjewadi, Pune. Starting at ₹77.90 L*.",
-    images: ["/hero-bg.png"],
+    images: ["/images/hero-bg.jpg"],
   },
   robots: {
     index: true,
@@ -68,7 +74,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Gera Hinjewadi Pune Sales",
-    "image": "https://www.gerahinjewadi.com/hero-bg.png",
+    "image": "https://www.gerahinjewadi.com/images/hero-bg.jpg",
     "telephone": "+91-9673000053",
     "url": "https://www.gerahinjewadi.com",
     "address": {
@@ -85,7 +91,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
       <head>
         <script

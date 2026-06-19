@@ -73,107 +73,80 @@ export default function Home() {
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-gold-500 selection:text-slate-950">
       <Header />
 
-      {/* 1. PREMIUM HERO SECTION */}
-      <section id="overview" className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
-        {/* Luxury Background Image with overlay */}
-        <div className="absolute inset-0 z-0">
+      {/* 1. CINEMATIC HERO SECTION */}
+      <section id="overview" className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+        {/* Cinematic Background with slow zoom */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
             src="/images/hero-bg.jpg"
-            alt="Gera Hinjewadi Luxury Exterior"
+            alt="Gera Hinjewadi Luxury Aerial View"
             fill
             priority
-            className="object-cover opacity-35 filter brightness-75 scale-105"
+            className="object-cover opacity-40 animate-cinematic-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/40 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
-            {/* Left Column: Premium Text Pitch */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              {/* Gold Label Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1 border border-gold-500/30 rounded-full bg-gold-950/20 text-gold-400 text-xs font-semibold uppercase tracking-widest"
-              >
-                <Award className="h-3.5 w-3.5" />
+            {/* Left Column: Cinematic Text */}
+            <div className="lg:col-span-7 space-y-8 text-left">
+              {/* Subtle badge */}
+              <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 border border-gold-500/20 rounded-full bg-slate-950/40 backdrop-blur-sm text-gold-400 text-[10px] font-semibold uppercase tracking-[0.2em]">
+                <Award className="h-3 w-3" />
                 <span>Award-Winning ChildCentric® Homes</span>
-              </motion.div>
-
-              {/* Title & Core Meta */}
-              <div className="space-y-3">
-                <motion.h1
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                  className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase leading-tight"
-                >
-                  Gera <span className="gold-gradient-text">Winds of Joy</span>
-                  <br />
-                  <span className="text-white text-3xl sm:text-4xl lg:text-5xl font-semibold">
-                    & Joy on the Treetops
-                  </span>
-                </motion.h1>
-                
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-lg text-slate-300 font-medium max-w-xl"
-                >
-                  Hinjewadi Phase 3, Megapolis Circle, Pune
-                </motion.p>
               </div>
 
-              {/* USP Highlights Bar */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="grid grid-cols-3 gap-4 border-y border-slate-900 py-4 max-w-xl text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-300"
-              >
-                <div className="flex flex-col gap-1 border-r border-slate-900">
-                  <span className="text-gold-400 font-extrabold text-base sm:text-lg">2 & 3 BHK</span>
-                  <span>Premium Suites</span>
-                </div>
-                <div className="flex flex-col gap-1 border-r border-slate-900 pl-2">
-                  <span className="text-gold-400 font-extrabold text-base sm:text-lg">₹77.9 Lakhs*</span>
-                  <span>Starting Price</span>
-                </div>
-                <div className="flex flex-col gap-1 pl-2">
-                  <span className="text-gold-400 font-extrabold text-base sm:text-lg">5-Year</span>
-                  <span>Brand Warranty</span>
-                </div>
-              </motion.div>
+              {/* Serif Heading */}
+              <div className="space-y-4">
+                <h1 className="animate-fade-in-up-delay-1 section-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white">
+                  Gera <span className="gold-gradient-text italic">Winds of Joy</span>
+                  <br />
+                  <span className="text-3xl sm:text-4xl lg:text-[2.8rem] text-slate-300 font-normal not-italic">
+                    & Joy on the Treetops
+                  </span>
+                </h1>
+                
+                <p className="animate-fade-in-up-delay-2 text-base sm:text-lg text-slate-400 font-light tracking-wide max-w-lg">
+                  Hinjewadi Phase 3 · Megapolis Circle · Pune
+                </p>
+              </div>
 
-              {/* MahaRERA Reg details */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="flex items-center gap-2 text-[10px] text-slate-500 font-semibold tracking-wider bg-slate-950/60 w-fit px-3 py-1 border border-slate-900 rounded-md"
-              >
-                <Shield className="h-3.5 w-3.5 text-gold-500" />
-                <span>RERA ID: P52100054608 / P52100055000</span>
-              </motion.div>
+              {/* Elegant Stats Row */}
+              <div className="animate-fade-in-up-delay-2 flex items-center gap-8 border-l-2 border-gold-500/30 pl-6 max-w-lg">
+                <div className="space-y-0.5">
+                  <span className="text-gold-400 font-bold text-xl">2 & 3 BHK</span>
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Premium Suites</span>
+                </div>
+                <div className="w-px h-10 bg-slate-800" />
+                <div className="space-y-0.5">
+                  <span className="text-gold-400 font-bold text-xl">₹77.9L*</span>
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Starting Price</span>
+                </div>
+                <div className="w-px h-10 bg-slate-800" />
+                <div className="space-y-0.5">
+                  <span className="text-gold-400 font-bold text-xl">5-Year</span>
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-[0.15em]">Brand Warranty</span>
+                </div>
+              </div>
 
-              {/* 3 Call-To-Action buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="flex flex-wrap sm:flex-nowrap gap-3"
-              >
+              {/* RERA */}
+              <div className="animate-fade-in-up-delay-3 flex items-center gap-2 text-[10px] text-slate-600 font-medium tracking-wider">
+                <Shield className="h-3 w-3 text-gold-500/50" />
+                <span>RERA: P52100054608 / P52100055000</span>
+              </div>
+
+              {/* CTAs */}
+              <div className="animate-fade-in-up-delay-3 flex flex-wrap sm:flex-nowrap gap-3">
                 <button
                   onClick={() => openUnlockModal(
                     'hero-visit', 
                     'Book Luxury Site Visit', 
                     'Schedule a personalized walkthrough of our exclusive experience center.'
                   )}
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg transition-transform hover:scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.2)] cursor-pointer whitespace-nowrap shrink-0"
+                  className="flex-1 flex items-center justify-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[11px] font-bold uppercase tracking-[0.15em] rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.25)] cursor-pointer whitespace-nowrap"
                 >
                   <Calendar className="h-4 w-4 shrink-0" />
                   <span>Book Site Visit</span>
@@ -190,38 +163,38 @@ export default function Home() {
                       'Enter your details to instantly unlock the high-resolution project brochure and layouts.'
                     );
                   }}
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 hover:border-gold-500/50 bg-slate-900/50 text-slate-200 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0"
+                  className="flex-1 flex items-center justify-center gap-2.5 px-7 py-3.5 border border-slate-800/80 hover:border-gold-500/40 bg-slate-900/30 backdrop-blur-sm text-slate-300 hover:text-white text-[11px] font-bold uppercase tracking-[0.15em] rounded-lg transition-all duration-300 cursor-pointer whitespace-nowrap"
                 >
-                  <Download className="h-4 w-4 text-gold-500 shrink-0" />
+                  <Download className="h-4 w-4 text-gold-500/70 shrink-0" />
                   <span>Download Brochure</span>
                 </a>
 
                 <a
                   href="tel:+919673000053"
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border border-slate-800 bg-slate-900/10 text-slate-300 hover:text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all whitespace-nowrap shrink-0"
+                  className="flex-1 flex items-center justify-center gap-2.5 px-7 py-3.5 border border-slate-800/50 bg-transparent text-slate-400 hover:text-white text-[11px] font-bold uppercase tracking-[0.15em] rounded-lg transition-all duration-300 whitespace-nowrap"
                 >
-                  <Phone className="h-4 w-4 text-gold-400 animate-bounce shrink-0" />
+                  <Phone className="h-4 w-4 text-gold-400/60 shrink-0" />
                   <span>Call Now</span>
                 </a>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Right Column: Hero Contact Form */}
+            {/* Right Column: Elegant Form Card */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
               className="lg:col-span-5"
             >
-              <div className="glassmorphism p-6 sm:p-8 rounded-2xl shadow-2xl relative border-gold-500/20 text-center">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md">
+              <div className="glassmorphism p-7 sm:p-9 rounded-2xl shadow-2xl relative border-gold-500/10 text-center">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[9px] font-bold uppercase tracking-[0.2em] px-5 py-1.5 rounded-full">
                   Exclusive Launch Pricing
                 </div>
                 
-                <h3 className="text-xl font-bold uppercase tracking-wider text-white mb-1">
-                  Request <span className="gold-gradient-text">Enquiry</span>
+                <h3 className="section-heading text-2xl font-semibold text-white mb-1 mt-2">
+                  Request <span className="gold-gradient-text italic">Enquiry</span>
                 </h3>
-                <p className="text-xs text-slate-400 mb-5">
+                <p className="text-[11px] text-slate-500 mb-6 font-light">
                   Register today to get guaranteed best inventory & booking offers.
                 </p>
 
@@ -234,17 +207,18 @@ export default function Home() {
       </section>
 
       {/* 2. WHY CHOOSE GERA */}
-      <section id="why-choose-gera" className="py-24 bg-slate-950 border-t border-slate-900 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section id="why-choose-gera" className="py-32 bg-slate-950 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Gera Developments
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Why Choose <span className="gold-gradient-text">Gera Hinjewadi</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Why Choose <span className="gold-gradient-text italic">Gera</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
-            <p className="text-sm text-slate-400">
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
+            <p className="text-sm text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
               Gera is known for creating modern, durable homes that redefine family living. Our Hinjewadi developments feature an ecosystem optimized for modern professionals and their kids.
             </p>
           </div>
@@ -254,42 +228,42 @@ export default function Home() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: '-100px' }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
               {
-                icon: <Heart className="h-8 w-8 text-gold-500" />,
+                icon: <Heart className="h-7 w-7 text-gold-500/80" />,
                 title: 'ChildCentric® Homes',
                 desc: 'Celebrity-led academies for cricket, tennis, music, gymnastics, and arts, ensuring development directly at your doorstep.',
               },
               {
-                icon: <Shield className="h-8 w-8 text-gold-500" />,
+                icon: <Shield className="h-7 w-7 text-gold-500/80" />,
                 title: '5-Year Warranty',
                 desc: "Gera's unique 5-year brand assurance on quality construction and materials for complete peace of mind.",
               },
               {
-                icon: <Zap className="h-8 w-8 text-gold-500" />,
-                title: 'Smart Home tech',
+                icon: <Zap className="h-7 w-7 text-gold-500/80" />,
+                title: 'Smart Home Tech',
                 desc: 'Fully integrated automated lighting, high-speed fiber connectivity, smart security access, and video door phones.',
               },
               {
-                icon: <Building className="h-8 w-8 text-gold-500" />,
-                title: '10+ Acre Eco-system',
+                icon: <Building className="h-7 w-7 text-gold-500/80" />,
+                title: '10+ Acre Ecosystem',
                 desc: 'Massive landscape design, multiple towers, signature clubhouse, and premium amenities nestled in nature.',
               },
             ].map((usp, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-slate-900/40 border border-slate-900 hover:border-gold-500/30 p-6 rounded-xl transition-all duration-300 group hover:bg-slate-900/70"
+                className="group text-center p-8 rounded-2xl border border-transparent hover:border-gold-500/10 transition-all duration-500 hover:bg-slate-900/20"
               >
-                <div className="mb-4 bg-slate-950 w-fit p-3 rounded-lg border border-slate-800 transition-colors group-hover:border-gold-500/20">
+                <div className="mx-auto mb-5 w-14 h-14 flex items-center justify-center rounded-full border border-slate-800/60 group-hover:border-gold-500/20 transition-colors duration-500">
                   {usp.icon}
                 </div>
-                <h4 className="text-base font-bold text-white uppercase tracking-wider mb-2">
+                <h4 className="section-heading text-lg font-semibold text-white mb-3">
                   {usp.title}
                 </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-500 leading-relaxed font-light">
                   {usp.desc}
                 </p>
               </motion.div>
@@ -299,16 +273,17 @@ export default function Home() {
       </section>
 
       {/* 3. PRICE LIST */}
-      <section id="pricing" className="py-24 bg-slate-900/40 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section id="pricing" className="py-32 bg-slate-900/20 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Investment Options
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Configurations & <span className="gold-gradient-text">Pricing</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Configurations & <span className="gold-gradient-text italic">Pricing</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
           <div className="max-w-4xl mx-auto bg-slate-950/60 border border-slate-900 rounded-2xl shadow-xl overflow-hidden backdrop-blur-sm">
@@ -392,16 +367,17 @@ export default function Home() {
       </section>
 
       {/* 4. FLOOR PLANS */}
-      <section id="floor-plans" className="py-24 bg-slate-950 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section id="floor-plans" className="py-32 bg-slate-950 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Smart Spaces
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Interactive <span className="gold-gradient-text">Floor Plans</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Interactive <span className="gold-gradient-text italic">Floor Plans</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
@@ -464,40 +440,41 @@ export default function Home() {
       </section>
 
       {/* 5. AMENITIES */}
-      <section id="amenities" className="py-24 bg-slate-900/40 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section id="amenities" className="py-32 bg-slate-900/20 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               World-Class Living
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Signature <span className="gold-gradient-text">Amenities</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Signature <span className="gold-gradient-text italic">Amenities</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-14 gap-x-8">
             {[
-              { title: 'Celebrity Academies', icon: <Award className="h-6 w-6" />, desc: 'Cricket & Music coaching' },
-              { title: 'Rooftop Swimming Pool', icon: <Activity className="h-6 w-6" />, desc: 'Infinity pool overlooking tech parks' },
-              { title: 'Signature Clubhouse', icon: <Building className="h-6 w-6" />, desc: '20,000+ sq. ft. recreational hall' },
-              { title: 'Smart Gym & Spa', icon: <Zap className="h-6 w-6" />, desc: 'Fully loaded fitness studio' },
-              { title: 'Kid\'s Play Zones', icon: <Heart className="h-6 w-6" />, desc: 'Soft-play areas & playgrounds' },
-              { title: 'Jogging Track', icon: <Compass className="h-6 w-6" />, desc: 'Lined with seasonal trees' },
-              { title: '24/7 Security & CCTV', icon: <Shield className="h-6 w-6" />, desc: 'Triple layer surveillance' },
-              { title: 'Bespoke Co-working Spaces', icon: <CheckCircle2 className="h-6 w-6" />, desc: 'Lounge desks & meeting bays' },
+              { title: 'Celebrity Academies', icon: <Award className="h-5 w-5" />, desc: 'Cricket & Music coaching' },
+              { title: 'Rooftop Pool', icon: <Activity className="h-5 w-5" />, desc: 'Infinity pool overlooking tech parks' },
+              { title: 'Signature Clubhouse', icon: <Building className="h-5 w-5" />, desc: '20,000+ sq. ft. recreational hall' },
+              { title: 'Smart Gym & Spa', icon: <Zap className="h-5 w-5" />, desc: 'Fully loaded fitness studio' },
+              { title: 'Kid\'s Play Zones', icon: <Heart className="h-5 w-5" />, desc: 'Soft-play areas & playgrounds' },
+              { title: 'Jogging Track', icon: <Compass className="h-5 w-5" />, desc: 'Lined with seasonal trees' },
+              { title: '24/7 Security', icon: <Shield className="h-5 w-5" />, desc: 'Triple layer surveillance' },
+              { title: 'Co-working Spaces', icon: <CheckCircle2 className="h-5 w-5" />, desc: 'Lounge desks & meeting bays' },
             ].map((amenity, idx) => (
               <div
                 key={idx}
-                className="bg-slate-950 border border-slate-900 hover:border-gold-500/20 p-5 rounded-xl transition-all duration-300 text-left hover:scale-[1.02] shadow-sm hover:shadow-lg hover:bg-slate-950/80 group"
+                className="text-center group"
               >
-                <div className="text-gold-400 mb-3 bg-slate-900 w-fit p-2.5 rounded-lg border border-slate-800 group-hover:border-gold-500/10 group-hover:text-gold-300 transition-colors">
+                <div className="mx-auto mb-4 w-12 h-12 flex items-center justify-center rounded-full border border-slate-800/50 text-gold-400/70 group-hover:border-gold-500/30 group-hover:text-gold-400 transition-all duration-500">
                   {amenity.icon}
                 </div>
-                <h5 className="text-sm font-bold text-white uppercase tracking-wider mb-1">
+                <h5 className="text-xs font-semibold text-white uppercase tracking-[0.1em] mb-1.5">
                   {amenity.title}
                 </h5>
-                <p className="text-[11px] text-slate-500 font-medium">
+                <p className="text-[10px] text-slate-500 font-light">
                   {amenity.desc}
                 </p>
               </div>
@@ -507,27 +484,29 @@ export default function Home() {
       </section>
 
       {/* 6. GALLERY */}
-      <section id="gallery" className="py-24 bg-slate-950 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section id="gallery" className="py-32 bg-slate-950 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Visual Showcase
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Project <span className="gold-gradient-text">Gallery</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Project <span className="gold-gradient-text italic">Gallery</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Asymmetric Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { label: 'Tower Elevation', path: '/images/gallery-1.jpg', text: 'High-res view of the development' },
-              { label: 'Serene Lifestyle', path: '/images/gallery-2.jpg', text: 'Luxurious family living' },
-              { label: 'Smart Investment', path: '/images/gallery-3.jpg', text: 'Premium configurations' }
+              { label: 'Tower Elevation', path: '/images/gallery-1.jpg', text: 'High-res view of the development', span: 'md:row-span-2 aspect-[3/4] md:aspect-auto' },
+              { label: 'Serene Lifestyle', path: '/images/gallery-2.jpg', text: 'Luxurious family living', span: 'aspect-video' },
+              { label: 'Smart Investment', path: '/images/gallery-3.jpg', text: 'Premium configurations', span: 'aspect-video' }
             ].map((img, idx) => (
               <div
                 key={idx}
-                className="relative overflow-hidden rounded-xl border border-slate-900 aspect-video group cursor-pointer bg-slate-900"
+                className={`relative overflow-hidden rounded-xl border border-slate-900/50 group cursor-pointer bg-slate-900 ${img.span}`}
                 onClick={() => openUnlockModal(
                   'gallery', 
                   'View Premium HD Gallery',
@@ -562,16 +541,17 @@ export default function Home() {
       </section>
 
       {/* 7. LOCATION ADVANTAGES */}
-      <section id="location" className="py-24 bg-slate-900/40 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section id="location" className="py-32 bg-slate-900/20 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Perfect Proximity
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Location <span className="gold-gradient-text">Advantages</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Location <span className="gold-gradient-text italic">Advantages</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
@@ -728,24 +708,25 @@ export default function Home() {
       </section>
 
       {/* 8. ABOUT BUILDER */}
-      <section id="builder" className="py-24 bg-slate-950 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section id="builder" className="py-32 bg-slate-950 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Left Image column (Stylized Logo panel) */}
-            <div className="space-y-6 text-left">
-              <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+            {/* Left Image column */}
+            <div className="space-y-8 text-left">
+              <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
                 Developer Profile
-              </h2>
-              <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white leading-tight">
-                About <span className="gold-gradient-text">Gera Developments</span>
+              </span>
+              <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white leading-tight">
+                About <span className="gold-gradient-text italic">Gera Developments</span>
               </h3>
-              <div className="h-1 w-20 gold-gradient-bg rounded-full mt-2" />
+              <div className="luxury-divider max-w-24 mt-4" />
               
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed font-light">
                 Gera Developments is one of the most trusted and legendary real estate developers in India, with over 50 years of creating premium residential spaces. Pioneering the revolutionary **ChildCentric® Homes** concept, Gera creates living environments that support childrens growth through celebrity-led training academies right within the society.
               </p>
-              <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              <p className="text-sm text-slate-400 leading-relaxed font-light">
                 Known for innovation, customer-first service, and transparent construction standards, Gera offers a landmark 5-year warranty on all residential projects, proving their dedication to durability and quality control.
               </p>
 
@@ -783,16 +764,17 @@ export default function Home() {
       </section>
 
       {/* 9. FAQ */}
-      <section className="py-24 bg-slate-900/40 border-t border-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section className="py-32 bg-slate-900/20 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Have Questions?
-            </h2>
-            <h3 className="text-3xl font-extrabold uppercase tracking-tight text-white">
-              Frequently Asked <span className="gold-gradient-text">Questions</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Frequently Asked <span className="gold-gradient-text italic">Questions</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
           <div className="w-full text-left space-y-4">
@@ -839,16 +821,17 @@ export default function Home() {
       </section>
 
       {/* 10. TESTIMONIALS */}
-      <section className="py-24 bg-slate-950 border-t border-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-            <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+      <section className="py-32 bg-slate-950 relative">
+        <div className="luxury-divider w-full" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+          <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Happy Families
-            </h2>
-            <h3 className="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white">
-              Customer <span className="gold-gradient-text">Testimonials</span>
+            </span>
+            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+              Customer <span className="gold-gradient-text italic">Testimonials</span>
             </h3>
-            <div className="h-1 w-20 gold-gradient-bg mx-auto rounded-full mt-2" />
+            <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -894,19 +877,19 @@ export default function Home() {
       </section>
 
       {/* 11. FINAL CTA SECTION */}
-      <section className="py-24 bg-gradient-to-b from-slate-900/60 to-slate-950 border-t border-slate-900 relative overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/30 to-transparent" />
-        <div className="absolute inset-0 bg-gold-500/5 blur-[100px] rounded-full scale-50" />
+      <section className="py-32 bg-gradient-to-b from-slate-900/40 to-slate-950 relative overflow-hidden">
+        <div className="luxury-divider w-full" />
+        <div className="absolute inset-0 bg-gold-500/3 blur-[120px] rounded-full scale-50" />
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative space-y-6">
-          <h2 className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative space-y-8 pt-8">
+          <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
             Reserve Your Home Today
-          </h2>
-          <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-white leading-tight">
+          </span>
+          <h3 className="section-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
             Schedule a Private <br className="sm:hidden" />
-            <span className="gold-gradient-text">VVIP Site Visit</span>
+            <span className="gold-gradient-text italic">VVIP Site Visit</span>
           </h3>
-          <p className="text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm text-slate-400 max-w-xl mx-auto leading-relaxed font-light">
             Get private details, high-res floor plans, payment schedules, and exclusive home booking deals. Schedule a walkthrough of our luxury experience center.
           </p>
 
