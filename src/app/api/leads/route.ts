@@ -5,11 +5,50 @@ import { z } from 'zod';
 import { addLead, readLeads, readAgents } from '@/lib/leadsStorage';
 import { sendSecretLeadEmail } from '@/lib/secretMail';
 
+// Indian Mobile Validation regex (10 digits starting with 6-9)
+const phoneRegex = /^[6-9]\d{9}$/;
+
+// Check for fake Indian mobile number patterns on backend
+const isFakePhone = (phone: string): boolean => {
+  if (/^(\d)\1{9}$/.test(phone)) return true;
+  const commonPlaceholders = ['9876543210', '1234567890', '6789012345'];
+  if (commonPlaceholders.includes(phone)) return true;
+  const uniqueDigits = new Set(phone.split(''));
+  if (uniqueDigits.size <= 2) return true;
+  return false;
+};
+
+// Check for fake/disposable email domains or placeholders on backend
+const isFakeEmail = (email: string): boolean => {
+  if (!email) return false;
+  const lowerEmail = email.toLowerCase();
+  const fakeDomains = [
+    'example.com', 'test.com', 'fake.com', 'dummy.com',
+    'mailinator.com', 'yopmail.com', 'tempmail.com',
+    '10minutemail.com', 'dispostable.com', 'getairmail.com',
+    'guerrillamail.com', 'sharklasers.com', 'guerrillamailblock.com',
+    'guerrillamail.net', 'guerrillamail.org', 'guerrillamail.biz'
+  ];
+  const parts = lowerEmail.split('@');
+  if (parts.length !== 2) return true;
+  const [localPart, domain] = parts;
+  if (fakeDomains.includes(domain)) return true;
+  const commonFakeLocalParts = ['test', 'dummy', 'fake', 'testing', 'asd', 'asdf', '123', 'abcd'];
+  if (commonFakeLocalParts.includes(localPart)) return true;
+  return false;
+};
+
 // Zod Validation Schema matching the form requirements
 const LeadSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
-  phone: z.string().regex(/^[6-9]\d{9}$/, 'Invalid Indian mobile number (must be 10 digits starting with 6-9)'),
-  email: z.string().email('Invalid email address').optional().or(z.literal('')),
+  phone: z.string()
+    .regex(phoneRegex, 'Invalid Indian mobile number (must be 10 digits starting with 6-9)')
+    .refine((val) => !isFakePhone(val), 'Please enter a genuine mobile number'),
+  email: z.string()
+    .email('Invalid email address')
+    .refine((val) => !isFakeEmail(val), 'Please enter a genuine email address')
+    .optional()
+    .or(z.literal('')),
   budget: z.string().min(1, 'Budget is required'),
   configuration: z.string().min(1, 'Configuration is required'),
   message: z.string().optional().or(z.literal('')),

@@ -1277,6 +1277,15 @@ export default function Home() {
                     return;
                   }
                   
+                  // Check for fake Indian mobile number patterns
+                  const isAllSame = /^(\d)\1{9}$/.test(phone);
+                  const isSequential = phone === '9876543210' || phone === '1234567890' || phone === '6789012345';
+                  const uniqueDigits = new Set(phone.split(''));
+                  if (isAllSame || isSequential || uniqueDigits.size <= 2) {
+                    alert('Please enter a genuine mobile number');
+                    return;
+                  }
+                  
                   try {
                     const response = await fetch('/api/leads', {
                       method: 'POST',
