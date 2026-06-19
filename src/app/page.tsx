@@ -430,7 +430,7 @@ export default function Home() {
         {/* Dynamic Watermark Background */}
         <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
           <Image
-            src="/images/pricing-chart.jpg"
+            src="/images/pricing_watermark_bg.png"
             alt="Gera Hinjewadi project pricing details chart background"
             fill
             className="object-cover"
@@ -609,7 +609,7 @@ export default function Home() {
         {/* Dynamic Watermark Background */}
         <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
           <Image
-            src="/images/gallery-3.jpg"
+            src="/images/builder_legacy_bg.png"
             alt="Gera Developments legacy corporate profile background"
             fill
             className="object-cover"

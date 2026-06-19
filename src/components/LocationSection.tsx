@@ -18,7 +18,7 @@ export default function LocationSection({ openUnlockModal }: LocationSectionProp
       {/* Dynamic Watermark Background */}
       <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
         <Image
-          src="/images/gallery-2.jpg"
+          src="/images/location_map_bg.png"
           alt="Gera Hinjewadi transit connectivity map background"
           fill
           className="object-cover"

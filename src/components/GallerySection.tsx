@@ -117,7 +117,7 @@ export default function GallerySection({ openUnlockModal }: GallerySectionProps)
           <div className="max-w-3xl mx-auto bg-slate-950 border border-slate-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video group">
             {isPlayingVideo ? (
               <iframe
-                src="https://www.youtube.com/embed/R9tD2-0B28w?autoplay=1&rel=0"
+                src="https://www.youtube.com/embed/ButzJVuK-wo?autoplay=1&rel=0"
                 title="Gera Winds of Joy Walkthrough Video"
                 className="w-full h-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
