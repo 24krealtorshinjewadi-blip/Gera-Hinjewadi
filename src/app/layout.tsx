@@ -24,7 +24,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Gera Hinjewadi Pune | Premium 2 & 3 BHK ChildCentric® Homes",
   description: "Explore Gera Winds of Joy & Joy on the Treetops in Hinjewadi Phase 3, Pune. 2 & 3 BHK apartments starting at ₹77.90 Lakhs*. Get pricing, floor plans, and brochures.",
-  keywords: "Gera Hinjewadi, Gera Winds of Joy, Gera Joy on the Treetops, ChildCentric Homes Pune, real estate Hinjewadi, 2 BHK flat Hinjewadi, 3 BHK Hinjewadi Pune",
+  keywords: "Gera Hinjewadi, Gera Winds of Joy, Gera Joy on the Treetops, ChildCentric Homes Pune, Gera Hinjewadi Phase 3, 2 BHK flat Hinjewadi, 3 BHK flat Hinjewadi Pune, Gera developments Hinjewadi, Gera Winds of Joy price list, Gera Joy on the Treetops floor plan, real estate Hinjewadi, luxury apartments Hinjewadi, new projects in Hinjewadi, Gera Pune, Winds of Joy possession date",
   authors: [{ name: "Gera Developments Sales Partner" }],
   metadataBase: new URL("https://www.gerahinjewadi.com"),
   alternates: {
@@ -71,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // Schema.org RealEstateAgent structured markup
-  const jsonLd = {
+  const agentJsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "name": "Gera Hinjewadi Pune Sales",
@@ -87,6 +87,35 @@ export default function RootLayout({
       "addressCountry": "IN"
     },
     "priceRange": "₹77.90 Lakhs - ₹1.41 Cr"
+  };
+
+  // Schema.org RealEstateDevelopment structured markup
+  const developmentJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateDevelopment",
+    "name": "Gera Winds of Joy & Joy on the Treetops",
+    "description": "Premium 2 & 3 BHK ChildCentric® Homes by Gera Developments in Hinjewadi Phase 3, Pune. Starting at ₹77.90 Lakhs*.",
+    "url": "https://www.gerahinjewadi.com",
+    "image": "https://www.gerahinjewadi.com/images/hero-bg.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Near Megapolis Circle, Hinjewadi Phase 3",
+      "addressLocality": "Pune",
+      "addressRegion": "MH",
+      "postalCode": "411057",
+      "addressCountry": "IN"
+    },
+    "builder": {
+      "@type": "Organization",
+      "name": "Gera Developments"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": "7790000",
+      "highPrice": "14100000",
+      "offerCount": "4"
+    }
   };
 
   return (
@@ -105,7 +134,7 @@ export default function RootLayout({
                   var saved = localStorage.getItem('theme');
                   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                   if (saved === 'dark' || (!saved && prefersDark)) {
-                    document.documentElement.classList.add('dark');
+                     document.documentElement.classList.add('dark');
                   } else {
                     document.documentElement.classList.remove('dark');
                   }
@@ -116,7 +145,13 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          id="real-estate-agent-jsonld"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(agentJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          id="real-estate-development-jsonld"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(developmentJsonLd) }}
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">

@@ -317,9 +317,9 @@ export default function Home() {
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Gera Hinjewadi ChildCentric® Homes Legacy
             </span>
-            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+            <h2 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Why Choose <span className="gold-gradient-text italic">Gera Developments Pune</span>
-            </h3>
+            </h2>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
             <p className="text-sm text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
               Gera Developments sets the gold standard for residential craftsmanship. Our Hinjewadi estates offer a meticulously curated ecosystem where professional productivity meets child development.
@@ -441,9 +441,9 @@ export default function Home() {
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Gera Winds of Joy Price List & Offers
             </span>
-            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+            <h2 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Curated Residences & <span className="gold-gradient-text italic">Exclusive Pricing</span>
-            </h3>
+            </h2>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
@@ -561,9 +561,9 @@ export default function Home() {
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Luxury Lifestyle Amenities & Celebrity Academies
             </span>
-            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+            <h2 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               A Curated World of <span className="gold-gradient-text italic">Experiences</span>
-            </h3>
+            </h2>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
@@ -623,9 +623,9 @@ export default function Home() {
               <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
                 Gera Developments legacy in Pune Real Estate
               </span>
-              <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white leading-tight">
+              <h2 className="section-heading text-4xl sm:text-5xl font-semibold text-white leading-tight">
                 The Legacy of Gera Developments: <br/>50 Years of <span className="gold-gradient-text italic">Landmark Creations</span>
-              </h3>
+              </h2>
               <div className="luxury-divider max-w-24 mt-4" />
               
               <p className="text-sm text-slate-400 leading-relaxed font-light">
@@ -700,9 +700,9 @@ export default function Home() {
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
               Gera Developments Resident Reviews
             </span>
-            <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+            <h2 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Voices of <span className="gold-gradient-text italic">Satisfaction</span>
-            </h3>
+            </h2>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
@@ -766,10 +766,10 @@ export default function Home() {
           <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
             Gera Hinjewadi Site Visit Booking
           </span>
-          <h3 className="section-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
+          <h2 className="section-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
             Secure Your Private <br className="sm:hidden" />
             <span className="gold-gradient-text italic">VVIP Site Visit</span>
-          </h3>
+          </h2>
           <p className="text-sm text-slate-400 max-w-xl mx-auto leading-relaxed font-light">
             Our VVIP private site inspections are fully coordinated by our Senior Asset Advisors. Complimentary private chauffeur pickup & drop-off is available upon request.
           </p>

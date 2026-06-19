@@ -28,9 +28,9 @@ export default function GallerySection({ openUnlockModal }: GallerySectionProps)
           <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
             Gera Joy on the Treetops & Winds of Joy Gallery
           </span>
-          <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
+          <h2 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
             Project <span className="gold-gradient-text italic">Gallery</span>
-          </h3>
+          </h2>
           <div className="luxury-divider max-w-24 mx-auto mt-4" />
         </div>
 
