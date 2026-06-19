@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://gerahinjiwadeepune.in';
+  const baseUrl = 'https://www.gerahinjewadi.com';
   return {
     rules: {
       userAgent: '*',

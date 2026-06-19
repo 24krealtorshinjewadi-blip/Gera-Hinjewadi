@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://gerahinjiwadeepune.in';
+  const baseUrl = 'https://www.gerahinjewadi.com';
   return [
     {
       url: baseUrl,
