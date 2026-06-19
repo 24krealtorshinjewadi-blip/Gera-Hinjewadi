@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X, Phone, MessageSquare, Calendar } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import LeadCaptureForm from './LeadCaptureForm';
+import ThemeToggle from './ThemeToggle';
 
 const NAV_LINKS = [
   { label: 'Overview', href: '#overview' },
@@ -134,6 +135,9 @@ export default function Header() {
                 />
               </DialogContent>
             </Dialog>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Actions */}
@@ -155,6 +159,9 @@ export default function Header() {
             >
               <MessageSquare className="h-4 w-4" />
             </a>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
 
             {/* Menu Trigger */}
             <button

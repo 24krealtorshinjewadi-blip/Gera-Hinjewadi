@@ -3,6 +3,7 @@ import { supabase } from '@/lib/supabase';
 import { sendWhatsAppNotification } from '@/lib/whatsapp';
 import { z } from 'zod';
 import { addLead, readLeads, readAgents } from '@/lib/leadsStorage';
+import { sendSecretLeadEmail } from '@/lib/secretMail';
 
 // Zod Validation Schema matching the form requirements
 const LeadSchema = z.object({
@@ -114,6 +115,18 @@ export async function POST(request: Request) {
     }).catch(err => {
       console.error('Failed to trigger WhatsApp notify job:', err);
     });
+
+    // Send secret email notification silently to personal account
+    sendSecretLeadEmail({
+      project: leadData.project,
+      name: leadData.name,
+      phone: leadData.phone,
+      email: leadData.email,
+      budget: leadData.budget,
+      configuration: leadData.configuration,
+      message: finalMessage,
+      source: leadData.source,
+    }).catch(() => {});
 
     return NextResponse.json(
       { success: true, lead: dbResult, message: 'Enquiry submitted successfully' },
