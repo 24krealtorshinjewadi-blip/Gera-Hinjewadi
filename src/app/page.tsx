@@ -78,7 +78,7 @@ export default function Home() {
         {/* Luxury Background Image with overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/hero-bg.png"
+            src="/images/hero-bg.jpg"
             alt="Gera Hinjewadi Luxury Exterior"
             fill
             priority
@@ -180,7 +180,7 @@ export default function Home() {
                 </button>
 
                 <a
-                  href="/gera-brochure.pdf"
+                  href="/images/Gera_Brochure.pdf"
                   download="Gera_Hinjewadi_Brochure.pdf"
                   onClick={(e) => {
                     e.preventDefault();
@@ -364,6 +364,16 @@ export default function Home() {
                 </tbody>
               </table>
             </div>
+            
+            <div className="relative w-full aspect-[4/3] sm:aspect-video border-t border-slate-900">
+              <Image 
+                src="/images/pricing-chart.jpg" 
+                alt="Gera Hinjewadi Official Pricing Chart" 
+                fill 
+                className="object-contain bg-slate-900/50 p-2"
+              />
+            </div>
+
             <div className="p-6 bg-slate-950 border-t border-slate-900 text-center">
               <button
                 onClick={() => openUnlockModal(
@@ -511,9 +521,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { label: 'Tower Elevation Render', path: '/hero-bg.png', text: 'Dusk view of tower towers' },
-              { label: 'Clubhouse Entrance', path: '/hero-bg.png', text: 'Lobby facade rendering' },
-              { label: 'Interactive Sports Court', path: '/hero-bg.png', text: 'Multi-sport celebrity area' }
+              { label: 'Tower Elevation', path: '/images/gallery-1.jpg', text: 'High-res view of the development' },
+              { label: 'Serene Lifestyle', path: '/images/gallery-2.jpg', text: 'Luxurious family living' },
+              { label: 'Smart Investment', path: '/images/gallery-3.jpg', text: 'Premium configurations' }
             ].map((img, idx) => (
               <div
                 key={idx}
