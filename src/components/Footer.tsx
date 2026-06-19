@@ -94,6 +94,34 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* MahaRERA Compliance Trust Badge */}
+        <div className="border-t border-slate-900 pt-8 pb-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4 text-left">
+            <div className="w-14 h-14 bg-slate-900 border border-gold-500/20 rounded-lg flex items-center justify-center shrink-0 shadow-inner">
+              <div className="text-[9px] font-bold text-gold-400 text-center leading-tight">
+                MahaRERA<br />
+                <span className="text-[6px] text-slate-500 font-extrabold tracking-widest block mt-0.5">VERIFIED</span>
+              </div>
+            </div>
+            <div>
+              <h5 className="font-extrabold text-white text-xs uppercase tracking-wider">
+                MahaRERA Registered Project
+              </h5>
+              <p className="text-[11px] text-slate-400 mt-1 max-w-xl">
+                This project is registered under MahaRERA registration number <strong>P52100054608</strong> (Gera Winds of Joy) and <strong>P52100055000</strong> (Gera Joy on the Treetops). Details are available on the website <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:underline">maharera.maharashtra.gov.in</a> under registered projects.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <span className="px-3 py-1.5 border border-slate-800 rounded bg-slate-900/40 text-gold-400 text-[9px] font-bold tracking-widest uppercase">
+              RERA APPROVED
+            </span>
+            <span className="px-3 py-1.5 border border-emerald-950/20 rounded bg-emerald-950/10 text-emerald-400 text-[9px] font-bold tracking-widest uppercase">
+              ESCROW PROTECTED
+            </span>
+          </div>
+        </div>
+
         {/* Legal Disclaimer block */}
         <div className="border-t border-slate-900 pt-8 pb-4 space-y-4">
           <div className="flex items-start gap-2 text-slate-500 leading-relaxed text-[11px]">

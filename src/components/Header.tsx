@@ -42,11 +42,17 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'py-2 bg-slate-950/90 backdrop-blur-lg border-b border-slate-900/50 shadow-lg'
-        : 'py-4 bg-transparent'
+        ? 'bg-slate-950/95 backdrop-blur-lg border-b border-slate-900/50 shadow-lg'
+        : 'bg-slate-950/30 backdrop-blur-sm border-b border-slate-900/10'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 1. TOP PROMO ANNOUNCEMENT BANNER */}
+      <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-1.5 px-4 text-center text-slate-950 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-2 relative overflow-hidden">
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-950 animate-ping shrink-0" />
+        <span>Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!</span>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <Link href="/" className="flex flex-col shrink-0">

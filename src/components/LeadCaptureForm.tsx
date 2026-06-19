@@ -17,6 +17,8 @@ const leadFormSchema = z.object({
   email: z.string().email('Invalid email address').optional().or(z.literal('')),
   budget: z.string().min(1, 'Please select your budget'),
   configuration: z.string().min(1, 'Please select a configuration'),
+  visitDate: z.string().optional(),
+  visitTimeSlot: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -39,6 +41,8 @@ export default function LeadCaptureForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  const isVisitSource = source.toLowerCase().includes('visit') || source.toLowerCase().includes('modal');
+
   const {
     register,
     handleSubmit,
@@ -52,6 +56,8 @@ export default function LeadCaptureForm({
       email: '',
       budget: '',
       configuration: '',
+      visitDate: '',
+      visitTimeSlot: '',
       message: '',
     },
   });
@@ -233,6 +239,37 @@ export default function LeadCaptureForm({
           )}
         </div>
       </div>
+
+      {isVisitSource && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in-up">
+          <div className="group">
+            <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
+              Preferred Date
+            </label>
+            <input
+              type="date"
+              min={new Date().toISOString().split('T')[0]}
+              {...register('visitDate')}
+              className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner"
+            />
+          </div>
+          <div className="group">
+            <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
+              Preferred Time Slot
+            </label>
+            <select
+              {...register('visitTimeSlot')}
+              className="w-full bg-slate-900/40 backdrop-blur-sm border border-slate-800/80 hover:border-gold-500/30 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner appearance-none cursor-pointer"
+              style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%2394a3b8\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")', backgroundPosition: 'right 0.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
+            >
+              <option value="">Any Time</option>
+              <option value="Morning (10 AM - 1 PM)">Morning (10 AM - 1 PM)</option>
+              <option value="Afternoon (1 PM - 4 PM)">Afternoon (1 PM - 4 PM)</option>
+              <option value="Evening (4 PM - 7 PM)">Evening (4 PM - 7 PM)</option>
+            </select>
+          </div>
+        </div>
+      )}
 
       <div className="group">
         <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">

@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Phone,
   MessageSquare,
@@ -23,7 +23,10 @@ import {
   ChevronDown,
   Eye,
   Activity,
-  Heart
+  Heart,
+  Volume2,
+  Tv,
+  HelpCircle
 } from 'lucide-react';
 
 import Header from '@/components/Header';
@@ -45,6 +48,84 @@ export default function Home() {
   const [modalTitle, setModalTitle] = useState('Request Details');
   const [modalSubtitle, setModalSubtitle] = useState('Please register your interest to receive exclusive details.');
   const [openFaq, setOpenFaq] = useState<string | null>(null);
+
+  // 1. Countdown timer state
+  const [timeLeft, setTimeLeft] = useState({ days: 2, hours: 14, minutes: 38, seconds: 15 });
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        if (prev.days > 0) return { days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
+        return prev;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // 2. Social proof notifications
+  const [socialProof, setSocialProof] = useState<string | null>(null);
+  const [showSocialProof, setShowSocialProof] = useState(false);
+  useEffect(() => {
+    const messages = [
+      "Amit S. from Baner just booked a site visit.",
+      "Sneha M. from Wakad downloaded the Cost Sheet 2 mins ago.",
+      "Rahul P. from Hinjewadi requested a VVIP callback.",
+      "Karan J. from Pune downloaded the project brochure.",
+      "Priya K. from Mumbai enquired about the 3 BHK Duplex."
+    ];
+    let index = 0;
+    const initialDelay = setTimeout(() => {
+      setSocialProof(messages[index]);
+      setShowSocialProof(true);
+      
+      let hideTimeout = setTimeout(() => setShowSocialProof(false), 6000);
+      
+      const interval = setInterval(() => {
+        index = (index + 1) % messages.length;
+        setSocialProof(messages[index]);
+        setShowSocialProof(true);
+        hideTimeout = setTimeout(() => setShowSocialProof(false), 6000);
+      }, 15000);
+      
+      return () => {
+        clearInterval(interval);
+        clearTimeout(hideTimeout);
+      };
+    }, 5000);
+    return () => clearTimeout(initialDelay);
+  }, []);
+
+  // 3. Calculator state variables
+  const [calculatorBhk, setCalculatorBhk] = useState<'2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex'>('2bhk');
+  const [tenureYears, setTenureYears] = useState<number>(20);
+  const [downPaymentPct, setDownPaymentPct] = useState<number>(20);
+
+  const getPriceForBhk = (bhk: typeof calculatorBhk) => {
+    switch (bhk) {
+      case '2bhk': return 7790000;
+      case '2.5bhk': return 9850000;
+      case '3bhk': return 11500000;
+      case '3bhk-duplex': return 13800000;
+    }
+  };
+
+  const calculateEmi = () => {
+    const principal = getPriceForBhk(calculatorBhk) * (1 - downPaymentPct / 100);
+    const annualInterestRate = 8.5; // Average Indian Home Loan Interest rate
+    const monthlyRate = annualInterestRate / 12 / 100;
+    const totalMonths = tenureYears * 12;
+    const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+    return isNaN(emi) ? 0 : Math.round(emi);
+  };
+
+  // 4. Gallery Walkthrough Tabs
+  const [activeGalleryTab, setActiveGalleryTab] = useState<'photos' | 'videos'>('photos');
+
+  // 5. Travel Time commute traffic toggle
+  const [isTrafficPeak, setIsTrafficPeak] = useState<boolean>(false);
+
 
   const openUnlockModal = (source: string, title: string, subtitle?: string) => {
     setModalSource(source);
@@ -70,7 +151,7 @@ export default function Home() {
   } as any;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-gold-500 selection:text-slate-950">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-gold-500 selection:text-slate-950 pb-20 md:pb-0">
       <Header />
 
       {/* 1. CINEMATIC HERO SECTION */}
@@ -198,6 +279,14 @@ export default function Home() {
                   Register today to get guaranteed best inventory & booking offers.
                 </p>
 
+                {/* Countdown Timer */}
+                <div className="flex items-center justify-center gap-2.5 mb-5 bg-slate-950/60 p-2 border border-slate-900 rounded-lg shadow-inner">
+                  <span className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Offer ends in:</span>
+                  <span className="text-gold-400 text-xs font-mono font-bold tracking-widest">
+                    {String(timeLeft.days).padStart(2, '0')}d : {String(timeLeft.hours).padStart(2, '0')}h : {String(timeLeft.minutes).padStart(2, '0')}m : {String(timeLeft.seconds).padStart(2, '0')}s
+                  </span>
+                </div>
+
                 <LeadCaptureForm source="hero-form" project="Gera Winds of Joy" />
               </div>
             </motion.div>
@@ -269,6 +358,55 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
+
+          {/* ChildCentric Academy Spotlight Section */}
+          <div className="mt-24 border-t border-slate-900/60 pt-20">
+            <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+              <span className="text-[9px] font-bold text-gold-400 uppercase tracking-widest">
+                Exclusively at Winds of Joy & Joy on the Treetops
+              </span>
+              <h4 className="section-heading text-2xl font-bold text-white uppercase tracking-wider">
+                Celebrity-Led <span className="gold-gradient-text italic">Academies</span>
+              </h4>
+              <p className="text-[11px] text-slate-500 font-light">
+                Gera's signature concept brings world-class sports, arts, and cognitive academies directly to your doorstep. No travel time, just growth.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {[
+                { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: '🏏', desc: 'Professional cricket training infrastructure & nets.' },
+                { name: 'Bhupathi Tennis', lead: 'Mahesh Bhupathi', icon: '🎾', desc: 'World-standard tennis coaching courts & physical training.' },
+                { name: 'Shiamak Dance', lead: 'Shiamak Davar', icon: '💃', desc: 'Celebrity style dance training programs for all ages.' },
+                { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: '🏊', desc: 'Structured swimming training syllabus in state-of-art pools.' },
+                { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: '🎵', desc: 'Vocal, classical, and instrumental training programs.' },
+              ].map((academy, idx) => (
+                <div key={idx} className="glassmorphism p-5 rounded-xl border border-slate-900/50 hover:border-gold-500/20 text-center flex flex-col justify-between group transition-all duration-300">
+                  <div>
+                    <span className="text-3xl mb-3 block filter saturate-100 group-hover:scale-110 transition-transform duration-300">{academy.icon}</span>
+                    <h5 className="text-[11px] font-extrabold text-white uppercase tracking-wide leading-snug">{academy.name}</h5>
+                    <span className="text-[9px] text-gold-400 font-bold block mt-1 uppercase tracking-widest">{academy.lead}</span>
+                  </div>
+                  <p className="text-[9px] text-slate-500 mt-3 font-light leading-relaxed">
+                    {academy.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+            
+            <div className="text-center mt-10">
+              <button
+                onClick={() => openUnlockModal(
+                  'cc-academies',
+                  'Request Academy Schedule & Details',
+                  'Get a detailed brochure of all academy programs, class schedules, and trainer profiles.'
+                )}
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-slate-900 border border-slate-800 hover:border-gold-500/30 text-gold-400 hover:text-white text-[9px] font-bold uppercase tracking-widest rounded-lg transition-colors cursor-pointer"
+              >
+                <span>Request Academy Brochure</span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -361,6 +499,127 @@ export default function Home() {
                 <Download className="h-4 w-4" />
                 <span>Get Detailed Cost Sheet</span>
               </button>
+            </div>
+          </div>
+
+          {/* Interactive Price & Monthly EMI Estimator Slider */}
+          <div className="max-w-4xl mx-auto mt-16 p-8 bg-slate-950 border border-slate-900 rounded-2xl shadow-xl backdrop-blur-sm">
+            <div className="text-center mb-8 space-y-2">
+              <h4 className="section-heading text-xl font-bold text-white uppercase tracking-wider">
+                Interactive <span className="gold-gradient-text italic">EMI & Budget Planner</span>
+              </h4>
+              <p className="text-[11px] text-slate-500 font-light">
+                Configure your home preference, adjust your down payment and loan tenure, and see your tentative monthly EMI.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                {/* 1. BHK Selection */}
+                <div className="space-y-2.5">
+                  <span className="block text-[10px] font-bold text-gold-400 uppercase tracking-widest">Select Configuration:</span>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[
+                      { key: '2bhk', label: '2 BHK' },
+                      { key: '2.5bhk', label: '2.5 BHK' },
+                      { key: '3bhk', label: '3 BHK' },
+                      { key: '3bhk-duplex', label: 'Duplex' },
+                    ].map((btn) => (
+                      <button
+                        key={btn.key}
+                        onClick={() => setCalculatorBhk(btn.key as any)}
+                        className={`py-2 px-1 text-[10px] font-bold rounded-lg uppercase tracking-wider transition-all cursor-pointer ${
+                          calculatorBhk === btn.key
+                            ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 font-extrabold shadow-md'
+                            : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        {btn.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. Down Payment Slider */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-[10px] uppercase font-bold tracking-wider">
+                    <span className="text-slate-400">Down Payment ({downPaymentPct}%):</span>
+                    <span className="text-gold-400">₹{((getPriceForBhk(calculatorBhk) * downPaymentPct) / 100).toLocaleString('en-IN')}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={10}
+                    max={80}
+                    step={5}
+                    value={downPaymentPct}
+                    onChange={(e) => setDownPaymentPct(Number(e.target.value))}
+                    className="w-full h-1 bg-slate-900 rounded-lg appearance-none cursor-pointer accent-gold-500 range-slider-thumb"
+                  />
+                  <div className="flex justify-between text-[9px] text-slate-600 font-bold uppercase tracking-wider">
+                    <span>10% (Min)</span>
+                    <span>80% (Max)</span>
+                  </div>
+                </div>
+
+                {/* 3. Loan Tenure Slider */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-[10px] uppercase font-bold tracking-wider">
+                    <span className="text-slate-400">Loan Tenure:</span>
+                    <span className="text-gold-400">{tenureYears} Years</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={5}
+                    max={30}
+                    step={1}
+                    value={tenureYears}
+                    onChange={(e) => setTenureYears(Number(e.target.value))}
+                    className="w-full h-1 bg-slate-900 rounded-lg appearance-none cursor-pointer accent-gold-500 range-slider-thumb"
+                  />
+                  <div className="flex justify-between text-[9px] text-slate-600 font-bold uppercase tracking-wider">
+                    <span>5 Yrs</span>
+                    <span>30 Yrs</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* EMI Calculation Summary Card */}
+              <div className="glassmorphism p-6 rounded-xl border border-gold-500/10 text-center space-y-4 relative overflow-hidden flex flex-col justify-between h-full min-h-[220px]">
+                <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] rounded-full bg-gold-500/5 blur-[50px] pointer-events-none" />
+                
+                <div>
+                  <span className="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Estimated Monthly EMI</span>
+                  <div className="text-2xl sm:text-4xl font-extrabold text-gold-400 font-mono mt-1 select-all">
+                    ₹{calculateEmi().toLocaleString('en-IN')}
+                    <span className="text-xs text-slate-400 font-sans font-light">/month*</span>
+                  </div>
+                  <p className="text-[9px] text-slate-500 mt-2 font-light">
+                    Calculated at base rate of 8.5% interest. Actual rates may vary by bank.
+                  </p>
+                </div>
+
+                <div className="border-t border-slate-900 pt-4 text-left space-y-2">
+                  <div className="flex justify-between text-[10px]">
+                    <span className="text-slate-400">Tentative Property Value:</span>
+                    <span className="text-white font-bold">₹{(getPriceForBhk(calculatorBhk) / 100000).toFixed(2)} Lakhs*</span>
+                  </div>
+                  <div className="flex justify-between text-[10px]">
+                    <span className="text-slate-400">Home Loan Principal:</span>
+                    <span className="text-white font-bold">₹{((getPriceForBhk(calculatorBhk) * (1 - downPaymentPct / 100)) / 100000).toFixed(2)} Lakhs*</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => openUnlockModal(
+                    'emi-loan-check',
+                    'Check Home Loan Eligibility & Offers',
+                    `Request customized down payment plan and bank partner deals for ${calculatorBhk.toUpperCase()} configuration.`
+                  )}
+                  className="w-full py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg transition-all hover:scale-[1.01] cursor-pointer"
+                >
+                  Apply & Pre-Approve Loan
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -495,46 +754,111 @@ export default function Home() {
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
           </div>
 
-          {/* Asymmetric Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              { label: 'Tower Elevation', path: '/images/gallery-1.jpg', text: 'High-res view of the development', span: 'md:row-span-2 aspect-[3/4] md:aspect-auto' },
-              { label: 'Serene Lifestyle', path: '/images/gallery-2.jpg', text: 'Luxurious family living', span: 'aspect-video' },
-              { label: 'Smart Investment', path: '/images/gallery-3.jpg', text: 'Premium configurations', span: 'aspect-video' }
-            ].map((img, idx) => (
-              <div
-                key={idx}
-                className={`relative overflow-hidden rounded-xl border border-slate-900/50 group cursor-pointer bg-slate-900 ${img.span}`}
-                onClick={() => openUnlockModal(
-                  'gallery', 
-                  'View Premium HD Gallery',
-                  'Access our exclusive collection of high-definition project renders and walkthroughs.'
-                )}
-              >
+          {/* Gallery Segment Switcher */}
+          <div className="flex justify-center gap-2 mb-10 bg-slate-900/40 p-1 rounded-xl border border-slate-900/60 max-w-xs mx-auto">
+            <button
+              onClick={() => setActiveGalleryTab('photos')}
+              className={`flex-1 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                activeGalleryTab === 'photos'
+                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 font-extrabold shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Renders & Photos
+            </button>
+            <button
+              onClick={() => setActiveGalleryTab('videos')}
+              className={`flex-1 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                activeGalleryTab === 'videos'
+                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 font-extrabold shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Video Walkthroughs
+            </button>
+          </div>
+
+          {activeGalleryTab === 'photos' ? (
+            /* Asymmetric Bento Grid */
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                { label: 'Tower Elevation', path: '/images/gallery-1.jpg', text: 'High-res view of the development', span: 'md:row-span-2 aspect-[3/4] md:aspect-auto' },
+                { label: 'Serene Lifestyle', path: '/images/gallery-2.jpg', text: 'Luxurious family living', span: 'aspect-video' },
+                { label: 'Smart Investment', path: '/images/gallery-3.jpg', text: 'Premium configurations', span: 'aspect-video' }
+              ].map((img, idx) => (
+                <div
+                  key={idx}
+                  className={`relative overflow-hidden rounded-xl border border-slate-900/50 group cursor-pointer bg-slate-900 ${img.span}`}
+                  onClick={() => openUnlockModal(
+                    'gallery', 
+                    'View Premium HD Gallery',
+                    'Access our exclusive collection of high-definition project renders and walkthroughs.'
+                  )}
+                >
+                  <Image
+                    src={img.path}
+                    alt={img.label}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60 filter brightness-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 text-left">
+                    <h6 className="text-xs font-bold uppercase tracking-wider text-white">
+                      {img.label}
+                    </h6>
+                    <p className="text-[10px] text-gold-400 uppercase tracking-widest font-semibold mt-0.5">
+                      {img.text}
+                    </p>
+                  </div>
+                  {/* Hover Eye indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-slate-950/40 backdrop-blur-[1px] transition-all">
+                    <span className="p-2.5 bg-slate-900 border border-gold-500/30 rounded-full text-gold-400 shadow-lg">
+                      <Eye className="h-4 w-4" />
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Video Walkthrough Player Showcase */
+            <div className="max-w-3xl mx-auto bg-slate-950 border border-slate-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video group">
+              <div className="absolute inset-0 z-0 bg-slate-900 flex items-center justify-center">
                 <Image
-                  src={img.path}
-                  alt={img.label}
+                  src="/images/hero-bg.jpg"
+                  alt="Gera Walkthrough Preview"
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60 filter brightness-90"
+                  className="object-cover opacity-50 filter brightness-75 transition-all group-hover:scale-102"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
-                <div className="absolute bottom-4 left-4 text-left">
-                  <h6 className="text-xs font-bold uppercase tracking-wider text-white">
-                    {img.label}
-                  </h6>
-                  <p className="text-[10px] text-gold-400 uppercase tracking-widest font-semibold mt-0.5">
-                    {img.text}
-                  </p>
-                </div>
-                {/* Hover Eye indicator */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-slate-950/40 backdrop-blur-[1px] transition-all">
-                  <span className="p-2.5 bg-slate-900 border border-gold-500/30 rounded-full text-gold-400 shadow-lg">
-                    <Eye className="h-4 w-4" />
-                  </span>
+              </div>
+              
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-10 p-6 space-y-4">
+                <button
+                  onClick={() => openUnlockModal(
+                    'gallery-walkthrough',
+                    'Unlock Virtual Show Flat Walkthrough',
+                    'Register below to receive instant access link to our virtual show apartment walkthrough video & high-resolution brand movies.'
+                  )}
+                  className="w-16 h-16 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-115 active:scale-95 cursor-pointer"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6 ml-1 text-slate-950">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+                <div className="text-center">
+                  <h4 className="text-sm font-bold uppercase tracking-wider text-white">Gera Winds of Joy Walkthrough</h4>
+                  <span className="text-[10px] text-gold-400 font-bold tracking-widest block mt-1 uppercase">Sample Flat 3D Tour</span>
                 </div>
               </div>
-            ))}
-          </div>
+
+              {/* RERA and disclaimer small print */}
+              <div className="absolute bottom-4 right-4 flex items-center gap-1 bg-slate-950/80 border border-slate-900/60 px-3 py-1 rounded text-[8px] text-slate-500 font-bold uppercase tracking-wider z-10">
+                <Tv className="w-3 h-3 text-gold-400" />
+                <span>Virtual Tour 4K</span>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -578,21 +902,51 @@ export default function Home() {
               </div>
 
               {/* Tab lists */}
-              <div className="bg-slate-950 border border-slate-900 p-6 rounded-2xl min-h-[200px] flex flex-col justify-between">
-                <ul className="space-y-4">
+              <div className="bg-slate-950 border border-slate-900 p-6 rounded-2xl min-h-[260px] flex flex-col justify-between space-y-4">
+                {/* Traffic toggle */}
+                <div className="flex items-center justify-between bg-slate-900/50 p-2 rounded-lg border border-slate-900 shadow-inner">
+                  <span className="text-[9px] uppercase tracking-wider text-slate-400 font-bold flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-gold-400" />
+                    Commute Speed:
+                  </span>
+                  <div className="flex gap-1.5">
+                    <button
+                      onClick={() => setIsTrafficPeak(false)}
+                      className={`py-1 px-2 rounded text-[8px] font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                        !isTrafficPeak
+                          ? 'bg-emerald-950/20 text-emerald-400 border border-emerald-800/30'
+                          : 'text-slate-500 hover:text-slate-300'
+                      }`}
+                    >
+                      Clear
+                    </button>
+                    <button
+                      onClick={() => setIsTrafficPeak(true)}
+                      className={`py-1 px-2 rounded text-[8px] font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                        isTrafficPeak
+                          ? 'bg-red-950/20 text-red-400 border border-red-800/30 animate-pulse'
+                          : 'text-slate-500 hover:text-slate-300'
+                      }`}
+                    >
+                      Traffic Peak
+                    </button>
+                  </div>
+                </div>
+
+                <ul className="space-y-3.5">
                   {activeLocationTab === 'connectivity' && (
                     <>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Megapolis Circle</span>
-                        <span className="text-gold-400 font-bold">2 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '4 Mins' : '2 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Hinjewadi-Shivajinagar Metro</span>
-                        <span className="text-gold-400 font-bold">5 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '9 Mins' : '5 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Pune-Bangalore Highway</span>
-                        <span className="text-gold-400 font-bold">15 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '25 Mins' : '15 Mins'}</span>
                       </li>
                     </>
                   )}
@@ -600,15 +954,15 @@ export default function Home() {
                     <>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">TCS & Cognizant Hinjewadi</span>
-                        <span className="text-gold-400 font-bold">4 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '8 Mins' : '4 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Infosys Phase 3 Campus</span>
-                        <span className="text-gold-400 font-bold">5 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '10 Mins' : '5 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Wipro Phase 2 Campus</span>
-                        <span className="text-gold-400 font-bold">8 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '16 Mins' : '8 Mins'}</span>
                       </li>
                     </>
                   )}
@@ -616,15 +970,15 @@ export default function Home() {
                     <>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Alard Public School</span>
-                        <span className="text-gold-400 font-bold">3 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '6 Mins' : '3 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Blue Ridge Public School</span>
-                        <span className="text-gold-400 font-bold">10 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '18 Mins' : '10 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Symbiosis International University</span>
-                        <span className="text-gold-400 font-bold">12 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '22 Mins' : '12 Mins'}</span>
                       </li>
                     </>
                   )}
@@ -632,15 +986,15 @@ export default function Home() {
                     <>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Sanjivani Hospital</span>
-                        <span className="text-gold-400 font-bold">8 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '12 Mins' : '8 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Ruby Hall Clinic Hinjewadi</span>
-                        <span className="text-gold-400 font-bold">12 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '18 Mins' : '12 Mins'}</span>
                       </li>
                       <li className="flex justify-between items-center text-xs">
                         <span className="text-slate-300 font-medium">Lifepoint Multispecialty Hospital</span>
-                        <span className="text-gold-400 font-bold">15 Mins</span>
+                        <span className="text-gold-400 font-bold">{isTrafficPeak ? '25 Mins' : '15 Mins'}</span>
                       </li>
                     </>
                   )}
@@ -826,6 +1180,83 @@ export default function Home() {
                 )}
               </div>
             ))}
+            
+            {/* Inline Quick Callback form under FAQs */}
+            <div className="mt-12 p-6 glassmorphism rounded-xl border border-gold-500/10 text-center max-w-xl mx-auto relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 rounded-full bg-gold-500/3 blur-[30px] pointer-events-none" />
+              <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-2 flex items-center justify-center gap-1.5">
+                <HelpCircle className="w-4 h-4 text-gold-400" />
+                Still have questions?
+              </h4>
+              <p className="text-[11px] text-slate-400 mb-4 font-light">
+                Enter your mobile number below, and our senior sales manager will call you back within 10 minutes.
+              </p>
+              <form 
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const target = e.currentTarget as HTMLFormElement;
+                  const phoneInput = target.elements.namedItem('callbackPhone') as HTMLInputElement;
+                  const phone = phoneInput.value;
+                  if (!/^[6-9]\d{9}$/.test(phone)) {
+                    alert('Please enter a valid 10-digit Indian mobile number');
+                    return;
+                  }
+                  
+                  try {
+                    const response = await fetch('/api/leads', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        name: 'Quick Callback Request',
+                        phone: phone,
+                        budget: 'Unspecified',
+                        configuration: 'Unspecified',
+                        message: 'Requested direct callback from FAQ section.',
+                        source: 'faq-callback',
+                        project: 'Gera Winds of Joy'
+                      })
+                    });
+                    if (response.ok) {
+                      phoneInput.value = '';
+                      const confetti = (await import('canvas-confetti')).default;
+                      confetti({
+                        particleCount: 50,
+                        spread: 50,
+                        colors: ['#d4af37', '#ffffff']
+                      });
+                      alert('Callback request submitted! We will call you shortly.');
+                    } else {
+                      alert('Failed to submit callback. Please try again.');
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    alert('An error occurred. Please try again.');
+                  }
+                }}
+                className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto"
+              >
+                <div className="relative flex-grow">
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-300 text-xs font-bold font-mono">+91</span>
+                  <input
+                    type="tel"
+                    name="callbackPhone"
+                    maxLength={10}
+                    required
+                    placeholder="98765 43210"
+                    onInput={(e) => {
+                      e.currentTarget.value = e.currentTarget.value.replace(/\D/g, '');
+                    }}
+                    className="w-full bg-slate-900/50 border border-slate-800 focus:border-gold-500 rounded-lg pl-12 pr-4 py-2.5 text-white text-xs placeholder-slate-500 focus:outline-none focus:ring-4 focus:ring-gold-500/10 transition-all"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg hover:opacity-95 transition-all whitespace-nowrap cursor-pointer shadow-md"
+                >
+                  Request Callback
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
@@ -970,6 +1401,61 @@ export default function Home() {
           />
         </DialogContent>
       </Dialog>
+
+      {/* SOCIAL PROOF NOTIFICATION TOAST */}
+      <AnimatePresence>
+        {showSocialProof && socialProof && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.4 }}
+            className="fixed bottom-24 md:bottom-6 left-4 md:left-6 z-40 bg-slate-950/90 backdrop-blur-md border border-gold-500/20 p-4 rounded-xl shadow-2xl flex items-center gap-3.5 max-w-sm"
+          >
+            <div className="relative flex shrink-0">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
+            </div>
+            <div className="text-left">
+              <span className="text-[9px] uppercase tracking-widest text-gold-400 font-bold block mb-0.5">Live Activity</span>
+              <p className="text-[11px] text-slate-200 font-semibold leading-relaxed">
+                {socialProof}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* MOBILE STICKY BOTTOM ACTION DOCK */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-md border-t border-gold-500/20 py-2.5 px-4 flex items-center justify-between gap-2.5 mobile-action-dock">
+        <a
+          href="tel:+919673000053"
+          className="flex-1 flex items-center justify-center gap-1.5 py-3 border border-slate-800 bg-slate-900 text-slate-200 text-[10px] font-bold uppercase tracking-wider rounded-lg"
+        >
+          <Phone className="h-3.5 w-3.5 text-gold-400" />
+          <span>Call Sales</span>
+        </a>
+        <a
+          href="https://wa.me/919673000053?text=Hi%21%20I%20am%20interested%20in%20Gera%20Hinjewadi%20and%20would%20like%20to%20get%20more%20details."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 flex items-center justify-center gap-1.5 py-3 border border-emerald-800/30 bg-emerald-950/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider rounded-lg"
+        >
+          <MessageSquare className="h-3.5 w-3.5 text-emerald-400" />
+          <span>WhatsApp</span>
+        </a>
+        <button
+          onClick={() => openUnlockModal(
+            'sticky-dock-visit',
+            'Book Luxury Site Visit',
+            'Schedule a complimentary site visit with luxury pick-up and drop service.'
+          )}
+          className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg cursor-pointer"
+        >
+          <Calendar className="h-3.5 w-3.5" />
+          <span>Book Visit</span>
+        </button>
+      </div>
     </div>
   );
 }

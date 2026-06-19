@@ -12,6 +12,8 @@ const LeadSchema = z.object({
   budget: z.string().min(1, 'Budget is required'),
   configuration: z.string().min(1, 'Configuration is required'),
   message: z.string().optional().or(z.literal('')),
+  visitDate: z.string().optional().or(z.literal('')),
+  visitTimeSlot: z.string().optional().or(z.literal('')),
   project: z.string().default('Gera Winds of Joy'),
   source: z.string().default('website'),
 });
@@ -40,6 +42,13 @@ export async function POST(request: Request) {
     }
 
     const leadData = validationResult.data;
+    
+    // Compose message with time slot if available
+    let finalMessage = leadData.message || null;
+    if (leadData.visitTimeSlot && leadData.visitTimeSlot.trim().length > 0) {
+      const timeSlotStr = `[Preferred Time: ${leadData.visitTimeSlot}]`;
+      finalMessage = finalMessage ? `${finalMessage}\n${timeSlotStr}` : timeSlotStr;
+    }
 
     // Check if Supabase is properly configured
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -55,10 +64,11 @@ export async function POST(request: Request) {
           email: leadData.email || null,
           budget: leadData.budget,
           configuration: leadData.configuration,
-          message: leadData.message || null,
+          message: finalMessage,
           project: leadData.project,
           source: leadData.source,
-          status: 'New'
+          status: 'New',
+          site_visit_date: leadData.visitDate || null
         }])
         .select();
 
@@ -76,12 +86,12 @@ export async function POST(request: Request) {
         email: leadData.email || null,
         budget: leadData.budget,
         configuration: leadData.configuration,
-        message: leadData.message || null,
+        message: finalMessage,
         project: leadData.project,
         source: leadData.source,
         status: 'New',
         notes: null,
-        site_visit_date: null,
+        site_visit_date: leadData.visitDate || null,
         created_at: new Date().toISOString(),
       };
     }
