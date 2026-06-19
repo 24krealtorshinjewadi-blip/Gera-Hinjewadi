@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -67,6 +67,25 @@
   --color-slate-800: var(--slate-800);
   --color-slate-900: var(--slate-900);
   --color-slate-950: var(--slate-950);
+
+  /* Dynamic Gold Color Mappings */
+  --color-gold-50: #fdfbf7;
+  --color-gold-100: #fbf7ed;
+  --color-gold-200: #f4eace;
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: #7c5f3b;
+  --color-gold-900: #5f462c;
+  --color-gold-950: #422f1d;
+  
+  --color-luxury-blue-950: #080b11;
+  --color-luxury-blue-900: #0e131f;
+  --color-luxury-blue-800: #172033;
+  --color-luxury-blue-700: #22304d;
+  --color-white: var(--white);
 }
 
 :root {
@@ -100,17 +119,30 @@
   --danger: #dc2626;
 
   /* Dynamic Slate Override (Light Mode - inverted so slate-950 is light and slate-50 is dark) */
-  --slate-50: #0f172a;
-  --slate-100: #1e293b;
-  --slate-200: #334155;
-  --slate-300: #475569;
-  --slate-400: #64748b;
-  --slate-500: #94a3b8;
+  --slate-50: #020617;
+  --slate-100: #0f172a;
+  --slate-200: #1e293b;
+  --slate-300: #334155;
+  --slate-400: #475569;
+  --slate-500: #64748b;
   --slate-600: #cbd5e1;
   --slate-700: #e2e8f0;
   --slate-800: #f1f5f9;
-  --slate-900: #f8fafc;
-  --slate-950: #ffffff;
+  --slate-900: #ffffff;
+  --slate-950: #f8fafc;
+
+  /* Dynamic Gold Override (Light Mode) */
+  --gold-300: #9f7e4f;
+  --gold-400: #7c5f3b;
+  --gold-500: #5f462c;
+  --gold-600: #422f1d;
+  --gold-700: #352516;
+  --gold-glow: rgba(159, 126, 79, 0.08);
+  --gold-glow-hover: rgba(159, 126, 79, 0.18);
+  --gold-border-hover: rgba(159, 126, 79, 0.4);
+
+  /* Dynamic White Mapping (Light Mode ➔ Dark Slate) */
+  --white: #0f172a;
 }
 
 .dark {
@@ -154,24 +186,19 @@
   --slate-800: #1e293b;
   --slate-900: #0f172a;
   --slate-950: #080b11;
-}
 
-@theme {
-  --color-gold-50: #fdfbf7;
-  --color-gold-100: #fbf7ed;
-  --color-gold-200: #f4eace;
-  --color-gold-300: #ebdba5;
-  --color-gold-400: #dfc776;
-  --color-gold-500: #d4af37;
-  --color-gold-600: #c5a880;
-  --color-gold-700: #9f7e4f;
-  --color-gold-800: #7c5f3b;
-  --color-gold-900: #5f462c;
-  --color-gold-950: #422f1d;
-  --color-luxury-blue-950: #080b11;
-  --color-luxury-blue-900: #0e131f;
-  --color-luxury-blue-800: #172033;
-  --color-luxury-blue-700: #22304d;
+  /* Dynamic Gold Override (Dark Mode) */
+  --gold-300: #ebdba5;
+  --gold-400: #dfc776;
+  --gold-500: #d4af37;
+  --gold-600: #c5a880;
+  --gold-700: #9f7e4f;
+  --gold-glow: rgba(212, 175, 55, 0.15);
+  --gold-glow-hover: rgba(212, 175, 55, 0.3);
+  --gold-border-hover: rgba(212, 175, 55, 0.5);
+
+  /* Dynamic White Mapping (Dark Mode ➔ White) */
+  --white: #ffffff;
 }
 
 @layer base {
@@ -185,6 +212,11 @@
   html {
     scroll-behavior: smooth;
   }
+  
+  /* Smooth transitions for key elements on theme change */
+  body, header, footer, section, button, input, select, textarea, a, svg {
+    transition: background-color 250ms ease, border-color 250ms ease, color 250ms ease, box-shadow 250ms ease;
+  }
 }
 
 /* Premium Custom Utilities */
@@ -193,6 +225,13 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: background-color 250ms ease, border-color 250ms ease;
+}
+
+:root:not(.dark) .glassmorphism {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(159, 126, 79, 0.2);
+  box-shadow: 0 10px 30px rgba(159, 126, 79, 0.05);
 }
 
 .glassmorphism-light {
@@ -203,14 +242,45 @@
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #f4eace 0%, #d4af37 50%, #7c5f3b 100%);
+  background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-500) 50%, var(--gold-700) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gold-gradient-bg {
-  background: linear-gradient(135deg, #d4af37 0%, #c5a880 50%, #9f7e4f 100%);
+  background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 50%, var(--gold-600) 100%);
+}
+
+/* Force dark text on gold buttons and gradients in both themes for contrast */
+.gold-gradient-bg, [class*="from-gold-500"] {
+  color: #080b11 !important;
+}
+.gold-gradient-bg *, [class*="from-gold-500"] * {
+  color: #080b11 !important;
+  stroke: #080b11 !important;
+}
+.gold-gradient-bg:hover, [class*="from-gold-500"]:hover {
+  color: #000000 !important;
+}
+
+/* Force dark text on promo banner and direct gold headers */
+.bg-gradient-to-r.from-gold-800 {
+  color: #020617 !important;
+}
+.bg-gradient-to-r.from-gold-800 * {
+  color: #020617 !important;
+}
+
+/* Force high contrast green text for WhatsApp elements in light mode */
+:root:not(.dark) [class*="bg-emerald-950"] {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  color: #047857 !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+:root:not(.dark) [class*="bg-emerald-950"] * {
+  color: #047857 !important;
+  stroke: #047857 !important;
 }
 
 /* Cinematic Animations */
@@ -271,17 +341,17 @@
 /* Thin gold divider */
 .luxury-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, var(--gold-border-hover), transparent);
 }
 
 .gold-border-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 15px var(--gold-glow);
   transition: all 0.3s ease;
 }
 
 .gold-border-glow:hover {
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 25px var(--gold-glow-hover);
+  border-color: var(--gold-border-hover) !important;
 }
 
 /* Custom scrollbar */
@@ -289,20 +359,23 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #080b11;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: var(--border);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: var(--primary);
 }
 
 /* Mobile Sticky Bottom Action Dock */
 .mobile-action-dock {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--gold-border-hover);
+}
+.dark .mobile-action-dock {
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-  border-top: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 /* Interactive Price Slider Styling */
