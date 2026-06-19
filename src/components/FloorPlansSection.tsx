@@ -11,6 +11,13 @@ interface FloorPlansSectionProps {
 export default function FloorPlansSection({ openUnlockModal }: FloorPlansSectionProps) {
   const [activePlanTab, setActivePlanTab] = useState<'2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex'>('2bhk');
 
+  const planImages: Record<'2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex', string> = {
+    '2bhk': '/images/floor-plan-2bhk.png',
+    '2.5bhk': '/images/floor-plan-2.5bhk.png',
+    '3bhk': '/images/floor-plan-3bhk.png',
+    '3bhk-duplex': '/images/floor-plan-3bhk-duplex.png',
+  };
+
   return (
     <section id="floor-plans" className="py-32 bg-slate-950 relative overflow-hidden">
       <div className="luxury-divider w-full" />
@@ -64,7 +71,7 @@ export default function FloorPlansSection({ openUnlockModal }: FloorPlansSection
           {/* Open Floor Plan Showcase - No Lock */}
           <div className="relative border border-slate-900 rounded-2xl overflow-hidden max-w-2xl mx-auto aspect-[4/3] bg-slate-900/20 group">
             <Image
-              src="/floor-plan.png"
+              src={planImages[activePlanTab]}
               alt={`${activePlanTab.toUpperCase()} Floor Plan Layout`}
               fill
               className="object-cover opacity-80 transition-all duration-500 group-hover:scale-[1.02]"
