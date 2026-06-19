@@ -73,12 +73,7 @@ export default function Footer() {
                   +91&nbsp;96730&nbsp;00053
                 </a>
               </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="h-4 w-4 text-gold-400 shrink-0" />
-                <a href="mailto:sales@gerahinjiwadeepune.in" className="text-slate-300 hover:text-gold-400 transition-colors">
-                  sales@gerahinjiwadeepune.in
-                </a>
-              </li>
+
             </ul>
           </div>
 
