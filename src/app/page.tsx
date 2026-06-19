@@ -74,7 +74,7 @@ export default function Home() {
       <Header />
 
       {/* 1. CINEMATIC HERO SECTION */}
-      <section id="overview" className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
+      <section id="overview" className="relative h-screen min-h-[700px] flex items-center pt-20 overflow-hidden">
         {/* Cinematic Background with slow zoom */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
@@ -403,37 +403,35 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Locked Floor Plan Showcase */}
+            {/* Open Floor Plan Showcase - No Lock */}
             <div className="relative border border-slate-900 rounded-2xl overflow-hidden max-w-2xl mx-auto aspect-[4/3] bg-slate-900/20 group">
               <Image
                 src="/floor-plan.png"
                 alt={`${activePlanTab.toUpperCase()} Floor Plan Layout`}
                 fill
-                className="object-cover blur-[8px] opacity-25 filter brightness-50 transition-all duration-500 group-hover:scale-[1.01]"
+                className="object-cover opacity-80 transition-all duration-500 group-hover:scale-[1.02]"
               />
-
-              {/* Centered Glass Lock Overlay */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-slate-950/60 backdrop-blur-[3px] border border-gold-500/10">
-                <div className="bg-slate-900 border border-gold-500/30 p-4 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.15)] mb-4">
-                  <Lock className="h-8 w-8 text-gold-400" />
-                </div>
-                <h4 className="text-lg font-bold text-white uppercase tracking-wider mb-2">
-                  Unlock Layout Details
-                </h4>
-                <p className="text-xs text-slate-400 max-w-xs mb-6">
-                  Verify your details to unlock high-resolution floor layouts, dimensions, and layout configurations.
-                </p>
-                <button
-                  onClick={() => openUnlockModal(
-                    `floor-${activePlanTab}`, 
-                    `Unlock Floor Plan - ${activePlanTab.toUpperCase()}`,
-                    `Register to view high-resolution 2D and 3D floor plan layouts for this configuration.`
-                  )}
-                  className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg shadow-md active:scale-[0.98] transition-all cursor-pointer"
-                >
-                  Unlock High-Res Layout
-                </button>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 text-left">
+                <span className="text-[10px] text-gold-400 uppercase tracking-[0.15em] font-semibold">
+                  {activePlanTab.toUpperCase()} Configuration
+                </span>
               </div>
+            </div>
+
+            {/* Download Full Plan CTA */}
+            <div className="mt-6">
+              <button
+                onClick={() => openUnlockModal(
+                  `floor-${activePlanTab}`, 
+                  `Download HD Floor Plan - ${activePlanTab.toUpperCase()}`,
+                  `Register to receive high-resolution 2D and 3D floor plan layouts for this configuration via email.`
+                )}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-slate-800 hover:border-gold-500/40 bg-slate-900/30 text-slate-300 hover:text-white text-[11px] font-bold uppercase tracking-[0.15em] rounded-lg transition-all cursor-pointer"
+              >
+                <Download className="h-4 w-4 text-gold-500/70" />
+                <span>Download HD Floor Plan</span>
+              </button>
             </div>
           </div>
         </div>
@@ -746,17 +744,29 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Form Card Panel */}
+            {/* Right: Brochure Download Card */}
             <div className="bg-slate-900/30 border border-slate-900 p-8 rounded-2xl relative overflow-hidden text-center">
               <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-gold-500/5 blur-[40px]" />
-              <h4 className="text-lg font-bold text-white uppercase tracking-wider mb-1">
-                Builder Brochure & <span className="gold-gradient-text">Profile</span>
+              <h4 className="section-heading text-xl font-semibold text-white mb-1">
+                Builder Brochure & <span className="gold-gradient-text italic">Profile</span>
               </h4>
-              <p className="text-xs text-slate-400 mb-6">
-                Request a comprehensive builder profile dossier and complete developer project history portfolio.
+              <p className="text-[11px] text-slate-500 mb-6 font-light">
+                Fill in your details below to instantly download the official Gera project brochure.
               </p>
               
-              <LeadCaptureForm source="builder-form" project="Gera Developer Profile" ctaText="Request Profile Details" />
+              <LeadCaptureForm source="builder-brochure" project="Gera Developer Brochure" ctaText="Download Brochure Now" />
+
+              {/* Direct Brochure Download Link - always visible after form */}
+              <div className="mt-4 pt-4 border-t border-slate-900">
+                <a
+                  href="/images/Gera_Brochure.pdf"
+                  download="Gera_Hinjewadi_Official_Brochure.pdf"
+                  className="inline-flex items-center gap-2 text-[10px] text-gold-400/80 hover:text-gold-400 uppercase tracking-[0.15em] font-semibold transition-colors"
+                >
+                  <Download className="h-3.5 w-3.5" />
+                  <span>Download Brochure PDF</span>
+                </a>
+              </div>
             </div>
 
           </div>
