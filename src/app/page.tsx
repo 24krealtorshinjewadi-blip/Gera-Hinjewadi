@@ -296,15 +296,24 @@ export default function Home() {
       </section>
 
       {/* 2. WHY CHOOSE GERA */}
-      <section id="why-choose-gera" className="py-32 bg-slate-950 relative">
+      <section id="why-choose-gera" className="py-32 bg-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Elevations/Aerial Cam night copy.jpeg"
+            alt="Gera Developments Pune premium night elevation view background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Gera Developments
+              Gera Hinjewadi ChildCentric® Homes Legacy
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
-              The Pillars of <span className="gold-gradient-text italic">Landmark Living</span>
+              Why Choose <span className="gold-gradient-text italic">Gera Developments Pune</span>
             </h3>
             <div className="luxury-divider max-w-24 mx-auto mt-4" />
             <p className="text-sm text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
@@ -411,12 +420,21 @@ export default function Home() {
       </section>
 
       {/* 3. PRICE LIST */}
-      <section id="pricing" className="py-32 bg-slate-900/20 relative">
+      <section id="pricing" className="py-32 bg-slate-900/20 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/images/pricing-chart.jpg"
+            alt="Gera Hinjewadi project pricing details chart background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Investment Options
+              Gera Winds of Joy Price List & Offers
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Curated Residences & <span className="gold-gradient-text italic">Exclusive Pricing</span>
@@ -626,12 +644,21 @@ export default function Home() {
       </section>
 
       {/* 4. FLOOR PLANS */}
-      <section id="floor-plans" className="py-32 bg-slate-950 relative">
+      <section id="floor-plans" className="py-32 bg-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/floor-plan.png"
+            alt="Gera Winds of Joy floor plan layout blueprint background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Spatial Excellence
+              Gera Hinjewadi BHK Floor Plans & Master Layout
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Meticulously Planned <span className="gold-gradient-text italic">Layouts</span>
@@ -700,12 +727,21 @@ export default function Home() {
       </section>
 
       {/* 5. AMENITIES */}
-      <section id="amenities" className="py-32 bg-slate-900/20 relative">
+      <section id="amenities" className="py-32 bg-slate-900/20 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Elevations/Go Kart Cam_1.jpeg"
+            alt="Gera Winds of Joy active go karting track amenities background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              World-Class Living
+              Luxury Lifestyle Amenities & Celebrity Academies
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               A Curated World of <span className="gold-gradient-text italic">Experiences</span>
@@ -744,12 +780,21 @@ export default function Home() {
       </section>
 
       {/* 6. GALLERY */}
-      <section id="gallery" className="py-32 bg-slate-950 relative">
+      <section id="gallery" className="py-32 bg-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/images/gallery-1.jpg"
+            alt="Gera Hinjewadi project entrance rendering backdrop"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Visual Showcase
+              Gera Joy on the Treetops & Winds of Joy Gallery
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Project <span className="gold-gradient-text italic">Gallery</span>
@@ -866,12 +911,21 @@ export default function Home() {
       </section>
 
       {/* 7. LOCATION ADVANTAGES */}
-      <section id="location" className="py-32 bg-slate-900/20 relative">
+      <section id="location" className="py-32 bg-slate-900/20 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/images/gallery-2.jpg"
+            alt="Gera Hinjewadi transit connectivity map background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Perfect Proximity
+              Hinjewadi Phase 3 Transit Connectivity & Proximity Map
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Location <span className="gold-gradient-text italic">Advantages</span>
@@ -1063,18 +1117,27 @@ export default function Home() {
       </section>
 
       {/* 8. ABOUT BUILDER */}
-      <section id="builder" className="py-32 bg-slate-950 relative">
+      <section id="builder" className="py-32 bg-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/images/gallery-3.jpg"
+            alt="Gera Developments legacy corporate profile background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             {/* Left Image column */}
             <div className="space-y-8 text-left">
               <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-                Developer Profile
+                Gera Developments legacy in Pune Real Estate
               </span>
               <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white leading-tight">
-                The Legacy of Gera: <br/>50 Years of <span className="gold-gradient-text italic">Landmark Creations</span>
+                The Legacy of Gera Developments: <br/>50 Years of <span className="gold-gradient-text italic">Landmark Creations</span>
               </h3>
               <div className="luxury-divider max-w-24 mt-4" />
               
@@ -1130,13 +1193,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. FAQ */}
-      <section className="py-32 bg-slate-900/20 relative">
+      {/* 9. FAQ SECTION */}
+      <section className="py-32 bg-slate-900/20 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Statics/MAY_CAMPAIGN_DIGITAL_2026_1080x1920 - serenity.jpg"
+            alt="Gera Hinjewadi serenity garden landscaping background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Have Questions?
+              Gera Hinjewadi Frequently Asked Questions (FAQ)
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Frequently Asked <span className="gold-gradient-text italic">Questions</span>
@@ -1265,12 +1337,21 @@ export default function Home() {
       </section>
 
       {/* 10. TESTIMONIALS */}
-      <section className="py-32 bg-slate-950 relative">
+      <section className="py-32 bg-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Statics/MAY_CAMPAIGN_DIGITAL_2026_1080x1920 - invest.jpg"
+            alt="Gera developments resident review testimonials background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
             <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-              Verified Resident Stories
+              Gera Developments Resident Reviews
             </span>
             <h3 className="section-heading text-4xl sm:text-5xl font-semibold text-white">
               Voices of <span className="gold-gradient-text italic">Satisfaction</span>
@@ -1323,11 +1404,20 @@ export default function Home() {
       {/* 11. FINAL CTA SECTION */}
       <section className="py-32 bg-gradient-to-b from-slate-900/40 to-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
-        <div className="absolute inset-0 bg-gold-500/3 blur-[120px] rounded-full scale-50" />
+        {/* Dynamic Watermark Background */}
+        <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Gera Winds of Joy premium drone view background"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gold-500/3 blur-[120px] rounded-full scale-50 z-0" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative space-y-8 pt-8">
           <span className="text-[10px] font-semibold text-gold-400/80 uppercase tracking-[0.25em]">
-            Request Private Exhibition
+            Gera Hinjewadi Site Visit Booking
           </span>
           <h3 className="section-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
             Secure Your Private <br className="sm:hidden" />
