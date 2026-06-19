@@ -40,7 +40,7 @@ export default function FaqSection() {
             {
               id: 'faq-2',
               question: 'What is the construction status & possession date?',
-              answer: 'Gera Winds of Joy is currently under active construction. Possession is scheduled starting October 2028 onwards. The detailed phase-wise possession timelines are registered under MahaRERA IDs P52100054608 and P52100055000.'
+              answer: 'Gera Winds of Joy is currently under active construction. Possession is scheduled starting October 2028 onwards. The detailed phase-wise possession timelines are registered under MahaRERA IDs P52100054608 and P52100077635.'
             },
             {
               id: 'faq-3',

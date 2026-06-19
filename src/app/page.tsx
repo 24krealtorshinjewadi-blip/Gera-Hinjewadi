@@ -189,7 +189,7 @@ export default function Home() {
               {/* RERA */}
               <div className="animate-fade-in-up-delay-3 flex items-center gap-2 text-[10px] text-slate-600 font-medium tracking-wider">
                 <Shield className="h-3 w-3 text-gold-500/50" />
-                <span>RERA: P52100054608 / P52100055000</span>
+                <span>RERA: P52100054608 / P52100077635</span>
               </div>
 
               {/* CTAs */}

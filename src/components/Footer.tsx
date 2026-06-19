@@ -22,7 +22,7 @@ export default function Footer() {
                 Gera Winds of Joy: P52100054608
               </p>
               <p className="text-slate-300 font-medium">
-                Joy on the Treetops: P52100055000
+                Joy on the Treetops: P52100077635
               </p>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function Footer() {
                 MahaRERA Registered Project
               </h5>
               <p className="text-[11px] text-slate-400 mt-1 max-w-xl">
-                This project is registered under MahaRERA registration number <strong>P52100054608</strong> (Gera Winds of Joy) and <strong>P52100055000</strong> (Gera Joy on the Treetops). Details are available on the website <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:underline">maharera.maharashtra.gov.in</a> under registered projects.
+                This project is registered under MahaRERA registration number <strong>P52100054608</strong> (Gera Winds of Joy) and <strong>P52100077635</strong> (Gera Joy on the Treetops). Details are available on the website <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:underline">maharera.maharashtra.gov.in</a> under registered projects.
               </p>
             </div>
           </div>
