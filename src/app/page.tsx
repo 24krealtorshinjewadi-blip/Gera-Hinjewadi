@@ -371,41 +371,65 @@ export default function Home() {
           </motion.div>
 
           {/* ChildCentric Academy Spotlight Section */}
-          <div className="mt-24 border-t border-slate-900/60 pt-20">
-            <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-              <span className="text-[9px] font-bold text-gold-400 uppercase tracking-widest">
-                Exclusively at Winds of Joy & Joy on the Treetops
-              </span>
-              <h4 className="section-heading text-2xl font-bold text-white uppercase tracking-wider">
-                Celebrity-Led <span className="gold-gradient-text italic">Academies</span>
-              </h4>
-              <p className="text-[11px] text-slate-500 font-light">
-                Gera&apos;s signature concept brings world-class sports, arts, and cognitive academies directly to your doorstep. No travel time, just growth.
-              </p>
+          <div className="mt-24 border-t border-slate-900/60 pt-20 relative overflow-hidden rounded-3xl px-4 sm:px-8 py-10 bg-slate-950/10 dark:bg-slate-950/10">
+            {/* Section background image watermark */}
+            <div className="absolute inset-0 z-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none">
+              <Image
+                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80"
+                alt="Premium Sports Complex Backdrop"
+                fill
+                className="object-cover"
+              />
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
-              {[
-                { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: Trophy, desc: 'Professional cricket training infrastructure & nets.' },
-                { name: 'Bhupathi Tennis', lead: 'Mahesh Bhupathi', icon: Target, desc: 'World-standard tennis coaching courts & physical training.' },
-                { name: 'Shiamak Dance', lead: 'Shiamak Davar', icon: Sparkles, desc: 'Celebrity style dance training programs for all ages.' },
-                { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: Waves, desc: 'Structured swimming training syllabus in state-of-art pools.' },
-                { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: Music, desc: 'Vocal, classical, and instrumental training programs.' },
-              ].map((academy, idx) => (
-                <div key={idx} className="relative overflow-hidden p-6 rounded-2xl border bg-slate-900/40 dark:bg-slate-900/40 bg-white/70 border-slate-200/60 dark:border-slate-900/50 hover:border-gold-500/30 dark:hover:border-gold-500/30 text-center flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-gold-500/5">
-                  <div>
-                    <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-gradient-to-br from-gold-500/10 to-transparent border border-gold-500/20 dark:border-gold-500/20 text-gold-500 dark:text-gold-400 group-hover:from-gold-500 group-hover:to-gold-600 group-hover:text-slate-950 group-hover:border-gold-500 transition-all duration-500 group-hover:scale-110 shadow-inner">
-                      <academy.icon className="h-5 w-5 transition-transform duration-500 group-hover:rotate-6" />
+            <div className="relative z-10">
+              <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                <span className="text-[9px] font-bold text-gold-400 uppercase tracking-widest">
+                  Exclusively at Winds of Joy & Joy on the Treetops
+                </span>
+                <h4 className="section-heading text-2xl font-bold text-white uppercase tracking-wider">
+                  Celebrity-Led <span className="gold-gradient-text italic">Academies</span>
+                </h4>
+                <p className="text-[11px] text-slate-500 font-light">
+                  Gera&apos;s signature concept brings world-class sports, arts, and cognitive academies directly to your doorstep. No travel time, just growth.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
+                {[
+                  { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: Trophy, bgImage: 'https://images.unsplash.com/photo-1531415080290-b9b8bf7228c9?auto=format&fit=crop&w=400&q=80', desc: 'Professional cricket training infrastructure & nets.' },
+                  { name: 'Bhupathi Tennis', lead: 'Mahesh Bhupathi', icon: Target, bgImage: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=400&q=80', desc: 'World-standard tennis coaching courts & physical training.' },
+                  { name: 'Shiamak Dance', lead: 'Shiamak Davar', icon: Sparkles, bgImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=400&q=80', desc: 'Celebrity style dance training programs for all ages.' },
+                  { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: Waves, bgImage: 'https://images.unsplash.com/photo-1519766304817-4f37bda74a27?auto=format&fit=crop&w=400&q=80', desc: 'Structured swimming training syllabus in state-of-art pools.' },
+                  { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: Music, bgImage: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=400&q=80', desc: 'Vocal, classical, and instrumental training programs.' },
+                ].map((academy, idx) => (
+                  <div key={idx} className="relative overflow-hidden p-6 rounded-2xl border bg-slate-900/40 dark:bg-slate-900/40 bg-white/70 border-slate-200/60 dark:border-slate-900/50 hover:border-gold-500/30 dark:hover:border-gold-500/30 text-center flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-gold-500/5">
+                    {/* Card background image watermark */}
+                    <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none">
+                      <Image
+                        src={academy.bgImage}
+                        alt={`${academy.name} background`}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent" />
                     </div>
-                    <h5 className="text-[11px] font-extrabold text-slate-900 dark:text-white uppercase tracking-wider leading-snug">{academy.name}</h5>
-                    <span className="text-[9px] text-gold-600 dark:text-gold-400 font-extrabold block mt-1.5 uppercase tracking-widest">{academy.lead}</span>
+
+                    <div className="relative z-10 flex flex-col h-full justify-between">
+                      <div>
+                        <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-gradient-to-br from-gold-500/10 to-transparent border border-gold-500/20 dark:border-gold-500/20 text-gold-500 dark:text-gold-400 group-hover:from-gold-500 group-hover:to-gold-600 group-hover:text-slate-950 group-hover:border-gold-500 transition-all duration-500 group-hover:scale-110 shadow-inner">
+                          <academy.icon className="h-5 w-5 transition-transform duration-500 group-hover:rotate-6" />
+                        </div>
+                        <h5 className="text-[11px] font-extrabold text-slate-900 dark:text-white uppercase tracking-wider leading-snug">{academy.name}</h5>
+                        <span className="text-[9px] text-gold-600 dark:text-gold-400 font-extrabold block mt-1.5 uppercase tracking-widest">{academy.lead}</span>
+                      </div>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-3.5 font-normal leading-relaxed">
+                        {academy.desc}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-3.5 font-normal leading-relaxed">
-                    {academy.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
             
             <div className="text-center mt-12">
               <button
@@ -421,6 +445,7 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
