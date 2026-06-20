@@ -303,7 +303,7 @@ export default function Home() {
         {/* Dynamic Watermark Background */}
         <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
           <Image
-            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Elevations/Aerial Cam night copy.jpeg"
+            src="/gera_assets/FY-2026-27-Geras-Joy-On-The-TreeTops-phase-1-and-2/Elevations/Aerial Cam night copy.jpeg"
             alt="Gera Developments Pune premium night elevation view background"
             fill
             className="object-cover"
@@ -397,10 +397,10 @@ export default function Home() {
 
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
                 {[
-                  { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: Trophy, bgImage: 'https://images.unsplash.com/photo-1531415080290-b9b8bf7228c9?auto=format&fit=crop&w=400&q=80', desc: 'Professional cricket training infrastructure & nets.' },
+                  { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: Trophy, bgImage: 'https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=400&q=80', desc: 'Professional cricket training infrastructure & nets.' },
                   { name: 'Bhupathi Tennis', lead: 'Mahesh Bhupathi', icon: Target, bgImage: 'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=400&q=80', desc: 'World-standard tennis coaching courts & physical training.' },
                   { name: 'Shiamak Dance', lead: 'Shiamak Davar', icon: Sparkles, bgImage: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=400&q=80', desc: 'Celebrity style dance training programs for all ages.' },
-                  { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: Waves, bgImage: 'https://images.unsplash.com/photo-1519766304817-4f37bda74a27?auto=format&fit=crop&w=400&q=80', desc: 'Structured swimming training syllabus in state-of-art pools.' },
+                  { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: Waves, bgImage: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80', desc: 'Structured swimming training syllabus in state-of-art pools.' },
                   { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: Music, bgImage: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=400&q=80', desc: 'Vocal, classical, and instrumental training programs.' },
                 ].map((academy, idx) => (
                   <div key={idx} className="relative overflow-hidden p-6 rounded-2xl border bg-slate-900/40 dark:bg-slate-900/40 bg-white/70 border-slate-200/60 dark:border-slate-900/50 hover:border-gold-500/30 dark:hover:border-gold-500/30 text-center flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-gold-500/5">
@@ -575,7 +575,7 @@ export default function Home() {
         {/* Dynamic Watermark Background */}
         <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
           <Image
-            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Elevations/Go Kart Cam_1.jpeg"
+            src="/gera_assets/FY-2026-27-Geras-Joy-On-The-TreeTops-phase-1-and-2/Elevations/Go Kart Cam_1.jpeg"
             alt="Gera Winds of Joy active go karting track amenities background"
             fill
             className="object-cover"
@@ -714,7 +714,7 @@ export default function Home() {
         {/* Dynamic Watermark Background */}
         <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
           <Image
-            src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Statics/MAY_CAMPAIGN_DIGITAL_2026_1080x1920 - invest.jpg"
+            src="/gera_assets/FY-2026-27-Geras-Joy-On-The-TreeTops-phase-1-and-2/Statics/MAY_CAMPAIGN_DIGITAL_2026_1080x1920 - invest.jpg"
             alt="Gera developments resident review testimonials background"
             fill
             className="object-cover"
