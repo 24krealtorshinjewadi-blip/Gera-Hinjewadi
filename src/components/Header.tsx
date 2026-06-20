@@ -48,9 +48,25 @@ export default function Header() {
         }`}
     >
       {/* 1. TOP PROMO ANNOUNCEMENT BANNER */}
-      <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-1.5 px-4 text-center text-white text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-2 relative overflow-hidden">
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
-        <span>Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!</span>
+      <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-2 text-white text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] relative overflow-hidden w-full flex">
+        <div className="flex animate-marquee whitespace-nowrap shrink-0">
+          <span className="mx-8 flex items-center gap-2">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
+            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
+          </span>
+          <span className="mx-8 flex items-center gap-2">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
+            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
+          </span>
+          <span className="mx-8 flex items-center gap-2">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
+            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
+          </span>
+          <span className="mx-8 flex items-center gap-2">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
+            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
+          </span>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
