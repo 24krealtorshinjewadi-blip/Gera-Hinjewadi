@@ -31,6 +31,10 @@ CREATE TABLE public.agents (
 );
 
 -- Agents RLS
+-- SECURITY NOTE: This application does not use Supabase Auth for dashboard administrators.
+-- Dashboard queries are performed server-side using the `supabaseAdmin` service role client, which bypasses RLS.
+-- Therefore, the "authenticated" policies below prevent any external users (who may sign up using public Supabase Auth)
+-- from accessing agent data, while still documenting the schema intent. Do NOT change "authenticated" to "public".
 ALTER TABLE public.agents ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Allow authenticated read agents"   ON public.agents FOR SELECT TO authenticated USING (true);

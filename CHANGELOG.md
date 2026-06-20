@@ -6,6 +6,20 @@ This project follows [Semantic Versioning](https://semver.org/).
 
 ---
 
+## [2.1.0] – 2026-06-20
+
+### Added
+- **Git Flow Workflow** — Transitioned repository to Git Flow strategy with permanent `master` and `develop` branches.
+- **CI/CD Integration** — Added GitHub Actions workflow to run lint, type-checking, tests, and build on push/PRs.
+- **GitHub Issue/PR Templates** — Added Bug Report, Feature Request, and Pull Request templates.
+- **Branch Security & Protection** — Created `CODEOWNERS` configuration, workflow guide, and defined Branch Protection Rules.
+- **Unit Testing Suite** — Added a Node.js-native unit testing runner configuration and initial test cases.
+
+### Changed
+- **CONTRIBUTING.md & SECURITY.md** — Restructured development guidelines to align with Git Flow branching strategies and repository security policies.
+
+---
+
 ## [2.0.0] – 2026-06-18
 
 ### Added

@@ -39,29 +39,41 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 ## 📋 Development Workflow
 
-1. Create a feature branch from `master`:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+Our project uses the **Git Flow** strategy. All development branches must branch off of and target the `develop` branch. Pushing directly to `master` or `develop` is prohibited.
 
-2. Make your changes and test locally.
+For complete details on our branching strategy and conventions, see our [Git Flow Workflow Guide](docs/git-flow-workflow.md).
 
-3. Ensure the project builds without errors:
-   ```bash
-   npm run build
-   ```
+### Creating a Feature or Fix:
 
-4. Run the linter:
-   ```bash
-   npm run lint
-   ```
+1.  **Checkout to `develop` and sync:**
+    ```bash
+    git checkout develop
+    git pull origin develop
+    ```
 
-5. Commit with a clear, descriptive message:
-   ```bash
-   git commit -m "feat: add agent performance dashboard"
-   ```
+2.  **Create your supporting branch** (use prefixes like `feature/`, `fix/`, `refactor/`, etc.):
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
 
-6. Push and open a Pull Request.
+3.  **Make your changes and test locally:**
+    Ensure linter, tests, and build all pass cleanly:
+    ```bash
+    npm run lint       # Run ESLint check
+    npm run test       # Run unit test suite
+    npm run build      # Verify build compiles
+    ```
+
+4.  **Commit with a clear, descriptive message** following Conventional Commits:
+    ```bash
+    git commit -m "feat: add agent performance dashboard"
+    ```
+
+5.  **Push and open a Pull Request targeting `develop`:**
+    ```bash
+    git push -u origin feature/your-feature-name
+    ```
+    Open the PR on GitHub targeting the **`develop`** branch.
 
 ---
 

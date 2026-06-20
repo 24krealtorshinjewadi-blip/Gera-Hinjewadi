@@ -38,9 +38,15 @@ This platform implements the following security practices:
 - **No hardcoded credentials** anywhere in the codebase.
 - **`.env*` files excluded** from version control via `.gitignore`.
 
+### Repository & Development Security
+- **Branch Protection Rules**: Restrict force pushes, direct commits, and deletion on both `master` and `develop` branches.
+- **Pull Request Review Rules**: All code changes to `master` require a Pull Request, at least 1 approval, and must pass the CI pipeline before merging.
+- **Code Ownership**: Configured code ownership (`.github/CODEOWNERS`) to enforce code reviews by authorized owners.
+- **CI/CD Enforcement**: Actions workflows run automatically on push/PRs to verify linting, typescript types, tests, and build status.
+
 ## Best Practices for Deployment
 
 1. **Change default passwords** — Update `ADMIN_PASSWORD` from the default `admin1234`.
 2. **Generate strong JWT secret** — Use a cryptographically random string (≥ 32 chars).
 3. **Restrict Supabase RLS** — Tighten policies for production environments.
-4. **Enable 2FA** on your Supabase and Vercel accounts.
+4. **Enable 2FA** on your Supabase, Vercel, and GitHub accounts.
