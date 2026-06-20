@@ -18,6 +18,36 @@ const NAV_LINKS = [
   { label: 'Builder', href: '#builder' },
 ];
 
+interface PromoItem {
+  type: 'text' | 'link';
+  content: string;
+  href?: string;
+  icon?: React.ComponentType<{ className?: string }>;
+}
+
+const PROMO_ITEMS: PromoItem[] = [
+  {
+    type: 'text',
+    content: 'Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!',
+  },
+  {
+    type: 'link',
+    href: 'tel:+919673000053',
+    content: 'Call Sales: +91 96730 00053',
+    icon: Phone,
+  },
+  {
+    type: 'link',
+    href: 'https://wa.me/919673000053?text=Hi%21%20I%20am%20interested%20in%20Gera%20Hinjewadi%20and%20would%20like%20to%20get%20more%20details.',
+    content: 'WhatsApp Us for Spot Bookings',
+    icon: MessageSquare,
+  },
+  {
+    type: 'text',
+    content: 'Complimentary Site Pickup & Drop Service Available',
+  },
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,22 +80,44 @@ export default function Header() {
       {/* 1. TOP PROMO ANNOUNCEMENT BANNER */}
       <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-2 text-white text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] relative overflow-hidden w-full flex">
         <div className="flex animate-marquee whitespace-nowrap shrink-0">
-          <span className="mx-8 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
-            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
-          </span>
-          <span className="mx-8 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
-            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
-          </span>
-          <span className="mx-8 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
-            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
-          </span>
-          <span className="mx-8 flex items-center gap-2">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
-            Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!
-          </span>
+          {/* First set of marquee items */}
+          {PROMO_ITEMS.map((item, idx) => (
+            <span key={`set1-${idx}`} className="mx-8 flex items-center gap-2">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
+              {item.type === 'link' && item.href ? (
+                <a
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="hover:underline flex items-center gap-1.5 text-white hover:text-slate-200 transition-colors"
+                >
+                  {item.icon && <item.icon className="h-3 w-3 shrink-0" />}
+                  <span>{item.content}</span>
+                </a>
+              ) : (
+                <span>{item.content}</span>
+              )}
+            </span>
+          ))}
+          {/* Second set of marquee items for seamless loop */}
+          {PROMO_ITEMS.map((item, idx) => (
+            <span key={`set2-${idx}`} className="mx-8 flex items-center gap-2">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
+              {item.type === 'link' && item.href ? (
+                <a
+                  href={item.href}
+                  target={item.href.startsWith('http') ? '_blank' : undefined}
+                  rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="hover:underline flex items-center gap-1.5 text-white hover:text-slate-200 transition-colors"
+                >
+                  {item.icon && <item.icon className="h-3 w-3 shrink-0" />}
+                  <span>{item.content}</span>
+                </a>
+              ) : (
+                <span>{item.content}</span>
+              )}
+            </span>
+          ))}
         </div>
       </div>
 
