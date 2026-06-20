@@ -917,7 +917,7 @@ export default function AdminDashboardPage() {
       {/* EDIT LEAD MODAL DIALOG */}
       {isEditModalOpen && selectedLead && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
-          <div className="glassmorphism max-w-4xl w-full border-gold-500/30 text-white rounded-xl shadow-2xl p-6 space-y-4">
+          <div className="glassmorphism max-w-4xl w-full max-h-[calc(100vh-2rem)] overflow-y-auto border-gold-500/30 text-white rounded-xl shadow-2xl p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-900 pb-3">
               <h3 className="text-base font-extrabold uppercase tracking-wider text-white">
                 CRM Lead File & <span className="gold-gradient-text">Timeline Log</span>

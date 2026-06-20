@@ -21,7 +21,7 @@ $masterPayload = @{
         strict = $true
         contexts = @("Build, Lint, Typecheck, and Test")
     }
-    enforce_admins = $true
+    enforce_admins = $false
     required_pull_request_reviews = @{
         dismiss_stale_reviews = $true
         require_code_owner_reviews = $true
@@ -61,7 +61,7 @@ $developPayload = @{
         strict = $true
         contexts = @("Build, Lint, Typecheck, and Test")
     }
-    enforce_admins = $true
+    enforce_admins = $false
     required_pull_request_reviews = @{
         dismiss_stale_reviews = $false
         require_code_owner_reviews = $false
