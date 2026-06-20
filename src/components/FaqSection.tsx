@@ -13,7 +13,7 @@ export default function FaqSection() {
       {/* Dynamic Watermark Background */}
       <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
         <Image
-          src="/gera_assets/FY-2026-27 Gera's Joy On The TreeTops phase 1 & 2/Statics/MAY_CAMPAIGN_DIGITAL_2026_1080x1920 - serenity.jpg"
+          src="/gera_assets/FY-2026-27-Geras-Joy-On-The-TreeTops-phase-1-and-2/Statics/MAY_CAMPAIGN_DIGITAL_2026_1080x1920 - serenity.jpg"
           alt="Gera Hinjewadi serenity garden landscaping background"
           fill
           className="object-cover"
