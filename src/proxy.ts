@@ -25,8 +25,23 @@ export async function proxy(request: NextRequest) {
     const sessionCookie = request.cookies.get('admin_session');
     const token = sessionCookie?.value;
 
-    const jwtSecret = process.env.JWT_SECRET || 'super_secret_jwt_signing_key_change_me_in_production';
-    const payload = token ? await verifyToken(token, jwtSecret) : null;
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret && process.env.NODE_ENV === 'production') {
+      console.error('FATAL SECURITY ERROR: JWT_SECRET environment variable is missing in production!');
+      if (isCrmApi) {
+        return new NextResponse(
+          JSON.stringify({ error: 'Server Configuration Error: Security token secret is not configured.' }),
+          { status: 500, headers: { 'Content-Type': 'application/json' } }
+        );
+      } else {
+        return new NextResponse(
+          'Internal Server Error: Application security misconfiguration.',
+          { status: 500 }
+        );
+      }
+    }
+    const secretKey = jwtSecret || 'super_secret_jwt_signing_key_change_me_in_production';
+    const payload = token ? await verifyToken(token, secretKey) : null;
 
     if (!payload || payload.role !== 'admin') {
       if (isCrmApi) {

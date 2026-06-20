@@ -13,9 +13,17 @@ export async function POST(request: Request) {
       );
     }
 
-    const jwtSecret = process.env.JWT_SECRET || 'super_secret_jwt_signing_key_change_me_in_production';
+    const jwtSecret = process.env.JWT_SECRET;
+    if (!jwtSecret && process.env.NODE_ENV === 'production') {
+      console.error('FATAL SECURITY ERROR: JWT_SECRET environment variable is missing in production!');
+      return NextResponse.json(
+        { error: 'Server Configuration Error: Security token secret is not configured' },
+        { status: 500 }
+      );
+    }
+    const secretKey = jwtSecret || 'super_secret_jwt_signing_key_change_me_in_production';
     const expiryMs = 7 * 24 * 60 * 60 * 1000; // 7 days
-    const token = await signToken({ role: 'admin' }, jwtSecret, expiryMs);
+    const token = await signToken({ role: 'admin' }, secretKey, expiryMs);
 
     const response = NextResponse.json({
       success: true,
