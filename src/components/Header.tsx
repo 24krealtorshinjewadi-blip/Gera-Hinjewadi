@@ -179,7 +179,7 @@ export default function Header() {
                   </button>
                 }
               />
-              <DialogContent className="glassmorphism max-w-md border-gold-500/30 text-white rounded-xl shadow-2xl">
+              <DialogContent className="glassmorphism sm:max-w-md border-gold-500/30 text-white rounded-xl shadow-2xl">
                 <DialogHeader>
                   <DialogTitle className="text-xl font-bold uppercase tracking-wider text-center">
                     {(() => {
@@ -277,7 +277,7 @@ export default function Header() {
                   </button>
                 }
               />
-              <DialogContent className="glassmorphism max-w-sm border-gold-500/30 text-white rounded-xl">
+              <DialogContent className="glassmorphism sm:max-w-sm border-gold-500/30 text-white rounded-xl">
                 <DialogHeader>
                   <DialogTitle className="text-lg font-bold uppercase tracking-wider text-center">
                     {(() => {
