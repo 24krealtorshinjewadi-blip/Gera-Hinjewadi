@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse, NextRequest } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabase, supabaseAdmin } from '@/lib/supabase';
 import { sendWhatsAppNotification } from '@/lib/whatsapp';
 import { z } from 'zod';
 import { addLead, readLeads, readAgents } from '@/lib/leadsStorage';
@@ -68,9 +68,39 @@ if (!global.mockLeads) {
   global.mockLeads = [];
 }
 
+// In-memory rate limit store
+const ipCache = new Map<string, number[]>();
+const LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const MAX_LIMIT = 5; // Max 5 requests per window
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = ipCache.get(ip) || [];
+
+  // Filter timestamps to only keep ones within the current window
+  const validTimestamps = timestamps.filter(t => now - t < LIMIT_WINDOW_MS);
+
+  if (validTimestamps.length >= MAX_LIMIT) {
+    return false;
+  }
+
+  validTimestamps.push(now);
+  ipCache.set(ip, validTimestamps);
+  return true;
+}
+
 // POST: Create a lead (Public)
 export async function POST(request: Request) {
   try {
+    // 1. Rate Limiting Check
+    const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please try again after 10 minutes.' },
+        { status: 429 }
+      );
+    }
+
     const rawBody = await request.json();
     
     // Validate request body
@@ -192,8 +222,8 @@ export async function GET(request: NextRequest) {
 
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    if (isSupabaseConfigured) {
-      let query = supabase.from('leads').select('*, agents(name)');
+    if (isSupabaseConfigured && supabaseAdmin) {
+      let query = supabaseAdmin.from('leads').select('*, agents(name)');
 
       // Filters
       if (status) {

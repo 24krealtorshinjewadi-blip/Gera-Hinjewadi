@@ -10,7 +10,8 @@ import {
   FileSpreadsheet,
   Edit,
   Filter,
-  AlertCircle
+  AlertCircle,
+  LogOut
 } from 'lucide-react';
 
 interface Lead {
@@ -88,6 +89,20 @@ export default function AdminDashboardPage() {
   const [followUps, setFollowUps] = useState<FollowUpLog[]>([]);
   const [newComment, setNewComment] = useState('');
   const [isAddingComment, setIsAddingComment] = useState(false);
+
+  // Logout handler
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/admin/logout', { method: 'POST' });
+      if (res.ok) {
+        window.location.href = '/admin/login';
+      } else {
+        alert('Failed to log out');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
 
   // Load leads from API
   const fetchLeads = async () => {
@@ -472,30 +487,41 @@ export default function AdminDashboardPage() {
           </div>
         </div>
 
-        {/* Desktop View Tab Switcher */}
-        <div className="hidden sm:flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-lg p-1">
+        {/* Actions / Tabs & Logout */}
+        <div className="flex items-center gap-3">
+          {/* Desktop View Tab Switcher */}
+          <div className="hidden sm:flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-lg p-1">
+            <button
+              onClick={() => setActiveView('leads')}
+              className={`px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                activeView === 'leads'
+                  ? 'bg-gold-500 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Leads
+            </button>
+            <button
+              onClick={() => setActiveView('agents')}
+              className={`px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                activeView === 'agents'
+                  ? 'bg-gold-500 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Sales Agents
+            </button>
+          </div>
+
           <button
-            onClick={() => setActiveView('leads')}
-            className={`px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-              activeView === 'leads'
-                ? 'bg-gold-500 text-slate-950 shadow-sm'
-                : 'text-slate-400 hover:text-white'
-            }`}
+            onClick={handleLogout}
+            className="flex items-center gap-1.5 px-3 py-2 border border-slate-800 rounded-lg bg-slate-900/60 hover:bg-red-950/20 hover:border-red-500/30 text-slate-400 hover:text-red-400 transition-all text-xs font-bold uppercase tracking-wider cursor-pointer"
+            title="Log out of CRM"
           >
-            Leads
-          </button>
-          <button
-            onClick={() => setActiveView('agents')}
-            className={`px-3 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
-              activeView === 'agents'
-                ? 'bg-gold-500 text-slate-950 shadow-sm'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            Sales Agents
+            <LogOut className="h-4 w-4" />
+            <span className="hidden md:inline">Logout</span>
           </button>
         </div>
-        
 
       </header>
 

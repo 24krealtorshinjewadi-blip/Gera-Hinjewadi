@@ -33,10 +33,10 @@ CREATE TABLE public.agents (
 -- Agents RLS
 ALTER TABLE public.agents ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Allow public read agents"  ON public.agents FOR SELECT USING (true);
-CREATE POLICY "Allow admin insert agents" ON public.agents FOR INSERT WITH CHECK (true);
-CREATE POLICY "Allow admin update agents" ON public.agents FOR UPDATE USING (true);
-CREATE POLICY "Allow admin delete agents" ON public.agents FOR DELETE USING (true);
+CREATE POLICY "Allow authenticated read agents"   ON public.agents FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Allow authenticated insert agents" ON public.agents FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow authenticated update agents" ON public.agents FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Allow authenticated delete agents" ON public.agents FOR DELETE TO authenticated USING (true);
 
 -- ==========================================
 -- 3. LEADS REGISTRY TABLE
@@ -62,10 +62,10 @@ CREATE TABLE public.leads (
 -- Leads RLS
 ALTER TABLE public.leads ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Allow public inserts" ON public.leads FOR INSERT WITH CHECK (true);
-CREATE POLICY "Allow admin read"    ON public.leads FOR SELECT USING (true);
-CREATE POLICY "Allow admin update"  ON public.leads FOR UPDATE USING (true);
-CREATE POLICY "Allow admin delete"  ON public.leads FOR DELETE USING (true);
+CREATE POLICY "Allow public insert leads"         ON public.leads FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow authenticated read leads"   ON public.leads FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Allow authenticated update leads" ON public.leads FOR UPDATE TO authenticated USING (true);
+CREATE POLICY "Allow authenticated delete leads" ON public.leads FOR DELETE TO authenticated USING (true);
 
 -- ==========================================
 -- 4. FOLLOW-UP ACTIVITY LOG
@@ -83,9 +83,9 @@ CREATE TABLE public.follow_up_logs (
 -- Follow-Up Logs RLS
 ALTER TABLE public.follow_up_logs ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "Allow admin read follow_ups"   ON public.follow_up_logs FOR SELECT USING (true);
-CREATE POLICY "Allow admin insert follow_ups" ON public.follow_up_logs FOR INSERT WITH CHECK (true);
-CREATE POLICY "Allow admin delete follow_ups" ON public.follow_up_logs FOR DELETE USING (true);
+CREATE POLICY "Allow authenticated read follow_ups"   ON public.follow_up_logs FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Allow authenticated insert follow_ups" ON public.follow_up_logs FOR INSERT TO authenticated WITH CHECK (true);
+CREATE POLICY "Allow authenticated delete follow_ups" ON public.follow_up_logs FOR DELETE TO authenticated USING (true);
 
 -- ==========================================
 -- 5. PERFORMANCE INDEXES
