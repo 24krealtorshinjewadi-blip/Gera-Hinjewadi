@@ -142,7 +142,7 @@ export default function Home() {
       <Header />
 
       {/* 1. CINEMATIC HERO SECTION */}
-      <section id="overview" className="relative h-screen min-h-[700px] flex items-center pt-20 overflow-hidden">
+      <section id="overview" className="relative min-h-screen lg:h-screen lg:min-h-[700px] flex items-center pt-24 pb-12 lg:py-0 overflow-hidden">
         {/* Cinematic Background with slow zoom */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
@@ -254,7 +254,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
               className="lg:col-span-5"
             >
-              <div className="glassmorphism p-7 sm:p-9 rounded-2xl shadow-2xl relative border-gold-500/10 text-center">
+              <div className="glassmorphism p-5 sm:p-9 rounded-2xl shadow-2xl relative border-gold-500/10 text-center">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[9px] font-bold uppercase tracking-[0.2em] px-5 py-1.5 rounded-full">
                   Reserve Preferred Inventory
                 </div>
@@ -838,7 +838,7 @@ export default function Home() {
 
       {/* DYNAMIC UNLOCK/CTA MODAL DIALOG */}
       <Dialog open={isUnlockModalOpen} onOpenChange={setIsUnlockModalOpen}>
-        <DialogContent className="glassmorphism max-w-md border-gold-500/30 text-white rounded-xl shadow-2xl">
+        <DialogContent className="glassmorphism sm:max-w-md border-gold-500/30 text-white rounded-xl shadow-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold uppercase tracking-wider text-center">
               {(() => {
