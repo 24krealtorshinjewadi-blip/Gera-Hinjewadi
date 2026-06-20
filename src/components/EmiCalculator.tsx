@@ -45,7 +45,7 @@ export default function EmiCalculator({ openUnlockModal }: EmiCalculatorProps) {
               <button
                 key={btn.key}
                 type="button"
-                onClick={() => setCalculatorBhk(btn.key as any)}
+                onClick={() => setCalculatorBhk(btn.key as '2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex')}
                 className={`py-2 px-1 text-[10px] font-bold rounded-lg uppercase tracking-wider transition-all cursor-pointer ${
                   calculatorBhk === btn.key
                     ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 font-extrabold shadow-md'

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { addFollowUp, readFollowUps } from '@/lib/leadsStorage';
@@ -5,7 +6,7 @@ import { addFollowUp, readFollowUps } from '@/lib/leadsStorage';
 type RouteContext = { params: Promise<{ id: string }> };
 
 // GET: Retrieve follow-up timeline for a specific lead (Admin Dashboard)
-export async function GET(request: NextRequest, context: RouteContext) {
+export async function GET(_request: NextRequest, context: RouteContext) {
   try {
     const { id: leadId } = await context.params;
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;

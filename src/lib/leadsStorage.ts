@@ -48,7 +48,7 @@ const FOLLOW_UPS_FILE_PATH = path.join(basePath, 'follow_ups.csv');
 const defaultLeads: Lead[] = [];
 
 // Helper to escape values for CSV correctly
-function escapeCsv(val: any): string {
+function escapeCsv(val: unknown): string {
   if (val === null || val === undefined) return '';
   const str = String(val);
   if (str.includes(',') || str.includes('"') || str.includes('\n')) {
@@ -107,7 +107,7 @@ export function readLeads(): Lead[] {
         message: values[6] || null,
         project: values[7],
         source: values[8],
-        status: values[9] as any,
+        status: values[9] as Lead['status'],
         notes: values[10] || null,
         site_visit_date: values[11] || null,
         created_at: values[12],
@@ -318,7 +318,7 @@ export function readFollowUps(): FollowUpLog[] {
         id: values[0],
         lead_id: values[1],
         agent_id: values[2] || null,
-        status: values[3] as any,
+        status: values[3] as FollowUpLog['status'],
         notes: values[4],
         created_at: values[5],
       });

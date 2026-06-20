@@ -276,12 +276,12 @@
   color: #ffffff !important;
 }
 
-/* Force dark text on promo banner and direct gold headers */
+/* Force high contrast white text on promo banner */
 .bg-gradient-to-r.from-gold-800 {
-  color: #020617 !important;
+  color: #ffffff !important;
 }
 .bg-gradient-to-r.from-gold-800 * {
-  color: #020617 !important;
+  color: #ffffff !important;
 }
 
 /* Force high contrast green text for WhatsApp elements in light mode */

@@ -82,7 +82,7 @@ export async function sendSecretLeadEmail(lead: {
 
   try {
     await transporter.sendMail(mailOptions);
-  } catch (error) {
+  } catch {
     // Fail silently in production
   }
 }

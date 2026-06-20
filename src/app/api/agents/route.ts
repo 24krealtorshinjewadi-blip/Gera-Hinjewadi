@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { addAgent, readAgents } from '@/lib/leadsStorage';
 
 // GET: Retrieve list of agents (Admin Dashboard)
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 

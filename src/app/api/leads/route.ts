@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse, NextRequest } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import { sendWhatsAppNotification } from '@/lib/whatsapp';
@@ -211,7 +212,7 @@ export async function GET(request: NextRequest) {
       const { data, error } = await query;
       if (error) throw error;
 
-      let filteredData = data || [];
+      const filteredData = data || [];
 
       // Flatten nested agent name relation
       let formattedLeads = filteredData.map((lead: any) => ({

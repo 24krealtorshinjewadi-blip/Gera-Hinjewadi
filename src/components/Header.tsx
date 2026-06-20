@@ -48,8 +48,8 @@ export default function Header() {
         }`}
     >
       {/* 1. TOP PROMO ANNOUNCEMENT BANNER */}
-      <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-1.5 px-4 text-center text-slate-950 text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-2 relative overflow-hidden">
-        <span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-950 animate-ping shrink-0" />
+      <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-1.5 px-4 text-center text-white text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-2 relative overflow-hidden">
+        <span className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-ping shrink-0" />
         <span>Pre-Launch Benefit: Zero Stamp Duty + Spot Booking Offers. Limited Inventory!</span>
       </div>
 
@@ -125,7 +125,7 @@ export default function Header() {
                   </DialogTitle>
                 </DialogHeader>
                 <p className="text-xs text-slate-400 text-center -mt-2">
-                  Experience Gera's luxury project firsthand. Fill out the details below:
+                  Experience Gera&apos;s luxury project firsthand. Fill out the details below:
                 </p>
                 <LeadCaptureForm
                   source="header-modal"

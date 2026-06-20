@@ -49,7 +49,7 @@ export default function LocationSection({ openUnlockModal }: LocationSectionProp
                 <button
                   key={tab.key}
                   type="button"
-                  onClick={() => setActiveLocationTab(tab.key as any)}
+                  onClick={() => setActiveLocationTab(tab.key as 'connectivity' | 'education' | 'healthcare' | 'offices')}
                   className={`flex-1 py-2 px-3 text-[10px] font-bold uppercase tracking-wider rounded-md transition-all cursor-pointer ${
                     activeLocationTab === tab.key
                       ? 'bg-gold-500 text-slate-950 font-extrabold'

@@ -21,11 +21,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     try {
       const savedTheme = localStorage.getItem('theme') as Theme | null;
       if (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system') {
-        setThemeState(savedTheme);
-      }
-    } catch (e) {
-      // Fail silently if localStorage is restricted
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setThemeState(savedTheme);
     }
+  } catch {
+    // Fail silently if localStorage is restricted
+  }
   }, []);
 
   // Update DOM class and resolvedTheme state
@@ -72,11 +73,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
-    try {
-      localStorage.setItem('theme', newTheme);
-    } catch (e) {
-      // Fail silently if localStorage is restricted
-    }
+  try {
+    localStorage.setItem('theme', newTheme);
+  } catch {
+    // Fail silently if localStorage is restricted
+  }
   };
 
   return (

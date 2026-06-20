@@ -2,29 +2,21 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
   Phone,
   MessageSquare,
   Calendar,
-  MapPin,
   Shield,
   Award,
   Zap,
   Download,
-  Maximize2,
   Building,
-  Clock,
   Compass,
   CheckCircle2,
   Star,
-  Lock,
-  ChevronRight,
-  Eye,
   Activity,
-  Heart,
-  Volume2,
-  Tv
+  Heart
 } from 'lucide-react';
 
 import Header from '@/components/Header';
@@ -97,6 +89,17 @@ export default function Home() {
     return () => clearTimeout(initialDelay);
   }, []);
 
+  const openUnlockModal = (source: string, title: string, subtitle?: string) => {
+    setModalSource(source);
+    setModalTitle(title);
+    setModalSubtitle(subtitle || 'Please register your interest to receive exclusive details.');
+    setIsUnlockModalOpen(true);
+    // Suppress auto-popup if it hasn't triggered yet
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('gera_auto_popup_shown', 'true');
+    }
+  };
+
   // 3. Auto popup modal on page load after a 5-second delay
   useEffect(() => {
     const popupShown = sessionStorage.getItem('gera_auto_popup_shown');
@@ -113,19 +116,8 @@ export default function Home() {
     }
   }, []);
 
-  const openUnlockModal = (source: string, title: string, subtitle?: string) => {
-    setModalSource(source);
-    setModalTitle(title);
-    setModalSubtitle(subtitle || 'Please register your interest to receive exclusive details.');
-    setIsUnlockModalOpen(true);
-    // Suppress auto-popup if it hasn't triggered yet
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('gera_auto_popup_shown', 'true');
-    }
-  };
-
   // Stagger animation container
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -133,12 +125,12 @@ export default function Home() {
         staggerChildren: 0.15,
       },
     },
-  } as any;
+  };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  } as any;
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-gold-500 selection:text-slate-950 pb-20 md:pb-0">
@@ -383,7 +375,7 @@ export default function Home() {
                 Celebrity-Led <span className="gold-gradient-text italic">Academies</span>
               </h4>
               <p className="text-[11px] text-slate-500 font-light">
-                Gera's signature concept brings world-class sports, arts, and cognitive academies directly to your doorstep. No travel time, just growth.
+                Gera&apos;s signature concept brings world-class sports, arts, and cognitive academies directly to your doorstep. No travel time, just growth.
               </p>
             </div>
 
@@ -598,7 +590,7 @@ export default function Home() {
       </section>
 
       {/* 6. GALLERY */}
-      <GallerySection openUnlockModal={openUnlockModal} />
+      <GallerySection />
 
       {/* 7. LOCATION ADVANTAGES */}
       <LocationSection openUnlockModal={openUnlockModal} />
@@ -629,7 +621,7 @@ export default function Home() {
               <div className="luxury-divider max-w-24 mt-4" />
               
               <p className="text-sm text-slate-400 leading-relaxed font-light">
-                Gera Developments is one of the most trusted icons in Indian real estate. For over five decades, Gera has pioneered innovation—introducing India's first ChildCentric® homes and setting industry benchmarks with a structural warranty program. Our commitment is built on transparent construction, timely handovers, and absolute quality control.
+                Gera Developments is one of the most trusted icons in Indian real estate. For over five decades, Gera has pioneered innovation—introducing India&apos;s first ChildCentric® homes and setting industry benchmarks with a structural warranty program. Our commitment is built on transparent construction, timely handovers, and absolute quality control.
               </p>
               <p className="text-sm text-slate-400 leading-relaxed font-light">
                 Known for spatial innovation, child development infrastructure, and customer-first services, Gera offers a landmark 5-year warranty on all projects, proving their dedication to durability and quality assurance.
@@ -735,7 +727,7 @@ export default function Home() {
                     ))}
                   </div>
                   <p className="text-xs text-slate-300 italic leading-relaxed">
-                    "{test.review}"
+                    &ldquo;{test.review}&rdquo;
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-slate-900">

@@ -1,23 +1,17 @@
 'use client';
+/* eslint-disable react-hooks/set-state-in-effect */
 
 import { useState, useEffect } from 'react';
 import {
   ShieldAlert,
   Search,
-  Download,
   Calendar,
   Trash2,
   FileSpreadsheet,
   Edit,
-  Clock,
   Filter,
-  CheckCircle,
-  AlertCircle,
-  FileText,
-  User,
-  Plus
+  AlertCircle
 } from 'lucide-react';
-import { useForm } from 'react-hook-form';
 
 interface Lead {
   id: string;
@@ -251,8 +245,9 @@ export default function AdminDashboardPage() {
       await fetchLeads();
       setIsEditModalOpen(false);
       setSelectedLead(null);
-    } catch (error: any) {
-      alert(error.message || 'Error occurred while updating.');
+    } catch (error) {
+      const errMsg = error instanceof Error ? error.message : 'Error occurred while updating.';
+      alert(errMsg);
     } finally {
       setIsUpdating(false);
     }
@@ -383,8 +378,9 @@ export default function AdminDashboardPage() {
       await fetchLeads();
       setIsDeleteModalOpen(false);
       setLeadToDelete(null);
-    } catch (error: any) {
-      alert(error.message || 'Error occurred while deleting.');
+    } catch (error) {
+      const errMsg = error instanceof Error ? error.message : 'Error occurred while deleting.';
+      alert(errMsg);
     }
   };
 

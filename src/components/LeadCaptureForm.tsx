@@ -152,9 +152,10 @@ export default function LeadCaptureForm({
         router.push('/thank-you');
       }, 1000);
 
-    } catch (error: any) {
+    } catch (error) {
       console.error('Lead submit error:', error);
-      setSubmitError(error.message || 'Something went wrong. Please try again.');
+      const message = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+      setSubmitError(message);
     } finally {
       setIsSubmitting(false);
     }

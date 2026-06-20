@@ -4,11 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Eye, Tv, ChevronLeft, ChevronRight, X } from 'lucide-react';
 
-interface GallerySectionProps {
-  openUnlockModal: (source: string, title: string, subtitle?: string) => void;
-}
-
-export default function GallerySection({ openUnlockModal }: GallerySectionProps) {
+export default function GallerySection() {
   const [activeGalleryTab, setActiveGalleryTab] = useState<'photos' | 'videos'>('photos');
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);

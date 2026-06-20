@@ -56,7 +56,7 @@ export default function FloorPlansSection({ openUnlockModal }: FloorPlansSection
               <button
                 key={tab.key}
                 type="button"
-                onClick={() => setActivePlanTab(tab.key as any)}
+                onClick={() => setActivePlanTab(tab.key as '2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex')}
                 className={`flex-1 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   activePlanTab === tab.key
                     ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 shadow-md font-extrabold'

@@ -68,8 +68,9 @@ Submitted Successfully.`;
 
     console.log(`WhatsApp notification successfully sent to ${toWhatsApp}. Twilio Message SID: ${result.sid}`);
     return { success: true, sid: result.sid };
-  } catch (error: any) {
+  } catch (error) {
     console.error('Failed to dispatch WhatsApp notification via Twilio:', error);
-    return { success: false, error: error.message || 'An unexpected fetch error occurred' };
+    const errMsg = error instanceof Error ? error.message : 'An unexpected fetch error occurred';
+    return { success: false, error: errMsg };
   }
 }

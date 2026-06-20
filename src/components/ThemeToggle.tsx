@@ -14,6 +14,7 @@ export default function ThemeToggle() {
 
   // Prevent hydration mismatch
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -67,12 +68,7 @@ export default function ThemeToggle() {
     triggerRef.current?.focus();
   };
 
-  // Get active display icon
-  const getIcon = () => {
-    if (theme === 'system') return Laptop;
-    return theme === 'light' ? Sun : Moon;
-  };
-  const ActiveIcon = getIcon();
+
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse, NextRequest } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { updateAgent, deleteAgent } from '@/lib/leadsStorage';
@@ -59,7 +60,7 @@ export async function PATCH(request: NextRequest, context: RouteContext) {
 }
 
 // DELETE: Remove agent (Admin Dashboard)
-export async function DELETE(request: NextRequest, context: RouteContext) {
+export async function DELETE(_request: NextRequest, context: RouteContext) {
   try {
     const { id } = await context.params;
     const isSupabaseConfigured = process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;

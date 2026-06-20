@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, ShieldAlert } from 'lucide-react';
+import { MapPin, Phone, ShieldAlert } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -12,7 +12,7 @@ export default function Footer() {
               GERA <span className="gold-gradient-text">HINJWADI</span>
             </h4>
             <p className="text-slate-400 leading-relaxed">
-              Experience the pinnacle of premium living at Pune's premier IT hub. ChildCentric® smart homes designed for growth, security, and world-class luxury.
+              Experience the pinnacle of premium living at Pune&apos;s premier IT hub. ChildCentric® smart homes designed for growth, security, and world-class luxury.
             </p>
             <div className="space-y-1 pt-2">
               <p className="font-semibold text-gold-400 uppercase tracking-widest text-[10px]">
