@@ -16,7 +16,12 @@ import {
   CheckCircle2,
   Star,
   Activity,
-  Heart
+  Heart,
+  Trophy,
+  Target,
+  Sparkles,
+  Waves,
+  Music
 } from 'lucide-react';
 
 import Header from '@/components/Header';
@@ -379,36 +384,39 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
               {[
-                { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: '🏏', desc: 'Professional cricket training infrastructure & nets.' },
-                { name: 'Bhupathi Tennis', lead: 'Mahesh Bhupathi', icon: '🎾', desc: 'World-standard tennis coaching courts & physical training.' },
-                { name: 'Shiamak Dance', lead: 'Shiamak Davar', icon: '💃', desc: 'Celebrity style dance training programs for all ages.' },
-                { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: '🏊', desc: 'Structured swimming training syllabus in state-of-art pools.' },
-                { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: '🎵', desc: 'Vocal, classical, and instrumental training programs.' },
+                { name: 'Tensegrity Cricket', lead: 'Anil Kumble', icon: Trophy, desc: 'Professional cricket training infrastructure & nets.' },
+                { name: 'Bhupathi Tennis', lead: 'Mahesh Bhupathi', icon: Target, desc: 'World-standard tennis coaching courts & physical training.' },
+                { name: 'Shiamak Dance', lead: 'Shiamak Davar', icon: Sparkles, desc: 'Celebrity style dance training programs for all ages.' },
+                { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: Waves, desc: 'Structured swimming training syllabus in state-of-art pools.' },
+                { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: Music, desc: 'Vocal, classical, and instrumental training programs.' },
               ].map((academy, idx) => (
-                <div key={idx} className="glassmorphism p-5 rounded-xl border border-slate-900/50 hover:border-gold-500/20 text-center flex flex-col justify-between group transition-all duration-300">
+                <div key={idx} className="relative overflow-hidden p-6 rounded-2xl border bg-slate-900/40 dark:bg-slate-900/40 bg-white/70 border-slate-200/60 dark:border-slate-900/50 hover:border-gold-500/30 dark:hover:border-gold-500/30 text-center flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-gold-500/5">
                   <div>
-                    <span className="text-3xl mb-3 block filter saturate-100 group-hover:scale-110 transition-transform duration-300">{academy.icon}</span>
-                    <h5 className="text-[11px] font-extrabold text-white uppercase tracking-wide leading-snug">{academy.name}</h5>
-                    <span className="text-[9px] text-gold-400 font-bold block mt-1 uppercase tracking-widest">{academy.lead}</span>
+                    <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-gradient-to-br from-gold-500/10 to-transparent border border-gold-500/20 dark:border-gold-500/20 text-gold-500 dark:text-gold-400 group-hover:from-gold-500 group-hover:to-gold-600 group-hover:text-slate-950 group-hover:border-gold-500 transition-all duration-500 group-hover:scale-110 shadow-inner">
+                      <academy.icon className="h-5 w-5 transition-transform duration-500 group-hover:rotate-6" />
+                    </div>
+                    <h5 className="text-[11px] font-extrabold text-slate-900 dark:text-white uppercase tracking-wider leading-snug">{academy.name}</h5>
+                    <span className="text-[9px] text-gold-600 dark:text-gold-400 font-extrabold block mt-1.5 uppercase tracking-widest">{academy.lead}</span>
                   </div>
-                  <p className="text-[9px] text-slate-500 mt-3 font-light leading-relaxed">
+                  <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-3.5 font-normal leading-relaxed">
                     {academy.desc}
                   </p>
                 </div>
               ))}
             </div>
             
-            <div className="text-center mt-10">
+            <div className="text-center mt-12">
               <button
                 onClick={() => openUnlockModal(
                   'cc-academies',
                   'Request Academy Schedule & Details',
                   'Get a detailed brochure of all academy programs, class schedules, and trainer profiles.'
                 )}
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-slate-900 border border-slate-800 hover:border-gold-500/30 text-gold-400 hover:text-white text-[9px] font-bold uppercase tracking-widest rounded-lg transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 hover:shadow-lg hover:shadow-gold-500/20 text-[10px] font-extrabold uppercase tracking-widest rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
+                <Download className="h-3.5 w-3.5" />
                 <span>Request Academy Brochure</span>
               </button>
             </div>
