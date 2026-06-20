@@ -997,7 +997,8 @@ export default function AdminDashboardPage() {
                     type="datetime-local"
                     value={editVisitDate}
                     onChange={(e) => setEditVisitDate(e.target.value)}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:border-gold-500 focus:outline-none"
+                    style={{ colorScheme: 'dark' }}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:border-gold-500 focus:outline-none [color-scheme:dark]"
                   />
                 </div>
 
