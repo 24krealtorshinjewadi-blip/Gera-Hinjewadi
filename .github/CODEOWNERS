@@ -1,0 +1,15 @@
+# CODEOWNERS File
+# Details: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repository.
+*       @manishrai99-afk
+
+# CI/CD and GitHub configuration files
+/.github/workflows/   @manishrai99-afk
+/.github/             @manishrai99-afk
+
+# Database and infrastructure configurations
+/database.sql         @manishrai99-afk
+/next.config.ts       @manishrai99-afk
+/tsconfig.json        @manishrai99-afk
+/package.json         @manishrai99-afk
