@@ -142,7 +142,7 @@ export default function Home() {
       <Header />
 
       {/* 1. CINEMATIC HERO SECTION */}
-      <section id="overview" className="relative min-h-screen lg:h-screen lg:min-h-[700px] flex items-center pt-24 pb-12 lg:py-0 overflow-hidden">
+      <section id="overview" className="relative min-h-screen lg:min-h-[750px] flex items-center pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden">
         {/* Cinematic Background with slow zoom */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image

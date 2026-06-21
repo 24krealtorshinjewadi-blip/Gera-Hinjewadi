@@ -166,8 +166,8 @@ export default function LeadCaptureForm({
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-4 text-left p-2"
     >
-      <div>
-        <label className="block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1">
+      <div className="group">
+        <label className="block text-[10px] font-bold text-gold-400/90 uppercase tracking-[0.15em] mb-1.5 group-hover:text-gold-300 transition-colors">
           Full Name <span className="text-red-500">*</span>
         </label>
         <input
