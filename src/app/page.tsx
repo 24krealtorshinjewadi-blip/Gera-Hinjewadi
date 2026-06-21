@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import {
   Phone,
   MessageSquare,
@@ -61,38 +61,7 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  // 2. Social proof notifications
-  const [socialProof, setSocialProof] = useState<string | null>(null);
-  const [showSocialProof, setShowSocialProof] = useState(false);
-  useEffect(() => {
-    const messages = [
-      "Amit S. from Baner just booked a site visit.",
-      "Sneha M. from Wakad downloaded the Cost Sheet 2 mins ago.",
-      "Rahul P. from Hinjewadi requested a VVIP callback.",
-      "Karan J. from Pune downloaded the project brochure.",
-      "Priya K. from Mumbai enquired about the 3 BHK Duplex."
-    ];
-    let index = 0;
-    const initialDelay = setTimeout(() => {
-      setSocialProof(messages[index]);
-      setShowSocialProof(true);
-      
-      let hideTimeout = setTimeout(() => setShowSocialProof(false), 6000);
-      
-      const interval = setInterval(() => {
-        index = (index + 1) % messages.length;
-        setSocialProof(messages[index]);
-        setShowSocialProof(true);
-        hideTimeout = setTimeout(() => setShowSocialProof(false), 6000);
-      }, 15000);
-      
-      return () => {
-        clearInterval(interval);
-        clearTimeout(hideTimeout);
-      };
-    }, 5000);
-    return () => clearTimeout(initialDelay);
-  }, []);
+
 
   const openUnlockModal = (source: string, title: string, subtitle?: string) => {
     setModalSource(source);
@@ -867,29 +836,7 @@ export default function Home() {
         </DialogContent>
       </Dialog>
 
-      {/* SOCIAL PROOF NOTIFICATION TOAST */}
-      <AnimatePresence>
-        {showSocialProof && socialProof && (
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.4 }}
-            className="fixed bottom-24 md:bottom-6 left-4 md:left-6 z-40 bg-slate-950/90 backdrop-blur-md border border-gold-500/20 p-4 rounded-xl shadow-2xl flex items-center gap-3.5 max-w-sm"
-          >
-            <div className="relative flex shrink-0">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500" />
-            </div>
-            <div className="text-left">
-              <span className="text-[9px] uppercase tracking-widest text-gold-400 font-bold block mb-0.5">Live Activity</span>
-              <p className="text-[11px] text-slate-200 font-semibold leading-relaxed">
-                {socialProof}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
       {/* MOBILE STICKY BOTTOM ACTION DOCK */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-md border-t border-gold-500/20 py-2.5 px-4 flex items-center justify-between gap-2.5 mobile-action-dock">
