@@ -34,6 +34,7 @@ An ESLint check was run across the codebase.
 - **Key Lint Findings:**
   - All Tailwind CSS compilation and utility class warnings inside the CRM pages and login interface have been successfully resolved and formatted to align with Tailwind CSS v4 guidelines.
   - Form validation, Zod schemas, and TypeScript interfaces are error-free.
+  - Unused imports (including `AnimatePresence` in the hero section) were removed to ensure zero linter warnings.
 
 ---
 
@@ -44,6 +45,7 @@ An ESLint check was run across the codebase.
 - Embedded YouTube video walk-through is fully integrated.
 - Lead capture form works with validation (Zod, React Hook Form, Indian phone numbers) and has complete styling consistency across all labels.
 - Layout clearance is verified; the hero form card has sufficient top-padding to never overlap with the sticky header on desktop viewports.
+- **Live Activity Removed:** The "Live Activity" (social proof) toast notifications were completely disabled and removed at client request to maintain a cleaner luxury UI focus.
 
 ### 2. CRM Admin Portal (`/admin`)
 - Fully accessible and functional dashboard.
@@ -72,11 +74,11 @@ The platform is designed with a dual-layer data storage strategy:
 
 ## Recent Project History (Git Logs)
 Below are the latest commits detailing recent design improvements and SEO optimizations:
-1. `90f61f5` — fix: resolve hero enquiry form header overlap and label inconsistency
-2. `2daf2e3` — fix: resolve Tailwind CSS utility warnings in admin dashboard and login pages
-3. `f05178f` — design: add custom watermark backgrounds for Pricing, Location, and Builder sections, and swap video walkthrough with embeddable YouTube ID
-4. `efe25bf` — feat: unlock gallery section to public with image lightbox slider and embedded youtube video walkthrough playback
-5. `1443e47` — seo: expand search keywords, fix section heading hierarchy, and add RealEstateDevelopment JSON-LD structured schema
+1. `391351f` — feat: disable Live Activity social proof notification toast
+2. `90f61f5` — fix: resolve hero enquiry form header overlap and label inconsistency
+3. `2daf2e3` — fix: resolve Tailwind CSS utility warnings in admin dashboard and login pages
+4. `f05178f` — design: add custom watermark backgrounds for Pricing, Location, and Builder sections, and swap video walkthrough with embeddable YouTube ID
+5. `efe25bf` — feat: unlock gallery section to public with image lightbox slider and embedded youtube video walkthrough playback
 
 ---
 
