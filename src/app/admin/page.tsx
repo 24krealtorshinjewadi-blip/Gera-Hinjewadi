@@ -526,7 +526,7 @@ export default function AdminDashboardPage() {
       </header>
 
       {/* Main Container */}
-      <main className="flex-grow p-6 max-w-7xl mx-auto w-full space-y-6">
+      <main className="grow p-6 max-w-7xl mx-auto w-full space-y-6">
         
         {/* Mobile View Tab Switcher */}
         <div className="flex sm:hidden w-full bg-slate-900 border border-slate-800 rounded-lg p-1 gap-1">
@@ -593,7 +593,7 @@ export default function AdminDashboardPage() {
                 {/* CSV export */}
                 <button
                   onClick={handleExportCSV}
-                  className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg hover:opacity-90 active:scale-[0.98] transition-all shadow-md cursor-pointer"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 px-5 py-2.5 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg hover:opacity-90 active:scale-[0.98] transition-all shadow-md cursor-pointer"
                 >
                   <FileSpreadsheet className="h-4 w-4" />
                   <span>Export CSV ({filteredLeads.length})</span>
@@ -840,7 +840,7 @@ export default function AdminDashboardPage() {
                 <button
                   type="submit"
                   disabled={isAddingAgent}
-                  className="w-full py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg hover:opacity-90 active:scale-[0.98] transition-all shadow-md cursor-pointer"
+                  className="w-full py-3 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg hover:opacity-90 active:scale-[0.98] transition-all shadow-md cursor-pointer"
                 >
                   {isAddingAgent ? 'Registering...' : 'Add Agent'}
                 </button>
@@ -998,7 +998,7 @@ export default function AdminDashboardPage() {
                     value={editVisitDate}
                     onChange={(e) => setEditVisitDate(e.target.value)}
                     style={{ colorScheme: 'dark' }}
-                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:border-gold-500 focus:outline-none [color-scheme:dark]"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:border-gold-500 focus:outline-none scheme-dark"
                   />
                 </div>
 
@@ -1028,7 +1028,7 @@ export default function AdminDashboardPage() {
                   <button
                     type="submit"
                     disabled={isUpdating}
-                    className="flex-1 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg shadow-md transition-all cursor-pointer"
+                    className="flex-1 py-2.5 bg-linear-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg shadow-md transition-all cursor-pointer"
                   >
                     {isUpdating ? 'Saving...' : 'Save Changes'}
                   </button>
@@ -1043,7 +1043,7 @@ export default function AdminDashboardPage() {
                 </div>
 
                 {/* Timeline display */}
-                <div className="flex-grow overflow-y-auto bg-slate-950/60 border border-slate-900 rounded-lg p-3 space-y-3 max-h-[220px] min-h-[160px] text-left">
+                <div className="grow overflow-y-auto bg-slate-950/60 border border-slate-900 rounded-lg p-3 space-y-3 max-h-[220px] min-h-[160px] text-left">
                   {followUps.length === 0 ? (
                     <div className="text-center text-[11px] text-slate-600 py-12 italic">
                       No follow-up log recorded yet.
@@ -1051,7 +1051,7 @@ export default function AdminDashboardPage() {
                   ) : (
                     followUps.map((log) => (
                       <div key={log.id} className="border-l border-gold-500/40 pl-3.5 py-0.5 relative space-y-1">
-                        <div className="absolute -left-[4.5px] top-1.5 w-2 h-2 rounded-full bg-gold-500" />
+                        <div className="absolute left-[-4.5px] top-1.5 w-2 h-2 rounded-full bg-gold-500" />
                         <div className="flex justify-between items-center text-[10px]">
                           <span className="font-extrabold text-gold-400 uppercase">{log.status}</span>
                           <span className="text-slate-500">{new Date(log.created_at).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}</span>
@@ -1067,7 +1067,7 @@ export default function AdminDashboardPage() {
 
                 {/* Add comment Form */}
                 <form onSubmit={handleAddComment} className="flex gap-2 items-end">
-                  <div className="flex-grow text-left">
+                  <div className="grow text-left">
                     <label className="block text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1">
                       Log New Action / Comment
                     </label>
