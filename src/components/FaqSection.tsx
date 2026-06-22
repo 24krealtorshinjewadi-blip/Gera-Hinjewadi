@@ -133,7 +133,7 @@ export default function FaqSection() {
               }}
               className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto"
             >
-              <div className="relative flex-grow">
+              <div className="relative grow">
                 <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-300 text-xs font-bold font-mono">+91</span>
                 <input
                   type="tel"
@@ -149,7 +149,7 @@ export default function FaqSection() {
               </div>
               <button
                 type="submit"
-                className="px-5 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg hover:opacity-95 transition-all whitespace-nowrap cursor-pointer shadow-md"
+                className="px-5 py-2.5 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg hover:opacity-95 transition-all whitespace-nowrap cursor-pointer shadow-md"
               >
                 Request Callback
               </button>

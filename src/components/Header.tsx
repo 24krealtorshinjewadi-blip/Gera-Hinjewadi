@@ -78,7 +78,7 @@ export default function Header() {
         }`}
     >
       {/* 1. TOP PROMO ANNOUNCEMENT BANNER */}
-      <div className="bg-gradient-to-r from-gold-800 via-gold-600 to-gold-800 py-2 text-white text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] relative overflow-hidden w-full flex">
+      <div className="bg-linear-to-r from-gold-800 via-gold-600 to-gold-800 py-2 text-white text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] relative overflow-hidden w-full flex">
         <div className="flex animate-marquee whitespace-nowrap shrink-0">
           {/* First set of marquee items */}
           {PROMO_ITEMS.map((item, idx) => (
@@ -173,7 +173,7 @@ export default function Header() {
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
               <DialogTrigger
                 render={
-                  <button className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0 whitespace-nowrap">
+                  <button className="flex items-center gap-1.5 px-4 py-2 bg-linear-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0 whitespace-nowrap">
                     <Calendar className="h-3.5 w-3.5" />
                     <span>Book Visit</span>
                   </button>
@@ -271,7 +271,7 @@ export default function Header() {
             <Dialog>
               <DialogTrigger
                 render={
-                  <button className="flex items-center justify-center gap-1.5 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg cursor-pointer">
+                  <button className="flex items-center justify-center gap-1.5 py-3 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-wider rounded-lg cursor-pointer">
                     <Calendar className="h-4 w-4" />
                     <span>Book Visit</span>
                   </button>

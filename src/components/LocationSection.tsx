@@ -177,9 +177,9 @@ export default function LocationSection({ openUnlockModal }: LocationSectionProp
           </div>
 
           {/* Visual Map Render Placeholder */}
-          <div className="lg:col-span-7 bg-slate-950 border border-slate-900 rounded-2xl relative aspect-[16/10] overflow-hidden group">
+          <div className="lg:col-span-7 bg-slate-950 border border-slate-900 rounded-2xl relative aspect-16/10 overflow-hidden group">
             {/* Premium abstract grid representation of maps */}
-            <div className="absolute inset-0 bg-slate-950 p-6 flex flex-col justify-between items-start text-left relative z-0">
+            <div className="absolute inset-0 bg-slate-950 p-6 flex flex-col justify-between items-start text-left z-0">
               <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-gold-500/5 blur-[50px]" />
               <div className="border-l-2 border-slate-800 h-full absolute left-1/3 top-0" />
               <div className="border-t-2 border-slate-800 w-full absolute left-0 top-1/2" />
@@ -212,7 +212,7 @@ export default function LocationSection({ openUnlockModal }: LocationSectionProp
                   'Unlock HD Location Layout & Route Map',
                   'Download a high-resolution version of our master location map and connectivity guide.'
                 )}
-                className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg cursor-pointer"
+                className="px-6 py-3 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-bold uppercase tracking-widest rounded-lg shadow-lg cursor-pointer"
               >
                 Unlock Live Map Direction
               </button>

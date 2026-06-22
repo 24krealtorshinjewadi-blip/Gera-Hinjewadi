@@ -59,7 +59,7 @@ export default function FloorPlansSection({ openUnlockModal }: FloorPlansSection
                 onClick={() => setActivePlanTab(tab.key as '2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex')}
                 className={`flex-1 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                   activePlanTab === tab.key
-                    ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 shadow-md font-extrabold'
+                    ? 'bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
                 }`}
               >
@@ -69,14 +69,14 @@ export default function FloorPlansSection({ openUnlockModal }: FloorPlansSection
           </div>
 
           {/* Open Floor Plan Showcase - No Lock */}
-          <div className="relative border border-slate-900 rounded-2xl overflow-hidden max-w-2xl mx-auto aspect-[4/3] bg-slate-900/20 group">
+          <div className="relative border border-slate-900 rounded-2xl overflow-hidden max-w-2xl mx-auto aspect-4/3 bg-slate-900/20 group">
             <Image
               src={planImages[activePlanTab]}
               alt={`${activePlanTab.toUpperCase()} Floor Plan Layout`}
               fill
               className="object-cover opacity-80 transition-all duration-500 group-hover:scale-[1.02]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 text-left">
               <span className="text-[10px] text-gold-400 uppercase tracking-[0.15em] font-semibold">
                 {activePlanTab.toUpperCase()} Configuration

@@ -48,7 +48,7 @@ export default function EmiCalculator({ openUnlockModal }: EmiCalculatorProps) {
                 onClick={() => setCalculatorBhk(btn.key as '2bhk' | '2.5bhk' | '3bhk' | '3bhk-duplex')}
                 className={`py-2 px-1 text-[10px] font-bold rounded-lg uppercase tracking-wider transition-all cursor-pointer ${
                   calculatorBhk === btn.key
-                    ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 font-extrabold shadow-md'
+                    ? 'bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 font-extrabold shadow-md'
                     : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white'
                 }`}
               >
@@ -134,7 +134,7 @@ export default function EmiCalculator({ openUnlockModal }: EmiCalculatorProps) {
             'Check Home Loan Eligibility & Offers',
             `Request customized down payment plan and bank partner deals for ${calculatorBhk.toUpperCase()} configuration.`
           )}
-          className="w-full py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg transition-all hover:scale-[1.01] cursor-pointer"
+          className="w-full py-2.5 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg transition-all hover:scale-[1.01] cursor-pointer"
         >
           Apply & Pre-Approve Loan
         </button>

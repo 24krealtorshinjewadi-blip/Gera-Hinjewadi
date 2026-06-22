@@ -121,8 +121,8 @@ export default function Home() {
             priority
             className="object-cover opacity-40 animate-cinematic-zoom"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-slate-950/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/40 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/60 to-slate-950/30" />
+          <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/40 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
@@ -183,7 +183,7 @@ export default function Home() {
                     'Book Luxury Site Visit', 
                     'Schedule a personalized walkthrough of our exclusive experience center.'
                   )}
-                  className="flex-1 flex items-center justify-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[11px] font-bold uppercase tracking-[0.15em] rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.25)] cursor-pointer whitespace-nowrap"
+                  className="flex-1 flex items-center justify-center gap-2.5 px-7 py-3.5 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-[11px] font-bold uppercase tracking-[0.15em] rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,175,55,0.25)] cursor-pointer whitespace-nowrap"
                 >
                   <Calendar className="h-4 w-4 shrink-0" />
                   <span>Book Site Visit</span>
@@ -224,7 +224,7 @@ export default function Home() {
               className="lg:col-span-5"
             >
               <div className="glassmorphism p-5 sm:p-9 rounded-2xl shadow-2xl relative border-gold-500/10 text-center">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[9px] font-bold uppercase tracking-[0.2em] px-5 py-1.5 rounded-full">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-[9px] font-bold uppercase tracking-[0.2em] px-5 py-1.5 rounded-full">
                   Reserve Preferred Inventory
                 </div>
                 
@@ -372,7 +372,7 @@ export default function Home() {
                   { name: 'Phelps Swimming', lead: 'Michael Phelps', icon: Waves, bgImage: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=400&q=80', desc: 'Structured swimming training syllabus in state-of-art pools.' },
                   { name: 'Mahadevan Music', lead: 'Shankar Mahadevan', icon: Music, bgImage: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?auto=format&fit=crop&w=400&q=80', desc: 'Vocal, classical, and instrumental training programs.' },
                 ].map((academy, idx) => (
-                  <div key={idx} className="relative overflow-hidden p-6 rounded-2xl border bg-slate-900/40 dark:bg-slate-900/40 bg-white/70 border-slate-200/60 dark:border-slate-900/50 hover:border-gold-500/30 dark:hover:border-gold-500/30 text-center flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-gold-500/5">
+                  <div key={idx} className="relative overflow-hidden p-6 rounded-2xl border bg-white/70 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-900/50 hover:border-gold-500/30 dark:hover:border-gold-500/30 text-center flex flex-col justify-between group transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-gold-500/5">
                     {/* Card background image watermark */}
                     <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none">
                       <Image
@@ -381,12 +381,12 @@ export default function Home() {
                         fill
                         className="object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-slate-950/20 via-transparent to-transparent" />
                     </div>
 
                     <div className="relative z-10 flex flex-col h-full justify-between">
                       <div>
-                        <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-gradient-to-br from-gold-500/10 to-transparent border border-gold-500/20 dark:border-gold-500/20 text-gold-500 dark:text-gold-400 group-hover:from-gold-500 group-hover:to-gold-600 group-hover:text-slate-950 group-hover:border-gold-500 transition-all duration-500 group-hover:scale-110 shadow-inner">
+                        <div className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center bg-linear-to-br from-gold-500/10 to-transparent border border-gold-500/20 dark:border-gold-500/20 text-gold-500 dark:text-gold-400 group-hover:from-gold-500 group-hover:to-gold-600 group-hover:text-slate-950 group-hover:border-gold-500 transition-all duration-500 group-hover:scale-110 shadow-inner">
                           <academy.icon className="h-5 w-5 transition-transform duration-500 group-hover:rotate-6" />
                         </div>
                         <h5 className="text-[11px] font-extrabold text-slate-900 dark:text-white uppercase tracking-wider leading-snug">{academy.name}</h5>
@@ -407,7 +407,7 @@ export default function Home() {
                   'Request Academy Schedule & Details',
                   'Get a detailed brochure of all academy programs, class schedules, and trainer profiles.'
                 )}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 hover:shadow-lg hover:shadow-gold-500/20 text-[10px] font-extrabold uppercase tracking-widest rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 hover:shadow-lg hover:shadow-gold-500/20 text-[10px] font-extrabold uppercase tracking-widest rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 <Download className="h-3.5 w-3.5" />
                 <span>Request Academy Brochure</span>
@@ -495,7 +495,7 @@ export default function Home() {
               </table>
             </div>
             
-            <div className="relative w-full aspect-[4/3] sm:aspect-video border-t border-slate-900">
+            <div className="relative w-full aspect-4/3 sm:aspect-video border-t border-slate-900">
               <Image 
                 src="/images/pricing-chart.jpg" 
                 alt="Gera Hinjewadi Official Pricing Chart" 
@@ -511,7 +511,7 @@ export default function Home() {
                   'Download Complete Cost Sheet & Payment Plan',
                   'Unlock a detailed cost breakdown and flexible payment schedules instantly.'
                 )}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg hover:opacity-95 shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg hover:opacity-95 shadow-lg hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
               >
                 <Download className="h-4 w-4" />
                 <span>Get Detailed Cost Sheet</span>
@@ -579,7 +579,7 @@ export default function Home() {
                 <div className="mx-auto mb-4 w-12 h-12 flex items-center justify-center rounded-full border border-slate-800/50 text-gold-400/70 group-hover:border-gold-500/30 group-hover:text-gold-400 transition-all duration-500">
                   {amenity.icon}
                 </div>
-                <h5 className="text-xs font-semibold text-white uppercase tracking-[0.1em] mb-1.5">
+                <h5 className="text-xs font-semibold text-white uppercase tracking-widest mb-1.5">
                   {amenity.title}
                 </h5>
                 <p className="text-[10px] text-slate-500 font-light">
@@ -647,7 +647,7 @@ export default function Home() {
 
             {/* Right: Brochure Download Card */}
             <div className="bg-slate-900/30 border border-slate-900 p-8 rounded-2xl relative overflow-hidden text-center">
-              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-gold-500/5 blur-[40px]" />
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-gold-500/5 blur-2xl" />
               <h4 className="section-heading text-xl font-semibold text-white mb-1">
                 Builder Brochure & <span className="gold-gradient-text italic">Profile</span>
               </h4>
@@ -743,7 +743,7 @@ export default function Home() {
       </section>
 
       {/* 11. FINAL CTA SECTION */}
-      <section className="py-32 bg-gradient-to-b from-slate-900/40 to-slate-950 relative overflow-hidden">
+      <section className="py-32 bg-linear-to-b from-slate-900/40 to-slate-950 relative overflow-hidden">
         <div className="luxury-divider w-full" />
         {/* Dynamic Watermark Background */}
         <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none">
@@ -775,7 +775,7 @@ export default function Home() {
                 'Book VVIP Site Visit',
                 'Schedule a private walkthrough of our luxury experience center with a senior executive.'
               )}
-              className="flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg shadow-xl active:scale-[0.98] transition-all cursor-pointer"
+              className="flex items-center gap-2 px-8 py-4 bg-linear-to-r from-gold-500 to-gold-600 hover:opacity-95 text-slate-950 text-xs font-extrabold uppercase tracking-widest rounded-lg shadow-xl active:scale-[0.98] transition-all cursor-pointer"
             >
               <Calendar className="h-4.5 w-4.5" />
               <span>Request Private Exhibition</span>
@@ -862,7 +862,7 @@ export default function Home() {
             'Book Luxury Site Visit',
             'Schedule a complimentary site visit with luxury pick-up and drop service.'
           )}
-          className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-linear-to-r from-gold-500 to-gold-600 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider rounded-lg cursor-pointer"
         >
           <Calendar className="h-3.5 w-3.5" />
           <span>Book Visit</span>

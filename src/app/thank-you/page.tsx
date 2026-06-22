@@ -14,12 +14,12 @@ export default function ThankYouPage() {
 
       <Header />
 
-      <main className="flex-grow flex items-center justify-center px-4 py-24 sm:px-6 lg:px-8 z-10">
+      <main className="grow flex items-center justify-center px-4 py-24 sm:px-6 lg:px-8 z-10">
         <div className="max-w-md w-full text-center glassmorphism p-8 sm:p-10 rounded-2xl shadow-2xl relative border-gold-500/20">
           
           {/* Animated Gold Checkbox */}
-          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 shadow-[0_0_30px_rgba(212,175,55,0.4)] animate-pulse mb-8">
-            <Check className="h-10 w-10 text-slate-950 stroke-[3]" />
+          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-linear-to-r from-gold-500 to-gold-600 shadow-[0_0_30px_rgba(212,175,55,0.4)] animate-pulse mb-8">
+            <Check className="h-10 w-10 text-slate-950 stroke-3" />
           </div>
 
           <h1 className="text-3xl font-extrabold tracking-wider uppercase text-white mb-2">

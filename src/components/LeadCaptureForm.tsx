@@ -300,7 +300,7 @@ export default function LeadCaptureForm({
               min={new Date().toISOString().split('T')[0]}
               {...register('visitDate')}
               style={{ colorScheme: 'dark' }}
-              className="w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner [color-scheme:dark]"
+              className="w-full bg-slate-900/90 dark:bg-slate-900/40 backdrop-blur-sm border border-slate-700 hover:border-gold-500/50 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/20 rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-all duration-300 shadow-inner scheme-dark"
             />
           </div>
           <div className="group">

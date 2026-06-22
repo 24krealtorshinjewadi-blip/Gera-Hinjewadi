@@ -56,7 +56,7 @@ export default function GallerySection() {
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-60 filter brightness-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/20 to-transparent" />
               <div className="absolute bottom-4 left-4 text-left">
                 <h6 className="text-xs font-bold uppercase tracking-wider text-white">
                   {img.label}
@@ -98,7 +98,7 @@ export default function GallerySection() {
           </div>
 
           {/* Main Image View */}
-          <div className="relative w-full max-w-4xl flex-grow flex items-center justify-center min-h-[300px] my-4">
+          <div className="relative w-full max-w-4xl grow flex items-center justify-center min-h-[300px] my-4">
             {/* Left Control */}
             <button
               onClick={() => setLightboxIndex(prev => (prev === 0 ? photos.length - 1 : prev - 1))}
