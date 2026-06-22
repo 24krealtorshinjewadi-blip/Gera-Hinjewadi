@@ -59,6 +59,7 @@ next-env.d.ts
 *.pem
 *.key
 *.cert
+gcp-key.json
 
 # Local data files (CSV fallback storage)
 leads.csv
