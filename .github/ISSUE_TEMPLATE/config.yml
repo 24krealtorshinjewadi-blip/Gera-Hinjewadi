@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📘 Project Handover Guide
+    url: https://github.com/24krealtorshinjewadi-blip/Gera-Hinjewadi/blob/master/docs/HANDOVER_GUIDE.md
+    about: Review complete deployment runbooks, database schemas, and CRM operations.
+  - name: 📋 Master QA Test Report
+    url: https://github.com/24krealtorshinjewadi-blip/Gera-Hinjewadi/blob/master/docs/MASTER_QA_TEST_REPORT.md
+    about: Read full 45-point test matrix, Lighthouse benchmarks, and security audits.
+  - name: 📱 Mobile Testing Matrix
+    url: https://github.com/24krealtorshinjewadi-blip/Gera-Hinjewadi/blob/master/docs/MOBILE_TESTING_MATRIX.md
+    about: Inspect responsive viewport compatibility across iOS, Android, and tablets.
+  - name: 🚨 Emergency Technical Hotline
+    url: https://wa.me/919673000053
+    about: Immediate WhatsApp direct support for P0 critical production inquiries.
